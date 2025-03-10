@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+/* code for color variables */
+:root {
+  --color-primary: #0dd613;
+  --color-secondary: #c0ff5b;
+  --color-tertiary: #b5766d;
+}
+
+/* font family for everything */
+* {
+  font-family: "IBM Plex Sans", sans-serif;
+  scroll-behavior: smooth;
+}
+
+html {
+  overflow-x: hidden;
+}
+
