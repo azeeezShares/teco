@@ -3,4 +3,9 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, 'index.html')
+    context = {
+        "details": {
+            "title": "Tecoshop - Electric Scooter Workshop"
+        }
+    }
+    return render(request, 'index.html', context=context)
