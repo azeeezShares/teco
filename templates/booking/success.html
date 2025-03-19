@@ -1,0 +1,31 @@
+{% extends 'booking/base.html' %} 
+{% load static %} 
+{% load i18n %} 
+{%get_current_language as LANGUAGE_CODE %} 
+{% block inner_content %}
+
+<div class="flex justify-center items-center w-full h-64 flex-col">
+
+    
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="256" height="256" color="#16A34A" fill="none">
+        <path d="M12 2C16.8706 2 21 6.03298 21 10.9258C21 15.8965 16.8033 19.3847 12.927 21.7567C12.6445 21.9162 12.325 22 12 22C11.675 22 11.3555 21.9162 11.073 21.7567C7.2039 19.3616 3 15.9137 3 10.9258C3 6.03298 7.12944 2 12 2Z" stroke="currentColor" stroke-width="1.5" />
+        <path d="M8.5 11.8333C8.5 11.8333 9.41602 11.8333 10.291 13.5C10.291 13.5 13.0294 9.33333 15.5 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <!-- show success message -->
+    <h1 class="text-2xl font-bold text-center text-gray-800 mt-4">
+        Your booking has been successfully completed. <br>
+        We will contact you to confirm your booking.
+    </h1>
+    <!-- remind date and time -->
+    <p class="text-center text-gray-600 mt-4">
+        Your booking is on <span class="font-semibold">{{details.booking.booking_datetime}}</span> .
+    </p>
+
+   
+</div>
+
+
+
+{% endblock inner_content %}
+

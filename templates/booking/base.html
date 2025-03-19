@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% block title %}<title> {% trans "TECOSHOP - book a session" %} </title>{% endblock title %}
+{% block content %}
+
+<main>
+    <div class="mx-3 md:mx-24">
+        <section class="relative">
+
+
+            <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
+                <div class="w-full flex-col justify-start items-start gap-12 inline-flex">
+                    <h2 class="w-full text-center text-gray-900 text-4xl font-bold font-manrope leading-normal"> 
+                        {% if details.state == 'new_booking' %}  {% trans "Contact information" %}
+                        {% elif details.state == 'select_service_branch' %} {% trans "Session details" %} 
+                        {% else %} {% trans "Completed" %}
+                        {% endif %}
+                    </h2>
+                    <div class="w-full flex-col justify-center items-center gap-8 flex">
+                        <ol
+                            class="w-full flex items-center justify-center gap-8 text-xs text-gray-900 font-medium sm:text-base">
+                            <li
+                                class="flex relative text-center text-[var(--color-primary)] text-base font-semibold leading-relaxed justify-center after:content-[''] sm:after:w-[172px] after:w-[150px] after:border-dashed after:border after:border-[var(--color-secondary)] after:inline-block after:absolute after:top-5 sm:after:left-[110px] after:left-[100px]">
+                                <div class="sm:w-[176px] w-auto sm:whitespace-nowrap text-center z-10">
+                                    <span
+                                        class="w-10 h-10 bg-[var(--color-primary)] border border-dotted border-[var(--color-secondary)] rounded-full flex justify-center items-center mx-auto mb-1 text-base text-white font-bold leading-relaxed lg:w-10 lg:h-10">1</span>
+                                        {% trans "Contact information" %}
+                                    <h6 class="text-center text-[var(--color-primary)] text-base font-normal leading-relaxed">
+                                        
+                                        {% if details.state == 'new_booking' %} {% trans "In Progress" %} {% else %} {% trans "Completed" %} {% endif %}
+                                    </h6>
+                                </div>
+                            </li>
+                            <li
+                                class="flex relative justify-center  {% if details.state == 'new_booking' %} text-black {% else %} text-[var(--color-primary)] {% endif %} text-base font-semibold after:content-['']  leading-relaxed sm:after:w-[172px] after:w-[150px] after:border-dashed after:border {% if details.state == 'new_booking' %} after:border-indigo-200 {% else %} after:border-[var(--color-secondary)]{% endif %}  after:inline-block after:absolute after:top-5 sm:after:left-[106px] after:left-24">
+                                <div class="sm:w-[176px] w-auto sm:whitespace-nowrap text-center flex flex-col z-10">
+                                    <span
+                                        class="w-10 h-10 {% if details.state == 'new_booking' %} bg-indigo-50 text-[var(--color-primary)] {% else %} border border-dotted border-[var(--color-secondary)] bg-[var(--color-primary)] text-white {% endif %} rounded-full flex justify-center items-center mx-auto mb-1 text-base font-bold leading-relaxed lg:w-10 lg:h-10">2</span>
+                                    {% trans "Session details" %}
+                                    <span
+                                        class="text-center  {% if details.state == 'new_booking' %} text-gray-500 {% else %} text-[var(--color-primary)] {% endif %} text-base font-normal leading-relaxed">
+                                        {% if details.state == 'new_booking' %} {% trans "Pending" %} {% else %} {% trans "In Progress" %} {% endif %}
+                                    </span>
+                                </div>
+                            </li>
+                            <li
+                                class="flex relative justify-center  {% if details.state == 'booking_success' %} text-[var(--color-primary)] {% else %} text-gray-500 {% endif %} text-base font-semibold leading-relaxed">
+                                <div
+                                    class="sm:w-[176px] w-auto sm:whitespace-nowrap text-center flex items-center flex-col z-10 ">
+                                    <span
+                                        class="w-10 h-10 text-center {% if details.state == 'booking_success' %} text-white bg-[var(--color-primary)] border border-dotted border-gray-50 {% else %} text-[var(--color-primary)] bg-transparent border-2 border-[var(--color-primary)] {% endif %}  text-base font-bold rounded-full flex justify-center items-center mx-auto mb-1 lg:w-10 lg:h-10">3</span>
+                                         {% trans "Complete" %}
+                                    <span
+                                        class="text-center text-base font-normal leading-relaxed">
+                                        {% if details.state == 'booking_success' %}  {% trans "Completed" %} {% else %} {% trans "Pending" %} {% endif %}
+                                    </span>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <div
+                        class="w-full lg:p-11 md:p-8 p-7 bg-white rounded-3xl shadow-[0px_15px_60px_-4px_rgba(16,_24,_40,_0.08)] flex-col justify-start items-start flex">
+                        <div class="w-full flex-col justify-start items-start gap-8 flex">
+                           
+                            {% block inner_content %}{% endblock inner_content %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+{% endblock %}
