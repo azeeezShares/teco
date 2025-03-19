@@ -7,8 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Taller de Reparació de Patinets Elèctrics i Bicicletes Elèctriques">
-
-    <title>{{ details.title }}</title>
+    {% block title %}{% endblock title %}
     <link rel="shortcut icon" href="{%static 'img/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'config.css' %}">
     <script src="{% static 'tailwind.js' %}"></script>
@@ -45,6 +44,10 @@
                         <a class="inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
                             href="#reviews">
                             {% trans "Reviews" %}
+                        </a>
+                        <a class="inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
+                            href="{% url 'admin_login' %}">
+                            {% trans "Admin" %}
                         </a>
                         
                     </div>

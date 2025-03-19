@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %} <title>Admin login</title> {% endblock title %}
+
+{% block content %}
+
+<div class='container mx-auto'>
+        <form method='post' action="{% url 'admin_login' %}" class="w-full flex-col justify-start items-start gap-8 flex">
+        {% csrf_token %}
+        {% if messages %}
+            <div class="w-full flex items-center justify-center gap-4">
+                {% for message in messages %}
+                <div class="flex items-center w-full p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 "
+                    role="alert">
+                    <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                        <span class="font-medium">{% trans "Danger alert" %}!</span> {{message}}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <br />
+        {% endif %}
+        
+        <div class="flex justify-center items-center gap-4 w-full flex-col">
+            <div class="w-[50%] flex-col justify-start items-start gap-1.5 flex">
+                <label for="" class="flex gap-1 items-center text-gray-600 text-base font-medium leading-relaxed">{% trans "Username" %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 7 7" fill="none">
+                        <path
+                            d="M3.11222 6.04545L3.20668 3.94744L1.43679 5.08594L0.894886 4.14134L2.77415 3.18182L0.894886 2.2223L1.43679 1.2777L3.20668 2.41619L3.11222 0.318182H4.19105L4.09659 2.41619L5.86648 1.2777L6.40838 2.2223L4.52912 3.18182L6.40838 4.14134L5.86648 5.08594L4.09659 3.94744L4.19105 6.04545H3.11222Z"
+                            fill="#EF4444" />
+                    </svg>
+                </label>
+                <input type="text" name="login"
+                    class="w-full focus:outline-none text-gray-900 placeholder-gray-400 text-lg font-normal leading-relaxed px-5 py-3 rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] border border-gray-200 justify-start items-center gap-2 inline-flex"
+                    placeholder="{% trans 'Username' %}" required>
+            </div>
+            <div class="w-[50%] flex-col justify-start items-start gap-1.5 flex">
+                <label for="" class="flex gap-1 items-center text-gray-600 text-base font-medium leading-relaxed">{% trans "Password" %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="7" viewBox="0 0 7 7" fill="none">
+                        <path
+                            d="M3.11222 6.04545L3.20668 3.94744L1.43679 5.08594L0.894886 4.14134L2.77415 3.18182L0.894886 2.2223L1.43679 1.2777L3.20668 2.41619L3.11222 0.318182H4.19105L4.09659 2.41619L5.86648 1.2777L6.40838 2.2223L4.52912 3.18182L6.40838 4.14134L5.86648 5.08594L4.09659 3.94744L4.19105 6.04545H3.11222Z"
+                            fill="#EF4444" />
+                    </svg>
+                </label>
+                <input type="password" name="password"
+                    class="w-full focus:outline-none text-gray-900 placeholder-gray-400 text-lg font-normal leading-relaxed px-5 py-3 rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] border border-gray-200 justify-start items-center gap-2 inline-flex"
+                    placeholder=" {% trans 'Password' %} " required>
+            </div>
+        </div>
+
+        <div class="w-full gap-8 flex flex-col items-center justify-center">
+            <button type="reset"
+                class=" cursor-pointer w-[50%] px-6 py-2.5 shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition text-lg font-semibold text-center border border-1 border-black hover:bg-[var(--color-secondary)] text-black bg-white rounded-lg ">
+                {% trans "Cancel" %}
+            </button>
+            <button type="submit"
+                class=" cursor-pointer w-[50%] px-6 py-2.5 shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition text-lg font-semibold text-center border border-1 border-black bg-[var(--color-secondary)] text-black hover:bg-white rounded-lg ">
+
+                {% trans "Next" %}
+            </button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

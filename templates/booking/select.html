@@ -1,0 +1,268 @@
+{% extends 'booking/base.html' %} 
+{% load static %} 
+{% load i18n %} 
+{%get_current_language as LANGUAGE_CODE %} 
+{% block title %}<title> {% trans "Fix Your Ride – Book Now" %} | {% trans "Session details" %} </title>{% endblock title %}
+{% block inner_content %}
+
+<form method="post">
+  {% csrf_token %}
+  <!-- show messages here -->
+
+    {% if messages %}
+    <div class="w-full flex items-center justify-center gap-4">
+      {% for message in messages %}
+      <div class="flex items-center w-full p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 " role="alert">
+        <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <span class="font-medium">Danger alert!</span> {{message}}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  <div class="w-full grid grid-cols-4 gap-4">
+    <!-- Title -->
+    <div class="col-span-4">
+      <h2 class="text-2xl font-semibold text-gray-900">Select a service</h2>
+      <!-- TEll user why to choose service -->
+      <p class="text-gray-600">Select a service you would like to book</p>
+    </div>
+    {% for service in services %}
+
+    <div class="col-span-1">
+      <input
+        type="checkbox"
+        name="service"
+        id="ipalkd_{{service.pk}}"
+        value="{{service.id}}"
+        class="hidden peer"
+      />
+      <label
+        for="ipalkd_{{service.pk}}"
+        class="h-full flex flex-wrap justify-between w-full p-5 border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-[var(--color-primary)] hover:bg-[var(--color-tertiary)] peer-checked:bg-[var(--color-tertiary)] bg-[var(--color-tertiary)]/50"
+      >
+        <div class="block">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="32"
+            height="32"
+            color="#000000"
+            fill="none"
+          >
+            <path
+              d="M2.25607 15.6322C2.29003 15.309 2.52424 15.0485 2.99267 14.5276L4.02374 13.3749C4.27577 13.0558 4.45462 12.5 4.45462 11.9998C4.45462 11.5 4.27571 10.944 4.02371 10.625L2.99267 9.47231C2.52424 8.95137 2.29002 8.6909 2.25607 8.36768C2.22211 8.04446 2.39707 7.74083 2.74698 7.13358L3.24056 6.27698C3.61386 5.62915 3.8005 5.30523 4.11808 5.17607C4.43566 5.0469 4.79482 5.14883 5.51316 5.35267L6.73339 5.69637C7.192 5.80212 7.67315 5.74213 8.0919 5.52698L8.42878 5.33261C8.78786 5.10262 9.06406 4.76352 9.21694 4.36493L9.5509 3.36754C9.77047 2.70753 9.88026 2.37752 10.1416 2.18876C10.403 2 10.7502 2 11.4445 2H12.5593C13.2537 2 13.6009 2 13.8622 2.18876C14.1236 2.37752 14.2334 2.70753 14.453 3.36754L14.7869 4.36493C14.9398 4.76352 15.216 5.10262 15.5751 5.33261L15.912 5.52698C16.3307 5.74213 16.8119 5.80212 17.2705 5.69637L18.4907 5.35267C19.209 5.14883 19.5682 5.0469 19.8858 5.17607C20.2034 5.30523 20.39 5.62915 20.7633 6.27698L21.2569 7.13358C21.6068 7.74083 21.7817 8.04446 21.7478 8.36768C21.7138 8.6909 21.4796 8.95137 21.0112 9.47231L19.9801 10.625C19.7282 10.944 19.5492 11.5 19.5492 11.9998C19.5492 12.5 19.7281 13.0558 19.9801 13.3749L21.0112 14.5276C21.4796 15.0485 21.7138 15.309 21.7478 15.6322C21.7817 15.9555 21.6068 16.2591 21.2569 16.8663L20.7633 17.7229C20.39 18.3707 20.2034 18.6947 19.8858 18.8238C19.5682 18.953 19.209 18.8511 18.4907 18.6472L17.2705 18.3035C16.8118 18.1977 16.3306 18.2578 15.9118 18.473L15.575 18.6674C15.2159 18.8974 14.9398 19.2364 14.787 19.635L14.453 20.6325C14.2334 21.2925 14.1236 21.6225 13.8622 21.8112C13.6009 22 13.2537 22 12.5593 22H11.4445C10.7502 22 10.403 22 10.1416 21.8112C9.88026 21.6225 9.77047 21.2925 9.5509 20.6325"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+            <path
+              d="M2.73696 18.7798C3.81696 17.6998 7.48896 14.0638 7.84896 13.6438C8.22953 13.1998 7.92096 12.5998 8.10456 10.7398C8.1934 9.8398 8.38699 9.16555 8.94096 8.6638C9.60096 8.0398 10.141 8.0398 12.001 7.99781C13.621 8.0398 13.813 7.8598 13.981 8.27981C14.101 8.57981 13.741 8.7598 13.309 9.23981C12.349 10.1998 11.785 10.6798 11.731 10.9798C11.341 12.2998 12.877 13.0798 13.717 12.2398C14.0346 11.9221 15.505 10.4398 15.649 10.3198C15.757 10.2238 16.0155 10.2284 16.141 10.3798C16.249 10.4859 16.261 10.4998 16.249 10.9798C16.2379 11.4241 16.2428 12.062 16.2442 12.7198C16.2459 13.5721 16.201 14.5198 15.841 14.9998C15.121 16.0798 13.921 16.1398 12.841 16.1878C11.821 16.2478 10.981 16.1398 10.717 16.3318C10.501 16.4398 9.36096 17.6398 7.98096 19.0198L5.52096 21.4798C3.48096 23.0998 1.23696 20.5798 2.73696 18.7798Z"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          <div class="w-full text-lg font-semibold">{{service.name}}</div>
+          <div class="mt-5"></div>
+          <!-- price -->
+          <div class="w-full text-sm font-normal text-gray-600">
+            <span class="font-semibold">Price: </span> {{service.price}} &euro;
+          </div>
+          <!-- has free cancellation -->
+          <div class="w-full text-sm font-normal text-gray-600">
+            <span class="font-semibold">Free cancellation: </span> {% if service.has_free_cancellation %} Yes {% else %} No {% endif %}
+          </div>
+          <!-- what are included -->
+
+          <div class="text-sm mt-5">{{service.included | safe}}</div>
+
+          <div
+            class="mt-5 flex items-center gap-2 text-sm font-normal text-gray-600"
+          >
+            <span class="font-semibold">Branches: </span>
+            {% for i in service.branch.all %} {{i.name}}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="#22C55E"
+              fill="none"
+            >
+              <path
+                d="M21.8606 5.39176C22.2875 6.49635 21.6888 7.2526 20.5301 7.99754C19.5951 8.5986 18.4039 9.24975 17.1417 10.363C15.9044 11.4543 14.6968 12.7687 13.6237 14.0625C12.5549 15.351 11.6465 16.586 11.0046 17.5005C10.5898 18.0914 10.011 18.9729 10.011 18.9729C9.60281 19.6187 8.86895 20.0096 8.08206 19.9998C7.295 19.99 6.57208 19.5812 6.18156 18.9251C5.18328 17.248 4.41296 16.5857 4.05891 16.3478C3.11158 15.7112 2 15.6171 2 14.1335C2 12.9554 2.99489 12.0003 4.22216 12.0003C5.08862 12.0323 5.89398 12.373 6.60756 12.8526C7.06369 13.1591 7.54689 13.5645 8.04948 14.0981C8.63934 13.2936 9.35016 12.3653 10.147 11.4047C11.3042 10.0097 12.6701 8.51309 14.1349 7.22116C15.5748 5.95115 17.2396 4.76235 19.0042 4.13381C20.1549 3.72397 21.4337 4.28718 21.8606 5.39176Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            {% endfor %}
+          </div>
+        </div>
+      </label>
+    </div>
+
+    {% endfor %}
+  </div>
+
+  <div class="w-full grid grid-cols-4 gap-4 mt-5">
+    <!-- 2nd Title -->
+    <div class="col-span-4 mt-5">
+      <h2 class="text-2xl font-semibold text-gray-900">Select a branch</h2>
+      <!-- TEll user why to choose service -->
+      <p class="text-gray-600">Select a branch you would like to book</p>
+    </div>
+
+    {% for branch in branches %}
+
+    <div class="col-span-2">
+      <input
+        type="radio"
+        name="branch"
+        id="laosnl_{{branch.pk}}"
+        value="{{branch.id}}"
+        class="hidden peer"
+      />
+      <label
+        for="laosnl_{{branch.pk}}"
+        class="h-full w-full flex flex-wrap justify-center p-5 border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-[var(--color-primary)] hover:bg-[var(--color-tertiary)] peer-checked:bg-[var(--color-tertiary)] bg-[var(--color-tertiary)]/50"
+      >
+        <div class="block">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="32"
+            height="32"
+            color="#000000"
+            fill="none"
+          >
+            <path
+              d="M13.6177 21.367C13.1841 21.773 12.6044 22 12.0011 22C11.3978 22 10.8182 21.773 10.3845 21.367C6.41302 17.626 1.09076 13.4469 3.68627 7.37966C5.08963 4.09916 8.45834 2 12.0011 2C15.5439 2 18.9126 4.09916 20.316 7.37966C22.9082 13.4393 17.599 17.6389 13.6177 21.367Z"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <path
+              d="M15.5 11C15.5 12.933 13.933 14.5 12 14.5C10.067 14.5 8.5 12.933 8.5 11C8.5 9.067 10.067 7.5 12 7.5C13.933 7.5 15.5 9.067 15.5 11Z"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+          </svg>
+          <div class="w-full text-lg font-semibold">{{branch.name}}</div>
+          <div class="mt-5"></div>
+          <!-- price -->
+          <div class="w-full text-sm font-normal text-gray-600">
+            <span class="font-semibold">Address: </span> {{branch.address}}
+          </div>
+          <!-- has free cancellation -->
+          <div class="w-full text-sm font-normal text-gray-600">
+            <span class="font-semibold">Phone: </span> {{branch.phone}}
+          </div>
+          <!-- what are included -->
+          <div class="w-full text-sm font-normal text-gray-600">
+            <span class="font-semibold">Email: </span> {{branch.email}}
+          </div>
+          <div class="w-full text-sm font-normal text-gray-600">
+            <span class="font-semibold">Working hours: </span>
+            {{branch.working_hours}}
+          </div>
+          <div class="w-full text-sm font-normal text-gray-600">
+            <span class="font-semibold">Services: </span>
+            {% for i in branch.services.all %} {{i.name}}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              color="#22C55E"
+              fill="none"
+            >
+              <path
+                d="M21.8606 5.39176C22.2875 6.49635 21.6888 7.2526 20.5301 7.99754C19.5951 8.5986 18.4039 9.24975 17.1417 10.363C15.9044 11.4543 14.6968 12.7687 13.6237 14.0625C12.5549 15.351 11.6465 16.586 11.0046 17.5005C10.5898 18.0914 10.011 18.9729 10.011 18.9729C9.60281 19.6187 8.86895 20.0096 8.08206 19.9998C7.295 19.99 6.57208 19.5812 6.18156 18.9251C5.18328 17.248 4.41296 16.5857 4.05891 16.3478C3.11158 15.7112 2 15.6171 2 14.1335C2 12.9554 2.99489 12.0003 4.22216 12.0003C5.08862 12.0323 5.89398 12.373 6.60756 12.8526C7.06369 13.1591 7.54689 13.5645 8.04948 14.0981C8.63934 13.2936 9.35016 12.3653 10.147 11.4047C11.3042 10.0097 12.6701 8.51309 14.1349 7.22116C15.5748 5.95115 17.2396 4.76235 19.0042 4.13381C20.1549 3.72397 21.4337 4.28718 21.8606 5.39176Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            {% endfor %}
+          </div>
+          <h1 class="text-2xl font-bold text-center mb-4">Google Maps</h1>
+
+          <div class="relative w-full h-96 rounded-lg overflow-hidden">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full border-none"
+              src="https://www.google.com/maps?q={{ branch.latitude }},{{ branch.longitude }}&hl=es;z=14&output=embed"
+              allowfullscreen=""
+              loading="lazy"
+            >
+            </iframe>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    {% endfor %}
+  </div>
+
+  <!-- select date and time -->
+  <div class="w-full grid grid-cols-4 gap-4 mt-5">
+    <!-- 3rd Title -->
+    <div class="col-span-4 mt-5">
+        <h2 class="text-2xl font-semibold text-gray-900">Select date and time</h2>
+        <!-- TEll user why to choose date and time -->
+        <p class="text-gray-600">Select a date and time you would like to book</p>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
+        Date
+      </label>
+      <input
+        type="date"
+        id="date"
+        name="date"
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="time">
+        Time
+      </label>
+      <input
+        type="time"
+        id="time"
+        name="time"
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      />
+    </div>
+  </div>
+
+  <!-- buttons -->
+  <div
+    class="w-full justify-start items-start gap-8 flex sm:flex-row flex-col mt-5"
+  >
+    <a
+      href="{% url 'new' %}?reset=true"      
+      type="reset"
+      class="cursor-pointer w-full px-6 py-2.5 shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition text-lg font-semibold text-center border border-1 border-black hover:bg-[var(--color-secondary)] text-black bg-white rounded-lg"
+    >
+      {% trans "Back" %}
+    </a>
+    <button 
+      type="submit"
+      class="cursor-pointer w-full px-6 py-2.5 shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition text-lg font-semibold text-center border border-1 border-black bg-[var(--color-secondary)] text-black hover:bg-white rounded-lg"
+    >
+      {% trans "Next" %}
+    </button>
+  </div>
+
+</form>
+
+{% endblock inner_content %}
