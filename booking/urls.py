@@ -10,4 +10,8 @@ urlpatterns = [
     path('QDyDjq/', views.AdminLogin.as_view(), name='admin_login'),
     path('QDyDjq/view/', views.AdminView.as_view(), name='admin_view'),
     # path('QDyDjq/booking/<int:pk>/', views.booking_detail.as_view(), name='booking_detail'),
+    
+    # path for cookies
+    path('cookie-consent/', views.CookieConsentView.as_view(), name='cookie_consent'),
+    
 ]
