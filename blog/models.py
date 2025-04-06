@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from account.models import CustomUser
 from froala_editor.fields import FroalaField
 
 STATUS = (
@@ -10,7 +11,8 @@ STATUS = (
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
+    # author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='blog_posts')
     # cover image 2240x1260
     image = models.ImageField(upload_to='uploads/blog-thumbnails/', default='static/defaults/default.jpg')
     updated_on = models.DateTimeField(auto_now= True)

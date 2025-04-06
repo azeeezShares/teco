@@ -9,7 +9,6 @@ from django.utils.translation import gettext as _
 from .models import Branch, Client, Service, Booking, Admin
 
 
-
 # function to check sesssion data before rendering
 def check_session_data(request):
     return True if request.session.get('first_name') and request.session.get('phone') else False
@@ -163,7 +162,8 @@ class AdminLogin(TemplateView):
         # use message framework to display error
         messages.error(request, _('Invalid credentials.'), extra_tags='alert alert-danger')
         return redirect('admin_login')
-    
+
+# admin view for booking  
 class AdminView(View):
     template_name = 'booking/admin_view.html'
     
@@ -174,8 +174,6 @@ class AdminView(View):
         context = {}
         context['items'] = Booking.objects.all()
         return render(request, self.template_name, context=context)
-    
-    
     
 # View to handle cookie consent
 class CookieConsentView(View):
