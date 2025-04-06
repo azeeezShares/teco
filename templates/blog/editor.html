@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}<title> {% trans "TECOSHOP - electric scooter workshop" %} </title>{% endblock title %}
+{% block content %}
+{{ form.media }}
+
+
+<div class="container mx-auto">
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+       
+
+
+</div>
+    
+
+{% endblock content %}
