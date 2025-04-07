@@ -11,14 +11,13 @@ STATUS = (
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    # author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='blog_posts')
     # cover image 2240x1260
     image = models.ImageField(upload_to='uploads/blog-thumbnails/', default='static/defaults/default.jpg')
     updated_on = models.DateTimeField(auto_now= True)
-    content = FroalaField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    content = FroalaField()
 
     class Meta:
         ordering = ['-created_on']
