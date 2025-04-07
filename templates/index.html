@@ -3,6 +3,9 @@
 {% load i18n %}
 {% block title %}<title> {% trans "TECOSHOP - electric scooter workshop" %} </title>{% endblock title %}
 {% block content %}
+<link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+
 <!-- Main section start -->
 <main id="hero">
     <!-- hero section starts  -->
@@ -30,8 +33,33 @@
                 </div>
             </div>
             <div class="md:col-span-2 row-start-2 lg:col-span-2  lg:row-span-2  lg:col-start-4">
-                <img class="w-full rounded border border-solid border-[var(--color-primary)] p-1"
-                    src="{%static 'img/banner2nd.png' %}" alt="">
+                    <section class="splide" aria-label="Basic Structure Example">
+                        <div class="splide__track">
+                          <ul class="splide__list">
+                            {% for post in homepage_posts %}
+                            <li class="splide__slide relative">
+                                <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/">
+                                    <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+                                    <div class="z-50 absolute top-0 left-0 p-4 w-full h-full flex items-center justify-center text-white text-2xl font-bold">
+                                        {{ post.title }}
+                                    </div>
+                                    <!--read now button here-->
+                                    <div class="absolute bottom-0 left-0 w-full p-4 z-50">
+                                        <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/"
+                                            class=" text-sm text-white hover:text-[var(--color-primary)] font-semibold flex gap-2">{% trans "Read more" %}
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#fff" fill="none">
+                                                <path d="M20.0001 11.9998L4.00012 11.9998" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M15.0003 17C15.0003 17 20.0002 13.3176 20.0002 12C20.0002 10.6824 15.0002 7 15.0002 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <img class="w-full h-[20rem] object-cover rounded border border-solid border-[var(--color-primary)] p-1" src="{{post.image.url}}" alt="">
+                                </a>
+                            </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      </section>
             </div>
             <div class="hidden md:block md:row-start-3 lg:row-span-2  lg:col-start-4  lg:row-start-3">
                 <img class="w-full rounded border border-solid border-[var(--color-primary)] p-1"
@@ -661,8 +689,23 @@
         </div>
 
     </section>
-    <!-- section reviews ends -->
 
+    
+
+    <!-- section reviews ends -->
+    <script>
+        var splide = new Splide('.splide', {
+            direction: 'ttb',
+            height: '20rem',
+            autoplay: true,
+            interval: 7000, // 7 seconds
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            type: 'loop', // Enables infinite looping
+        });
+          
+          splide.mount();
+    </script>
 </main>
 <!-- Hero section end -->
 

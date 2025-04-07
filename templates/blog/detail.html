@@ -7,7 +7,12 @@
 
 <div class="mx-auto max-w-screen-md">
     <!-- disable auto row -->
-    <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-500 mb-8">#science #biology #ecology</h6>
+    <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-500 mb-8">
+        <!--show tags here-->
+        {% for tag in post.tag.all %}
+            <a href="{% url "tag_list" tag.name %}" class="tag">#{{ tag.name }}</a>
+        {% endfor %}
+    </h6>
 
     <div class="flex items-start justify-center flex-col">
         <!-- article details -->

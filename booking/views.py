@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.utils.translation import gettext as _
 
 from .models import Branch, Client, Service, Booking
+from blog.models import Post, Tag
 
 
 # function to check sesssion data before rendering
@@ -20,6 +21,12 @@ def clear_session(request):
 # Home view
 class HomeView(TemplateView):
     template_name = 'index.html'
+    
+    def get_context_data(self, **kwargs):
+        # get Post objects which has homepage tag
+        context = super().get_context_data(**kwargs)
+        context['homepage_posts'] = Post.objects.filter(tag__name='homepage', status=1).order_by('-created_on')
+        return context
 
 # New booking view
 class new_booking(TemplateView):
