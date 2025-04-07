@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     
     # installed
     "booking.apps.BookingConfig",
+    "blog.apps.BlogConfig",
+    "account.apps.AccountConfig",
+    
+    "froala_editor",
     
 ]
 

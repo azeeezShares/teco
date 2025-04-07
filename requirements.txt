@@ -1,2 +1,4 @@
 Django==5.1.6
 pillow==11.1.0
+psycopg2-binary==2.9.10
+django-froala-editor==4.5.1

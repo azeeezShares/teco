@@ -1,12 +1,11 @@
-from datetime import timezone
-from django.http import HttpResponse
+import json
+from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
 from django.contrib import messages
 from django.utils.translation import gettext as _
 
-from .models import Branch, Client, Service, Booking, Admin
-
+from .models import Branch, Client, Service, Booking
 
 
 # function to check sesssion data before rendering
@@ -119,8 +118,6 @@ class booking_select(View):
         # clear session
         clear_session(request)
         
-        # use message framework to display success
-        messages.success(request, _('Booking has been created successfully.'), extra_tags='alert alert-success')
         # redirect to the success page
         context = {
             "details": {
@@ -134,42 +131,37 @@ class booking_success(TemplateView):
     template_name = 'booking/success.html'
     
 
-# admin view for booking
-class AdminLogin(TemplateView):
-    template_name = 'booking/admin.html'
-    
+# View to handle cookie consent
+class CookieConsentView(View):
+    def post(self, request:HttpRequest, *args, **kwargs):
+        try:
+            consent = json.loads(request.body.decode('utf-8'))['consent']
+        except KeyError:
+            return HttpResponse("Invalid JSON", status=400)
+        except json.JSONDecodeError:
+            return HttpResponse("Invalid JSON", status=400)
+        
+        print(consent)
+        
+        # check text for consent accepted/rejected
+        
+        
+        if consent != True:
+            # User has not accepted cookies
+            response =  HttpResponse("Cookie consent not accepted")
+            response.set_cookie('consent', 'rejected', max_age=365*24*60*60) # 1 year
+            return response
+        
+        # User has accepted cookies
+        response = HttpResponse("Cookie consent accepted")
+        response.set_cookie('consent', 'accepted', max_age=365*24*60*60) # 1 year
+        return response
     def get(self, request, *args, **kwargs):
-        # check if the admin is already logged in
-        if request.session.get('admin'):
-            return redirect('admin_view')
-        return render(request, self.template_name, context={})
-    
-    # handle login
-    def post(self, request, *args, **kwargs):
-        data = request.POST
-        print(data)
-        if data.get('login') and data.get('password'):
-            # get admin and check if it exists
-            print(request.POST)
-            admin = Admin.objects.filter(username=data.get('login'), password=data.get('password')).first()
-            if not admin:
-                # use message framework to display error
-                messages.error(request, _('Invalid credentials.'), extra_tags='alert alert-danger')
-                return redirect('admin_login')
-            # save the admin in session
-            request.session['admin'] = admin.pk
-            return redirect('admin_view')
-        # use message framework to display error
-        messages.error(request, _('Invalid credentials.'), extra_tags='alert alert-danger')
-        return redirect('admin_login')
-    
-class AdminView(View):
-    template_name = 'booking/admin_view.html'
-    
-    def get(self, request, *args, **kwargs):
-        # check if admin logged in
-        if not request.session.get('admin'):
-            return redirect('admin_login')
-        context = {}
-        context['items'] = Booking.objects.all()
-        return render(request, self.template_name, context=context)
+        # Check if the cookie is already set
+        if request.COOKIES.get('consent') == 'accepted':
+            return HttpResponse("Cookie consent already accepted")
+        elif request.COOKIES.get('consent') == 'rejected':
+            return HttpResponse("Cookie consent REJECTED")
+        else:
+            # Cookie consent not set yet
+            return HttpResponse("Cookie consent not set")

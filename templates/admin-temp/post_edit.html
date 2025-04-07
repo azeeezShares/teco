@@ -1,0 +1,60 @@
+{% extends "admin-temp/base.html" %}
+{% load static %}
+{% block content %}
+{{ form.media }}
+
+<div class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-semibold mb-6">Edit </h1>
+    <form method="post" action="{% url 'admin_blog_edit' %}?post_id={{ post_id }}" enctype="multipart/form-data">
+        {% if post.id %}
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+        {% endif %}
+        {% csrf_token %}
+        <div>
+            {{ form.title.label_tag }}
+            {{ form.title }}
+            {% if form.title.errors %}
+                <p class="text-red-500 text-sm">{{ form.title.errors.0 }}</p>
+            {% endif %}
+        </div>
+    
+        <div>
+            {{ form.slug.label_tag }}
+            {{ form.slug }}
+            {% if form.slug.errors %}
+                <p class="text-red-500 text-sm">{{ form.slug.errors.0 }}</p>
+            {% endif %}
+        </div>
+    
+        <div>
+            {{ form.image.label_tag }}
+            {{ form.image }}
+            {% if form.image.errors %}
+                <p class="text-red-500 text-sm">{{ form.image.errors.0 }}</p>
+            {% endif %}
+        </div>
+    
+        <div>
+            {{ form.content.label_tag }}
+            {{ form.content }}
+            {% if form.content.errors %}
+                <p class="text-red-500 text-sm">{{ form.content.errors.0 }}</p>
+            {% endif %}
+        </div>
+    
+        <div>
+            {{ form.status.label_tag }}
+            {{ form.status }}
+            {% if form.status.errors %}
+                <p class="text-red-500 text-sm">{{ form.status.errors.0 }}</p>
+            {% endif %}
+        </div>
+    
+        <button type='submit' class='py-2.5 px-6 my-6 text-sm bg-indigo-500 text-white rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-indigo-700'>Save changes</button>
+        <a href="{% url "admin_blogview" %}" class='py-2.5 px-6 my-6 text-sm bg-gray-500 text-white rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-indigo-700'>Cancel</a>
+    </form>
+</dvi>
+
+
+{% endblock content %}
+
