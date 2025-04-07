@@ -10,6 +10,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    path('', include('account.urls'), name='account'),
     path('', include('booking.urls'), name='booking'),
     path('', include('blog.urls'), name='blog'),
 )

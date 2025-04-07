@@ -286,3 +286,4 @@ pyrightconfig.json
 .DS_Store
 
 uploads/
+staticfiles/

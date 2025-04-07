@@ -13,7 +13,7 @@ class Branch(models.Model):
     longitude = models.FloatField(validators=[MinValueValidator(-180), MaxValueValidator(180)])
     phone_number = models.CharField(max_length=20)
     opening_hours = models.TextField()
-    image = models.ImageField(upload_to='branches/')
+    image = models.ImageField(upload_to='uploads/branches')
     description = models.TextField()
 
     def __str__(self):
@@ -34,7 +34,7 @@ class Service(models.Model):
 class Client(models.Model):
     first_name = models.CharField(max_length=100, blank=False, null=False)
     last_name = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(blank=True, null=True)
     phone_number = models.CharField(max_length=20, blank=False, null=False)
     additional_details = models.TextField(blank=True, null=True)
     receive_special_offers = models.BooleanField(default=False)
