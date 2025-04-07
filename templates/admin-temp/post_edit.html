@@ -10,43 +10,82 @@
             <input type="hidden" name="post_id" value="{{ post.id }}">
         {% endif %}
         {% csrf_token %}
-        <div>
+        <div class="mb-4">
             {{ form.title.label_tag }}
             {{ form.title }}
             {% if form.title.errors %}
                 <p class="text-red-500 text-sm">{{ form.title.errors.0 }}</p>
             {% endif %}
+            {% if form.title.help_text %}
+                <p class="text-gray-500 text-sm">{{ form.title.help_text }}</p>
+            {% endif %}
         </div>
     
-        <div>
+        <div class="mb-4">
             {{ form.slug.label_tag }}
             {{ form.slug }}
+            {% if form.slug.help_text %}
+                <p class="text-gray-500 text-sm">{{ form.slug.help_text }}</p>
+            {% endif %}
             {% if form.slug.errors %}
                 <p class="text-red-500 text-sm">{{ form.slug.errors.0 }}</p>
             {% endif %}
         </div>
     
-        <div>
+        <div class="mb-4">
             {{ form.image.label_tag }}
             {{ form.image }}
+            {% if form.image.help_text %}
+                <p class="text-gray-500 text-sm">{{ form.image.help_text }}</p>
+            {% endif %}
             {% if form.image.errors %}
                 <p class="text-red-500 text-sm">{{ form.image.errors.0 }}</p>
             {% endif %}
         </div>
     
-        <div>
+        <div class="mb-4">
             {{ form.content.label_tag }}
             {{ form.content }}
+            {% if form.content.help_text %}
+                <p class="text-gray-500 text-sm">{{ form.content.help_text }}</p>
+            {% endif %}
             {% if form.content.errors %}
                 <p class="text-red-500 text-sm">{{ form.content.errors.0 }}</p>
             {% endif %}
         </div>
     
-        <div>
+        <div class="mb-4">
             {{ form.status.label_tag }}
             {{ form.status }}
+            {% if form.status.help_text %}
+                <p class="text-gray-500 text-sm">{{ form.status.help_text }}</p>
+            {% endif %}
             {% if form.status.errors %}
                 <p class="text-red-500 text-sm">{{ form.status.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            {{ form.summary.label_tag }}
+            {{ form.summary }}
+            {% if form.summary.help_text %}
+                <p class="text-gray-500 text-sm">{{ form.summary.help_text }}</p>
+            {% endif %}
+            {% if form.summary.errors %}
+                <p class="text-red-500 text-sm">{{ form.summary.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="mb-4">
+            {{ form.tag.label_tag }}
+            <div class="flex flex-wrap gap-2">
+                {{ form.tag }}
+            </div>
+            {% if form.tag.help_text %}
+            <p class="text-gray-500 text-sm">{{ form.tag.help_text }}</p>
+            {% endif %}
+            {% if form.tag.errors %}
+            <p class="text-red-500 text-sm">{{ form.tag.errors.0 }}</p>
             {% endif %}
         </div>
     

@@ -8,6 +8,13 @@ STATUS = (
     (1,"Publish")
 )
 
+class Tag(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -18,6 +25,9 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     content = FroalaField()
+    
+    summary = models.TextField(max_length=500, blank=True)
+    tag = models.ManyToManyField(Tag, related_name='posts', blank=True)
 
     class Meta:
         ordering = ['-created_on']

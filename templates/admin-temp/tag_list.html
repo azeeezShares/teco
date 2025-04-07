@@ -47,44 +47,25 @@
                               
 
 <ul class=" flex flex-col divide-y divide-gray-200 ">
-    {% for post in posts %}
+    {% for tag in tags %}
     <li class="flex items-center justify-between gap-x-2 py-3 text-sm font-medium text-gray-900 "> 
         <!-- title  -->
         <div class="flex gap-x-4">
-            <img class="h-12 w-12 " src="{{ post.image.url }}" alt="">
             <div class="min-w-0 flex-auto">
-                <p class="text-gray-800 font-semibold">{{ post.title }}</p>
-                {% if post.status == 0 %}
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-medium bg-gray-100 text-gray-800">
-                        Draft
-                    </span>
-                {% elif post.status == 1 %}
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-medium bg-green-100 text-green-800">
-                        Published
-                    </span>
-                {% endif %}
-
+                <span class="text-gray-800 font-semibold text-xl">{{ tag.name }}</span>
             </div>
         </div>
         <!-- actions for RDU -->
         <div class="flex justify-center ">
-            <a href="{% url "admin_blog_edit" %}?post_id={{post.id}}" class="py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-900 align-middle hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-600 transition-all text-sm ">
-                <span class="sr-only">Edit</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" color="#000000" fill="none">
-                    <path d="M14.0737 3.88545C14.8189 3.07808 15.1915 2.6744 15.5874 2.43893C16.5427 1.87076 17.7191 1.85309 18.6904 2.39232C19.0929 2.6158 19.4769 3.00812 20.245 3.79276C21.0131 4.5774 21.3972 4.96972 21.6159 5.38093C22.1438 6.37312 22.1265 7.57479 21.5703 8.5507C21.3398 8.95516 20.9446 9.33578 20.1543 10.097L10.7506 19.1543C9.25288 20.5969 8.504 21.3182 7.56806 21.6837C6.63212 22.0493 5.6032 22.0224 3.54536 21.9686L3.26538 21.9613C2.63891 21.9449 2.32567 21.9367 2.14359 21.73C1.9615 21.5234 1.98636 21.2043 2.03608 20.5662L2.06308 20.2197C2.20301 18.4235 2.27297 17.5255 2.62371 16.7182C2.97444 15.9109 3.57944 15.2555 4.78943 13.9445L14.0737 3.88545Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-                    <path d="M13 4L20 11" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-                    <path d="M14 22L22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </a>
-            
-            <a {% if post.status == 1 %}  href="{% url 'post_detail' post.slug %}" target="_blank"  {% endif %} class=" {% if post.status != 1 %} cursor-not-allowed opacity-50 {% else %} {% endif %} py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-900 align-middle hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-600 transition-all text-sm ">
+
+            <a href="{% url "tag_list" tag.name %}" class="py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-white text-gray-900 align-middle hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-600 transition-all text-sm ">
                 <span class="sr-only">View</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
                     <path d="M21.544 11.045C21.848 11.4713 22 11.6845 22 12C22 12.3155 21.848 12.5287 21.544 12.955C20.1779 14.8706 16.6892 19 12 19C7.31078 19 3.8221 14.8706 2.45604 12.955C2.15201 12.5287 2 12.3155 2 12C2 11.6845 2.15201 11.4713 2.45604 11.045C3.8221 9.12944 7.31078 5 12 5C16.6892 5 20.1779 9.12944 21.544 11.045Z" stroke="currentColor" stroke-width="1.5" />
                     <path d="M15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12Z" stroke="currentColor" stroke-width="1.5" />
                 </svg>
             </a>
-            <button class="modal-button py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-red-600  align-middle hover:bg-[#8B0000] focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-600 transition-all text-sm " data-pd-overlay="#pd-slide-up-modal{{post.id}}" data-modal-target="pd-slide-up-modal{{post.id}}" data-modal-toggle="pd-slide-up-modal{{post.id}}" >
+            <button class="modal-button py-3 px-4 inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border font-medium bg-red-600 align-middle hover:bg-[#8B0000] focus:z-10 focus:outline-none focus:ring-2 focus:ring-indigo-600 transition-all text-sm " data-pd-overlay="#pd-slide-up-modal{{ tag.id }}" data-modal-target="pd-slide-up-modal{{ tag.id }}" data-modal-toggle="pd-slide-up-modal{{ tag.id }}">
                 <span class="sr-only">Delete</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#fff" fill="none">
                     <path d="M19.5 5.5L18.8803 15.5251C18.7219 18.0864 18.6428 19.3671 18.0008 20.2879C17.6833 20.7431 17.2747 21.1273 16.8007 21.416C15.8421 22 14.559 22 11.9927 22C9.42312 22 8.1383 22 7.17905 21.4149C6.7048 21.1257 6.296 20.7408 5.97868 20.2848C5.33688 19.3626 5.25945 18.0801 5.10461 15.5152L4.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -93,41 +74,42 @@
                     <path d="M14.5 16.5L14.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                 </svg>
             </button>
+
+            
+
         </div>
     </li>
 
-
     <div class="w-full relative">
-        <div id="pd-slide-up-modal{{post.id}}" class="pd-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto">
-        <div class="transform translate-y-3 opacity-0  ease-out  sm:max-w-lg sm:w-full m-5 sm:mx-auto modal-open:translate-y-0 modal-open:opacity-100 transition-all modal-open:duration-500">
-         <div class="flex flex-col bg-white rounded-2xl py-4 px-5">
-           <div class="flex justify-between items-center pb-4 border-b border-gray-200">
-             <h4 class="text-sm text-gray-900 font-medium">Modal simple</h4>
-             <button class="block cursor-pointer close-modal-button" data-pd-overlay="#pd-slide-up-modal{{post.id}}" data-modal-target="pd-slide-up-modal{{post.id}}">
-               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M7.75732 7.75739L16.2426 16.2427M16.2426 7.75739L7.75732 16.2427" stroke="black" stroke-width="1.6" stroke-linecap="round"></path>
-               </svg>
-             </button>
-           </div>
-           <div class="overflow-y-auto py-4 min-h-[100px]">
-             <div>
-                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                </svg>
-                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this post?</h3>
-                
-             </div>
-           </div>
-           <form action="{% url "admin_blog_delete" %}" method="post" class="flex items-center justify-end pt-4 border-t border-gray-200 space-x-4">
-            <input class="sr-only" type="hidden" name="post_id" value="{{ post.id }}">    
-            {% csrf_token %}
-                <button type="submit" data-pd-overlay="#pd-slide-up-modal" data-modal-target="pd-slide-up-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                    Yes, I'm sure
-                </button>
-                <button type="reset" class="pd-dropdown-toggle close-modal-button py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" data-pd-overlay="#pd-slide-up-modal{{post.id}}" data-modal-target="pd-slide-up-modal{{post.id}}" >No, cancel</button>
-           </form>
-         </div>
-        </div>
+        <div id="pd-slide-up-modal{{ tag.id }}" class="pd-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto">
+            <div class="transform translate-y-3 opacity-0 ease-out sm:max-w-lg sm:w-full m-5 sm:mx-auto modal-open:translate-y-0 modal-open:opacity-100 transition-all modal-open:duration-500">
+                <div class="flex flex-col bg-white rounded-2xl py-4 px-5">
+                    <div class="flex justify-between items-center pb-4 border-b border-gray-200">
+                        <h4 class="text-sm text-gray-900 font-medium">Delete Tag</h4>
+                        <button class="block cursor-pointer close-modal-button" data-pd-overlay="#pd-slide-up-modal{{ tag.id }}" data-modal-target="pd-slide-up-modal{{ tag.id }}">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.75732 7.75739L16.2426 16.2427M16.2426 7.75739L7.75732 16.2427" stroke="black" stroke-width="1.6" stroke-linecap="round"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="overflow-y-auto py-4 min-h-[100px]">
+                        <div>
+                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this tag?</h3>
+                        </div>
+                    </div>
+                    <form action="{% url 'admin_tag_delete' %}" method="post" class="flex items-center justify-end pt-4 border-t border-gray-200 space-x-4">
+                        <input class="sr-only" type="hidden" name="tag_id" value="{{ tag.id }}">    
+                        {% csrf_token %}
+                        <button type="submit" data-pd-overlay="#pd-slide-up-modal" data-modal-target="pd-slide-up-modal" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                            Yes, I'm sure
+                        </button>
+                        <button type="reset" class="pd-dropdown-toggle close-modal-button py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" data-pd-overlay="#pd-slide-up-modal{{ tag.id }}" data-modal-target="pd-slide-up-modal{{ tag.id }}">No, cancel</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     {% endfor %}

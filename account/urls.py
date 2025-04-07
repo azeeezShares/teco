@@ -17,4 +17,11 @@ urlpatterns = [
     path(f'{ENDPOINT}/blog/delete/', blog_views.AdminPostDelete.as_view(), name='admin_blog_delete'),
     #path for create blog
     path(f'{ENDPOINT}/blog/create/', blog_views.AdminPostCreate.as_view(), name='admin_blog_create'),
+
+    # path for tag list
+    path(f'{ENDPOINT}/blog/tag/', blog_views.AdminTagList.as_view(), name='admin_tag_list'),
+    # path for creating a new tag
+    path(f'{ENDPOINT}/blog/tag/create/', blog_views.AdminTagCreate.as_view(), name='admin_tag_create'),
+    # path for deleting a tag
+    path(f'{ENDPOINT}/blog/tag/delete/', blog_views.AdminTagDelete.as_view(), name='admin_tag_delete'),
 ]
