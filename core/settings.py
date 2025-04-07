@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     
     # installed
     "booking.apps.BookingConfig",
+    "blog.apps.BlogConfig",
+    "account.apps.AccountConfig",
+    
+    "froala_editor",
     
 ]
 
@@ -134,6 +138,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ] # added this line
+STATIC_ROOT = 'staticfiles' # added this line
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -141,3 +146,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ALLOWED_HOSTS = ['*']
+
+AUTH_USER_MODEL = 'account.CustomUser'
+LOGIN_URL = "admin_login"
