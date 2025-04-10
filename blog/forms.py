@@ -1,6 +1,5 @@
 from django import forms
-# from froala_editor.widgets import FroalaEditor
-from ckeditor.widgets import CKEditorWidget
+from django_ckeditor_5.widgets import CKEditor5Widget
 from .models import Post
 
 class PageForm(forms.ModelForm):
@@ -39,8 +38,7 @@ class PageForm(forms.ModelForm):
             'status': forms.Select(attrs={
                 'class': 'w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
             }),
-            'content': CKEditorWidget(),
-            # 'content': FroalaEditor()
+            'content': CKEditor5Widget(config_name='default'),
             'image': forms.ClearableFileInput(attrs={
                 'class': 'w-full file:px-4 file:py-2 file:border-0 file:rounded-lg file:bg-blue-600 file:text-white'
             }),
