@@ -26,6 +26,8 @@ class HomeView(TemplateView):
         # get Post objects which has homepage tag
         context = super().get_context_data(**kwargs)
         context['homepage_posts'] = Post.objects.filter(tag__name='homepage', status=1).order_by('-created_on')
+        # last 3 posts
+        context['latest_posts'] = Post.objects.filter(status=1).order_by('-created_on')[:3]
         return context
 
 # New booking view

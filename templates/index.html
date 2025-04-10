@@ -6,6 +6,7 @@
 <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
+
 <!-- Main section start -->
 <main id="hero">
     <!-- hero section starts  -->
@@ -98,7 +99,7 @@
         <div class="my-6">
             <div>
                 <div
-                    class="flex justify-center items-center gap-x-5 gap-y-8 lg:gap-y-0 flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between lg:gap-x-8">
+                    class="flex justify-center items-center gap-x-5 gap-y-8 lg:gap-y-0 flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between lg:gap-x-8" data-aos="fade-up">
                     <div
                         class="group relative w-full bg-gray-100 rounded-2xl p-4 transition-all duration-500 max-md:max-w-md max-md:mx-auto md:w-2/5 md:h-64 xl:p-7 xl:w-1/4 hover:bg-[var(--color-secondary)]">
                         <div class="bg-white rounded-full flex justify-center items-center mb-5 w-14 h-14 ">
@@ -188,6 +189,54 @@
     </section>
     <!-- Services section ends -->
 
+    <!-- Blog section starts -->
+    <section id="blog" class="mx-3 md:mx-24">
+        <h1 class="text-4xl font-semibold ">
+            {% trans "Latest Blog Posts" %}
+        </h1>
+        <p class="text-2xl text-gray-500">
+            {% trans "Stay updated with our latest news and tips" %}
+        </p>
+
+       
+        <div class="flex items-center justify-center gap-4 my-6">
+            <div class="w-[80%]">
+                <div id="blog-banner-bg" class="relative bg-cover rounded-lg">
+                    <div class="absolute backdrop-blur-xs bg-black/50 rounded-lg p-6 w-full h-full"></div>
+                    <div class="grid grid-cols-5 gap-4 py-10 px-8 relative z-2">
+                        <div class="col-span-3" id="blog-banner-main-content">
+                            <!-- Content will be changed -->
+                        </div>
+                        <div class="col-span-2 col-start-4">
+                            <dl class="max-w-md" id="blog-list">
+                                {% for post in latest_posts %}
+                                    <div class="flex flex-col pb-3 mb-3" id="blog-list-item-{{post.id}}"> 
+                                        <dd class="text-lg font-semibold text-white">{{post.title}}</dd>
+                                        <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">{{post.summary|truncatechars:80}}</dt>
+                                        <!-- read more btn -->
+                                        <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/" 
+                                            class="text-sm text-[var(--color-primary)] font-semibold hover:underline mb-3">
+                                            {% trans "Read more" %}
+                                        </a>
+                                        <div class="flex w-[100%] h-[1px] bg-[var(--color-primary)] overflow-hidden progress-bar"></div>
+                                    </div>
+                                {% endfor %}
+                            </dl>
+    
+                        </div>
+                    </div>
+                </div>
+               
+
+            </div>
+            <div class="w-[20%]"></div>
+        </div>
+    
+
+
+    </section>
+    <!-- Blog section ends -->
+
     <!-- section why to choose -->
     <section id="why_to_choose" class="mx-3 md:mx-24 py-24">
 
@@ -198,14 +247,14 @@
                 <span class="text-4xl lg:text-7xl font-bold">Teco Shop?</span>
             </div>
             <div class="lg:col-span-2 lg:row-span-2 lg:col-start-2 lg:row-start-4 h-[367px] w-full overflow-hidden bg-cover bg-center rounded-lg"
-                style="background-image: url({%static 'img/banner3rd.jpg'%});">
+                style="background-image: url({%static 'img/banner3rd.jpg'%});" data-aos="fade-right">
             </div>
             <div class="lg:col-span-2 lg:row-span-2 lg:col-start-2 lg:row-start-2 p-15 bg-gray-100 rounded-xl">
                 <p class="text-2xl text-[var(--color-primary)] font-semibold pb-10">{% trans "We are experts in the area." %}</p>
                 <p>{% trans "In our workshop, you will find the true experts in electric scooters. Our passion and knowledge make us the perfect choice to keep your scooter in excellent condition." %}</p>
             </div>
             <div class="lg:col-span-2 lg:row-span-2 lg:col-start-4 lg:row-start-2 h-[367px] w-full overflow-hidden bg-cover bg-center rounded-lg"
-                style="background-image: url({%static 'img/banner4th.jpg'%});">
+                style="background-image: url({%static 'img/banner4th.jpg'%});" data-aos="fade-left">
             </div>
             <div class="lg:col-span-2 lg:row-span-2 lg:col-start-4 lg:row-start-4 p-15 bg-gray-100 rounded-xl">
                 <p class="text-2xl text-[var(--color-primary)] font-semibold pb-10">
@@ -216,7 +265,7 @@
                 </p>
             </div>
             <div class="lg:col-span-2 lg:row-span-2 lg:col-start-4 lg:row-start-6  h-[367px]  w-full overflow-hidden bg-cover bg-center rounded-lg"
-                style="background-image: url({%static 'img/banner5th.jpeg'%});"></div>
+                style="background-image: url({%static 'img/banner5th.jpeg'%});" data-aos="fade-left"></div>
             <div class="lg:col-span-2 lg:row-span-2 lg:col-start-2 lg:row-start-6 p-15 bg-gray-100 rounded-xl">
                 <p class="text-2xl text-[var(--color-primary)] font-semibold pb-10">{% trans "Professional Maintenance and Personalized Attention" %}</p>
                 <p>{% trans "At our electric scooter workshop, we provide top-notch maintenance. Our highly qualified technicians ensure that your scooter runs optimally, prolonging its lifespan and ensuring your comfort." %} </p>
@@ -240,7 +289,7 @@
 
         <div class="w-full relative grid grid-rows-3 xl:grid-cols-3 xl:grid-rows-1  my-3">
             
-            <div class=" grid-row-start-1 xl:row-start-1 group bg-white shadow-lg shadow-gray-200 rounded-xl p-2.5 transition-all duration-500 mx-2 mt-2 hover:shadow-gray-300">
+            <div class=" grid-row-start-1 xl:row-start-1 group bg-white shadow-lg shadow-gray-200 rounded-xl p-2.5 transition-all duration-500 mx-2 mt-2 hover:shadow-gray-300" data-aos="fade-right">
                 <div class="rounded-3xl flex items-center justify-center">
                     <img src="{% static 'img/reus.jpg' %}" alt="Reus photo"
                         class="rounded-xl w-[364px] h-[317px]">
@@ -264,7 +313,7 @@
                     </div>
                 </div>
             </div>
-            <div class=" grid-row-start-2 xl:row-start-1 xl:col-start-2 group bg-white shadow-lg shadow-gray-200 rounded-xl p-2.5 transition-all duration-500 mx-2 mt-2 hover:shadow-gray-300">
+            <div class=" grid-row-start-2 xl:row-start-1 xl:col-start-2 group bg-white shadow-lg shadow-gray-200 rounded-xl p-2.5 transition-all duration-500 mx-2 mt-2 hover:shadow-gray-300" data-aos="fade-up">
                 <div class="rounded-3xl flex items-center justify-center">
                     <img src="{% static 'img/vallecas.jpg' %}" alt="Vallecas photo"
                         class="rounded-xl w-[364px] h-[317px]">
@@ -287,7 +336,7 @@
                     </div>
                 </div>
             </div>
-            <div class=" grid-row-start-3 xl:row-start-1 xl:col-start-3 group bg-white shadow-lg shadow-gray-200 rounded-xl p-2.5 transition-all duration-500 mx-2 mt-2 hover:shadow-gray-300">
+            <div class=" grid-row-start-3 xl:row-start-1 xl:col-start-3 group bg-white shadow-lg shadow-gray-200 rounded-xl p-2.5 transition-all duration-500 mx-2 mt-2 hover:shadow-gray-300" data-aos="fade-left">
                 <div class="rounded-3xl flex items-center justify-center">
                     <img src="{% static 'img/barcelona.jpg' %}" alt="Barcelona photo"
                         class="rounded-xl w-[364px] h-[317px]">
@@ -323,7 +372,7 @@
 
 
         <div class="grid lg:grid-cols-5 grid-rows-6 gap-4 my-6 mx-6" style="grid-template-rows: minmax(100px, 1fr);">
-            <div class="lg:col-span-2 lg:col-start-2 row-start-1">
+            <div class="lg:col-span-2 lg:col-start-2 row-start-1" data-aos="zoom-in-right">
                 <div
                     class="group bg-white border border-solid border-gray-300 rounded-2xl p-6 transition-all duration-500 hover:shadow-lg">
                     <div class="flex justify-between items-center">
@@ -398,7 +447,7 @@
                     </p>
                 </div>
             </div>
-            <div class="lg:col-span-2 lg:col-start-3 row-start-2">
+            <div class="lg:col-span-2 lg:col-start-3 row-start-2" data-aos="zoom-in-left">
                 <div
                     class="group bg-white border border-solid border-gray-300 rounded-2xl p-6 transition-all duration-500 hover:shadow-lg  h-full">
                     <div class="flex justify-between items-center">
@@ -471,7 +520,7 @@
                     </p>
                 </div>
             </div>
-            <div class="lg:col-span-2 lg:col-start-2 row-start-3">
+            <div class="lg:col-span-2 lg:col-start-2 row-start-3" data-aos="zoom-in-right">
                 <div
                     class="group bg-white border border-solid border-gray-300 rounded-2xl p-6 transition-all duration-500 hover:shadow-lg">
                     <div class="flex justify-between items-center">
@@ -546,7 +595,7 @@
                     </p>
                 </div>
             </div>
-            <div class="lg:col-span-2 lg:col-start-3 row-start-4">
+            <div class="lg:col-span-2 lg:col-start-3 row-start-4" data-aos="zoom-in-left">
                 <div
                     class="group bg-white border border-solid border-gray-300 rounded-2xl p-6 transition-all duration-500 hover:shadow-lg">
                     <div class="flex justify-between items-center">
@@ -640,6 +689,8 @@
                                 <div class="flex flex-col flex-1 gap-10 lg:gap-0 lg:flex-row lg:justify-between">
                                     <div class="block">
                                         <div
+                                            id="animated-repaired-scooters"
+                                            data-animated-value="7214"
                                             class="font-manrope font-bold text-4xl text-[var(--color-primary)] mb-3 text-center lg:text-left">
                                             7214
                                         </div>
@@ -649,14 +700,18 @@
                                     </div>
                                     <div class="block">
                                         <div
+                                            id="animated-clients"
+                                            data-animated-value="3042"
                                             class="font-manrope font-bold text-4xl text-[var(--color-primary)] mb-3 text-center lg:text-left">
-                                            3042+
+                                            3042
                                         </div>
                                         <span class="text-gray-900 text-center block lg:text-left"> {% trans "Clientes" %} 
                                         </span>
                                     </div>
                                     <div class="block">
                                         <div
+                                            id="animated-years"
+                                            data-animated-value="4"
                                             class="font-manrope font-bold text-4xl text-[var(--color-primary)] mb-3 text-center lg:text-left">
                                             4
                                         </div>
@@ -664,6 +719,8 @@
                                     </div>
                                     <div class="block">
                                         <div
+                                            id="animated-orders"
+                                            data-animated-value="20"
                                             class="font-manrope font-bold text-4xl text-[var(--color-primary)] mb-3 text-center lg:text-left">
                                             20+
                                         </div>
@@ -689,10 +746,10 @@
         </div>
 
     </section>
-
-    
-
     <!-- section reviews ends -->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         var splide = new Splide('.splide', {
             direction: 'ttb',
@@ -704,7 +761,127 @@
             type: 'loop', // Enables infinite looping
         });
           
-          splide.mount();
+        splide.mount();
+        AOS.init({});
+
+
+        function animateCount(el, start, end, duration) {
+            let range = end - start;
+            let startTime = null;
+          
+            function step(currentTime) {
+              if (!startTime) startTime = currentTime;
+              let progress = Math.min((currentTime - startTime) / duration, 1);
+              el.innerText = Math.floor(start + range * progress);
+              if (progress < 1) requestAnimationFrame(step);
+            }
+          
+            requestAnimationFrame(step);
+          }
+
+        let animated = [
+            document.getElementById("animated-repaired-scooters"),
+            document.getElementById("animated-clients"),
+            document.getElementById("animated-years"),
+            document.getElementById("animated-orders")
+        ];
+
+        let animatedSection = document.querySelector("#reviews");
+        let animatedStarted = false;
+
+        function startAnimation() {
+            if (!animatedStarted && animatedSection.getBoundingClientRect().top < window.innerHeight) {
+            animatedStarted = true;
+            animated.forEach((element) => {
+                animateCount(element, 0, Number(element.getAttribute("data-animated-value")), 2000);
+            });
+            }
+        }
+
+        window.addEventListener("scroll", startAnimation);
+        startAnimation(); // Trigger in case the section is already in view
+
+        const blogBanner = document.getElementById("blog-banner-bg");
+        const blogBannerMainContent = document.getElementById("blog-banner-main-content");
+
+        const images = [
+            {% for post in latest_posts %}
+            "{{ post.image.url }}"{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+
+        const summaries = [
+            {% for post in latest_posts %}
+            `{{ post.summary }}`{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+
+        const postSlugs = [
+            {% for post in latest_posts %}
+            `{{ post.slug }}`{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        const postIds = [
+            {% for post in latest_posts %}
+            `{{ post.id }}`{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+        const postTitles = [
+            {% for post in latest_posts %}
+            `{{ post.title }}`{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+
+        // Function to change the background image and content
+        function changeContent(index) {
+
+            let text = `<div class="h-full flex items-center justify-center flex-col" id="main-content-{{post.id}}">
+                <h1 class="text-white text-3xl font-bold">${postTitles[index]}</h1>
+                <p class="text-gray-300 mt-3">
+                    ${summaries[index]}
+                </p>
+                <a
+                    href="/{{LANGUAGE_CODE}}/blog/${postSlugs[index]}/"
+                    class="transition mt-4 py-2 px-8 text-lg font-semibold text-center border border-1 border-black bg-[var(--color-secondary)] text-black hover:bg-white rounded-lg ">
+                    {% trans "Read more" %}
+                </a>
+            </div>`;
+
+            // Animate the fade-out of the current content
+            gsap.to(blogBannerMainContent, {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    // Change the background image and content
+                    blogBanner.style.backgroundImage = `url(${images[index]})`;
+                    blogBannerMainContent.innerHTML = text;
+
+                    // Animate the fade-in of the new content
+                    gsap.to(blogBannerMainContent, {
+                        opacity: 1,
+                        duration: 0.5
+                    });
+                }
+            });
+        }
+        // Function to handle the interval
+        function startInterval() {
+            let index = 0;
+            setInterval(() => {
+                changeContent(index);
+                index = (index + 1) % images.length;
+            }, 5000); // Change every 5 seconds
+        }
+        // Start the interval when the page loads
+        window.onload = startInterval;
+        // Initial content
+        changeContent(0);
+
+
+
+        
+        
+
     </script>
 </main>
 <!-- Hero section end -->
