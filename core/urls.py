@@ -19,6 +19,11 @@ urlpatterns += [
     path('set_language/', set_language, name='set_language'),
 ]
 
+urlpatterns += [
+    # Other URL patterns...
+    path('ckeditor5/', include('django_ckeditor_5.urls')),  # Include CKEditor 5 URLs
+]
+
 # urlpatterns += [
 #     path('froala_editor/', include('froala_editor.urls')),
 # ]
