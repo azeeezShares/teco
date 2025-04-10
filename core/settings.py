@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     "blog.apps.BlogConfig",
     "account.apps.AccountConfig",
     
-    "froala_editor",
+    # "froala_editor",
+    "ckeditor",
     
 ]
 
@@ -158,3 +159,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'account.CustomUser'
 LOGIN_URL = "admin_login"
+
+CKEDITOR_UPLOAD_PATH = "uploads/ckeditor/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}

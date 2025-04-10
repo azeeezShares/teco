@@ -19,8 +19,8 @@ urlpatterns += [
     path('set_language/', set_language, name='set_language'),
 ]
 
-urlpatterns += [
-    path('froala_editor/', include('froala_editor.urls')),
-]
+# urlpatterns += [
+#     path('froala_editor/', include('froala_editor.urls')),
+# ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
