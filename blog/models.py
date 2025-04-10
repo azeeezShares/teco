@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from account.models import CustomUser
 from froala_editor.fields import FroalaField
+from ckeditor.fields import RichTextField
 
 STATUS = (
     (0,"Draft"),
@@ -24,7 +25,8 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now= True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    content = FroalaField()
+    content = RichTextField()
+    # content = FroalaField()
     
     summary = models.TextField(max_length=500, blank=True)
     tag = models.ManyToManyField(Tag, related_name='posts', blank=True)
