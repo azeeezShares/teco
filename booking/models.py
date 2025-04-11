@@ -1,9 +1,21 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.exceptions import ValidationError
+import datetime
 
 # Branch model (unchanged)
 class Branch(models.Model):
+    
+    WEEKDAYS_IN_SPANISH = {
+            'monday': 'lunes',
+            'tuesday': 'martes',
+            'wednesday': 'miércoles',
+            'thursday': 'jueves',
+            'friday': 'viernes',
+            'saturday': 'sábado',
+            'sunday': 'domingo'
+        }
+    
     name = models.CharField(max_length=255, unique=True)
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=100)
@@ -12,12 +24,48 @@ class Branch(models.Model):
     latitude = models.FloatField(validators=[MinValueValidator(-90), MaxValueValidator(90)])
     longitude = models.FloatField(validators=[MinValueValidator(-180), MaxValueValidator(180)])
     phone_number = models.CharField(max_length=20)
-    opening_hours = models.TextField()
+    opening_hours = models.JSONField()
     image = models.ImageField(upload_to='uploads/branches')
     description = models.TextField()
 
     def __str__(self):
         return self.name
+    
+    def is_now_open(self):
+        current_time = datetime.datetime.now().strftime("%H:%M")
+        current_weekday = datetime.datetime.now().strftime("%A").lower()
+        opening_hours_today = self.opening_hours.get(self.WEEKDAYS_IN_SPANISH.get(current_weekday), 'cerrado')
+        if opening_hours_today == 'cerrado':
+            return False
+        for period in opening_hours_today:
+            if period['open'] <= current_time <= period['close']:
+                return True
+        return False
+
+    def get_formatted_opening_hours(self):
+        print(self.is_now_open())
+        
+        formatted_hours = []
+        for day, periods in self.opening_hours.items():
+            try:
+                if periods == 'cerrado':
+                    formatted_hours.append(f'<div role="button" class="text-slate-800 flex w-full items-center rounded-md p-3 transition-all">{day.capitalize()}: Cerrado</div>')
+                else:
+                    now_open = False
+                    # Assuming periods is a list of dictionaries with 'open' and 'close' keys
+                    periods_list = []
+                    for period in periods:
+                        current_time = datetime.datetime.now().strftime("%H:%M")
+                        current_weekday = self.WEEKDAYS_IN_SPANISH.get(datetime.datetime.now().strftime("%A").lower())
+                        if day.lower() == current_weekday and period['open'] <= current_time <= period['close']:
+                            now_open = True
+                        periods_list.append(f"{period['open']} - {period['close']}")
+                    bg_class = "bg-slate-100" if now_open else ""
+                    formatted_hours.append(f'<div role="button" class="text-slate-800 flex w-full items-center rounded-md p-3 transition-all {bg_class}">{day.capitalize()}: {", ".join(periods_list)}</div>')
+            except Exception as e:
+                formatted_hours.append(f'<div role="button" class="text-slate-800 flex w-full items-center rounded-md p-3 transition-all">{day.capitalize()}: Error parsing hours</div>')
+        return "\n".join(formatted_hours)
+        # return "\n"
 
 # Service model (unchanged)
 class Service(models.Model):

@@ -34,13 +34,13 @@
                 </div>
             </div>
             <div class="md:col-span-2 row-start-2 lg:col-span-2  lg:row-span-2  lg:col-start-4">
-                    <section class="splide" aria-label="Basic Structure Example">
+                    <section class="splide">
                         <div class="splide__track">
                           <ul class="splide__list">
                             {% for post in homepage_posts %}
                             <li class="splide__slide relative">
                                 <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/">
-                                    <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+                                    <div class="absolute rounded top-0 left-0 w-full h-full bg-black opacity-50"></div>
                                     <div class="z-50 absolute top-0 left-0 p-4 w-full h-full flex items-center justify-center text-white text-2xl font-bold">
                                         {{ post.title }}
                                     </div>
@@ -87,6 +87,54 @@
 
     </section>
     <!-- hero section ends -->
+
+        <!-- Blog section starts -->
+    <section id="blog" class="mx-3 md:mx-24 mt-24">
+            <h1 class="text-4xl font-semibold ">
+                {% trans "Latest Blog Posts" %}
+            </h1>
+            <p class="text-2xl text-gray-500">
+                {% trans "Stay updated with our latest news and tips" %}
+            </p>
+    
+           
+            <div class="flex items-center justify-center gap-4 my-6">
+                <div class="w-[80%]">
+                    <div id="blog-banner-bg" class="relative bg-cover rounded-lg" data-aos="fade-right">
+                        <div class="absolute backdrop-blur-xs bg-black/50 rounded-lg p-6 w-full h-full"></div>
+                        <div class="grid grid-cols-5 gap-4 py-10 px-8 relative z-2" >
+                            <div class="col-span-3" id="blog-banner-main-content">
+                                <!-- Content will be changed -->
+                            </div>
+                            <div class="col-span-2 col-start-4">
+                                <dl class="max-w-md" id="blog-list">
+                                    {% for post in latest_posts %}
+                                        <div class="flex flex-col pb-3 mb-3" id="blog-list-item-{{post.id}}"> 
+                                            <dd class="text-lg font-semibold text-white">{{post.title}}</dd>
+                                            <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">{{post.summary|truncatechars:80}}</dt>
+                                            <!-- read more btn -->
+                                            <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/" 
+                                                class="text-sm text-[var(--color-primary)] font-semibold hover:underline mb-3">
+                                                {% trans "Read more" %}
+                                            </a>
+                                            <div class="flex w-[100%] h-[1px] bg-[var(--color-primary)] overflow-hidden progress-bar"></div>
+                                        </div>
+                                    {% endfor %}
+                                </dl>
+        
+                            </div>
+                        </div>
+                    </div>
+                   
+    
+                </div>
+                <div class="w-[20%]"></div>
+            </div>
+        
+    
+    
+    </section>
+        <!-- Blog section ends -->
 
     <!-- Services section starts -->
     <section id="services" class="mx-3 md:mx-24 py-24">
@@ -189,54 +237,6 @@
     </section>
     <!-- Services section ends -->
 
-    <!-- Blog section starts -->
-    <section id="blog" class="mx-3 md:mx-24">
-        <h1 class="text-4xl font-semibold ">
-            {% trans "Latest Blog Posts" %}
-        </h1>
-        <p class="text-2xl text-gray-500">
-            {% trans "Stay updated with our latest news and tips" %}
-        </p>
-
-       
-        <div class="flex items-center justify-center gap-4 my-6">
-            <div class="w-[80%]">
-                <div id="blog-banner-bg" class="relative bg-cover rounded-lg">
-                    <div class="absolute backdrop-blur-xs bg-black/50 rounded-lg p-6 w-full h-full"></div>
-                    <div class="grid grid-cols-5 gap-4 py-10 px-8 relative z-2">
-                        <div class="col-span-3" id="blog-banner-main-content">
-                            <!-- Content will be changed -->
-                        </div>
-                        <div class="col-span-2 col-start-4">
-                            <dl class="max-w-md" id="blog-list">
-                                {% for post in latest_posts %}
-                                    <div class="flex flex-col pb-3 mb-3" id="blog-list-item-{{post.id}}"> 
-                                        <dd class="text-lg font-semibold text-white">{{post.title}}</dd>
-                                        <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">{{post.summary|truncatechars:80}}</dt>
-                                        <!-- read more btn -->
-                                        <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/" 
-                                            class="text-sm text-[var(--color-primary)] font-semibold hover:underline mb-3">
-                                            {% trans "Read more" %}
-                                        </a>
-                                        <div class="flex w-[100%] h-[1px] bg-[var(--color-primary)] overflow-hidden progress-bar"></div>
-                                    </div>
-                                {% endfor %}
-                            </dl>
-    
-                        </div>
-                    </div>
-                </div>
-               
-
-            </div>
-            <div class="w-[20%]"></div>
-        </div>
-    
-
-
-    </section>
-    <!-- Blog section ends -->
-
     <!-- section why to choose -->
     <section id="why_to_choose" class="mx-3 md:mx-24 py-24">
 
@@ -287,77 +287,71 @@
             {% trans "Find the nearest workshop and get your mobility back." %}
         </p>
 
-        <div class="w-full relative grid grid-rows-3 xl:grid-cols-3 xl:grid-rows-1  my-3">
+        <div class="w-full relative grid xl:grid-cols-3 xl:grid-rows-1  my-3">
             
-            <div class=" grid-row-start-1 xl:row-start-1 group bg-white shadow-lg shadow-gray-200 rounded-xl p-2.5 transition-all duration-500 mx-2 mt-2 hover:shadow-gray-300" data-aos="fade-right">
-                <div class="rounded-3xl flex items-center justify-center">
-                    <img src="{% static 'img/reus.jpg' %}" alt="Reus photo"
-                        class="rounded-xl w-[364px] h-[317px]">
-                </div>
-                <div class="flex flex-col items-center justify-center py-6 gap-4 text-center">
-                    <h4 class="font-manrope font-bold text-xl text-gray-900 text-center flex gap-1">
-                        Reus
-                        <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">Open</span>
+            {% for branch in branches %}
+            
+                <div class=" col-span-1 group bg-white shadow-lg shadow-gray-200 rounded-xl p-2.5 transition-all duration-500 mx-2 mt-2 hover:shadow-gray-300" data-aos="fade-right">
+                    <div class="rounded-3xl flex items-center justify-center">
+                        <img src="{{branch.image.url}}" alt="Reus photo"
+                            class="rounded-xl w-[364px] h-[317px]">
+                    </div>
+                    <div class="flex flex-col items-center justify-center py-6 gap-4 text-center">
+                        <h4 class="font-manrope font-bold text-xl text-gray-900 text-center flex gap-1">
+                            {{branch.name}}
+                            {% if branch.is_now_open %}
+                                <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">Open</span>
+                            {% else %}
+                                <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-red-600/10 ring-inset">Closed</span>
+                            {% endif %}
+                        </h4>
+                        <p class="text-base font-medium text-gray-500 mb-4 text-center">
 
-                    </h4>
-                    <p class="text-base font-medium text-gray-500 mb-4 text-center">
-                        All day - 8:00 AM to 20:00 PM
-                    </p>
-                    <div class="flex items-center justify-center w-full gap-4">
-                        <a target="_blank"
-                            href="{% url "new" %}"
-                            class="block md:inline-block transition mt-2 py-2 px-8 text-lg font-semibold text-center border border-1 border-black bg-[var(--color-secondary)] text-black hover:bg-white rounded-lg ">
-                            
-                            {% trans "Book now" %}
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class=" grid-row-start-2 xl:row-start-1 xl:col-start-2 group bg-white shadow-lg shadow-gray-200 rounded-xl p-2.5 transition-all duration-500 mx-2 mt-2 hover:shadow-gray-300" data-aos="fade-up">
-                <div class="rounded-3xl flex items-center justify-center">
-                    <img src="{% static 'img/vallecas.jpg' %}" alt="Vallecas photo"
-                        class="rounded-xl w-[364px] h-[317px]">
-                </div>
-                <div class="flex flex-col items-center justify-center py-6 gap-4 text-center">
-                    <h4 class="font-manrope font-bold text-xl text-gray-900 text-center flex gap-1">
-                        Viladecans
-                        <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-red-600/10 ring-inset">Closed</span>
+                            <div class="relative flex flex-col">
+                                <button id="openingHoursDropdown" class="font-medium text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
+                                    {% trans "Show Opening Hours" %}
+                                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                    </svg>
+                                </button>
+                                
+                                <!-- Dropdown menu -->
+                                <nav id="dropdown" class="hidden flex min-w-[240px] flex-col gap-1 p-1.5" >
+                                {{branch.get_formatted_opening_hours|safe}}
+                                </nav>
 
-                    </h4>
-                    <p class="text-base font-medium text-gray-500 mb-4 text-center">
-                        All day - 8:00 AM to 20:00 PM
-                    </p>
-                    <div class="flex items-center justify-center w-full gap-4">
-                        <a target="_blank"
-                            href="{% url "new" %}"
-                            class="block md:inline-block transition mt-2 py-2 px-8 text-lg font-semibold text-center border border-1 border-black bg-[var(--color-secondary)] text-black hover:bg-white rounded-lg ">
-                            {% trans "Book now" %}
-                        </a>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        const dropdownButton = document.getElementById("openingHoursDropdown");
+                                        const dropdownMenu = document.getElementById("dropdown");
+
+                                        dropdownButton.addEventListener("click", function () {
+                                            dropdownMenu.classList.toggle("hidden");
+                                        });
+
+                                        document.addEventListener("click", function (event) {
+                                            if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                                                dropdownMenu.classList.add("hidden");
+                                            }
+                                        });
+                                    });
+                                </script>
+
+                            </div>
+
+                        </p>
+                        <div class="flex items-center justify-center w-full gap-4">
+                            <a target="_blank"
+                                href="{% url "new" %}"
+                                class="block md:inline-block transition mt-2 py-2 px-8 text-lg font-semibold text-center border border-1 border-black bg-[var(--color-secondary)] text-black hover:bg-white rounded-lg ">
+                                
+                                {% trans "Book now" %}
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class=" grid-row-start-3 xl:row-start-1 xl:col-start-3 group bg-white shadow-lg shadow-gray-200 rounded-xl p-2.5 transition-all duration-500 mx-2 mt-2 hover:shadow-gray-300" data-aos="fade-left">
-                <div class="rounded-3xl flex items-center justify-center">
-                    <img src="{% static 'img/barcelona.jpg' %}" alt="Barcelona photo"
-                        class="rounded-xl w-[364px] h-[317px]">
-                </div>
-                <div class="flex flex-col items-center justify-center py-6 gap-4 text-center">
-                    <h4 class="font-manrope font-bold text-xl text-gray-900 text-center flex gap-1"> 
-                        Taller de patinetes Barcelona
-                        <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-red-600/10 ring-inset">Closed</span>
-                    </h4>
-                    <p class="text-base font-medium text-gray-500 mb-4 text-center">
-                        All day - 8:00 AM to 20:00 PM
-                    </p>
-                    <div class="flex items-center justify-center w-full gap-4">
-                        <a target="_blank"
-                            href="{% url "new" %}"
-                            class="block md:inline-block transition mt-2 py-2 px-8 text-lg font-semibold text-center border border-1 border-black bg-[var(--color-secondary)] text-black hover:bg-white rounded-lg ">
-                            {% trans "Book now" %}
-                        </a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+            
         </div>
 
     </section>

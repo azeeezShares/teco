@@ -2,6 +2,22 @@
 {% load static %}
 {% load i18n %}
 {% block title %}<title> {% trans "TECOSHOP - electric scooter workshop" %} </title>{% endblock title %}
+
+
+{% block meta_tags %}
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="{{ post.title }}">
+<meta property="og:description" content="{{ post.summary|truncatewords:20 }}">
+<meta property="og:image" content="{{ post.image.url }}">
+<meta property="og:type" content="article">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ post.title }}">
+<meta name="twitter:description" content="{{ post.summary|truncatewords:20 }}">
+<meta name="twitter:image" content="{{ post.image.url }}">
+{% endblock meta_tags %}
+
 {% block content %}
 
 
