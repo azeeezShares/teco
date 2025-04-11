@@ -28,6 +28,8 @@ class HomeView(TemplateView):
         context['homepage_posts'] = Post.objects.filter(tag__name='homepage', status=1).order_by('-created_on')
         # last 3 posts
         context['latest_posts'] = Post.objects.filter(status=1).order_by('-created_on')[:3]
+        # branches
+        context['branches'] = Branch.objects.all()
         return context
 
 # New booking view
