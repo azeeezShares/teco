@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     
     # "froala_editor",
     "django_ckeditor_5",
+    'rest_framework',
     
 ]
 

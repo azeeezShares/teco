@@ -1,7 +1,68 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
-{% block title %}<title> {% trans "TECOSHOP - electric scooter workshop" %} </title>{% endblock title %}
+
+{% block meta_tags %}
+
+<title> "TECOSHOP - electric scooter workshop" | Tecoshop.es </title>
+<meta charset="utf-8" />
+<meta name="description" content="Servicio técnico especializado en reparación y mantenimiento de patinetes y bicicletas eléctricas en Reus, Tarragona, Cambrils, Salou, Vila-seca y alrededores. Cambios de batería, arreglos de pinchazos, frenos, motores y más." />
+<meta name="keywords" content="
+Reparación de patinetes eléctricos en Reus,
+Taller de bicicletas eléctricas en Reus,
+Mantenimiento de patinetes eléctricos en Reus,
+Servicio técnico de patinetes eléctricos en Reus,
+Arreglo de bicicletas eléctricas en Reus,
+Reparar patinete eléctrico cerca de Reus,
+Reparar batería patinete Reus,
+Reparar patinete xiaomi Reus,
+Reparar patinete cecotec Reus,
+Taller patinetes eléctricos Tarragona, Cambrils, Salou, Vila-seca, Constantí
+" />
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Reparación de patinetes y bicicletas eléctricas en Reus | Tecoshop">
+<meta property="og:description" content="Taller especializado en patinetes eléctricos y bicicletas eléctricas. Reparaciones rápidas, mantenimiento preventivo, cambio de batería, arreglo de pinchazos y más en Reus y alrededores.">
+<meta property="og:image" content="{% static 'img/og-image.jpg' %}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tecoshop.es">
+<meta property="og:locale" content="es_ES">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reparación de patinetes eléctricos en Reus | Tecoshop">
+<meta name="twitter:description" content="Taller de confianza para reparar patinetes eléctricos y bicicletas eléctricas en Reus y Tarragona. Servicio técnico rápido y eficaz.">
+<meta name="twitter:image" content="{% static 'img/og-image.jpg' %}">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+<!-- Structured Data (Schema.org) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Tecoshop",
+  "description": "Taller especializado en reparación de patinetes y bicicletas eléctricas en Reus, Tarragona, Salou, Cambrils y alrededores.",
+  "image": "{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-image.jpg' %}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Reus",
+    "addressRegion": "Tarragona",
+    "addressCountry": "ES"
+  },
+  "url": "{{ request.build_absolute_uri }}",
+  "sameAs": [
+    "https://www.instagram.com/tecoshop_reus/",
+    "https://www.facebook.com/tecoshop.reus/"
+  ]
+}
+</script>
+
+{% endblock meta_tags %}
+
+
+
 {% block content %}
 <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>

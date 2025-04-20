@@ -1,0 +1,109 @@
+1.Asosiy sahifa
+2.Book qilish uchun sahifa
+3.Bloglar  har biri uchun dinamik seo 
+
+<head>
+    <!-- Sahifa sarlavhasi -->
+    <title>Bu yerga sahifa sarlavhasini yozing</title>
+
+    <!-- Sahifa charset (kodlash) -->
+    <meta charset="utf-8" />
+
+    <!-- Sahifaning qisqacha tavsifi -->
+    <meta
+      name="description"
+      content="Bu yerga sahifaning qisqacha tavsifi yoziladi."
+    />
+
+    <!-- Sahifa uchun kalit so'zlar -->
+    <meta name="keywords" content="kalit so'zlar, yangiliklar, xabarlar" />
+
+    <!-- Sahifa generatori (agar kerak bo'lsa) -->
+    <meta name="generator" content="ALLTEN (https://allten.uz)" />
+
+    <!-- Sahifa uchun canonical URL -->
+    <link rel="canonical" href="https://example.com/sahifa-url" />
+
+    <!-- RSS, Dzen va boshqa turdagi alternativ versiyalar (agar mavjud bo'lsa) -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS Feed"
+      href="https://example.com/rss.xml"
+    />
+    <!-- Ikkilamchi alternativlar uchun boshqa Hreflang yoki RSS URL'larini qo'shing (agar kerak bo'lsa) -->
+
+    <!-- OpenSearch (qidiruv uchun) -->
+    <link
+      rel="search"
+      type="application/opensearchdescription+xml"
+      title="Sahifa nomi"
+      href="https://example.com/opensearch"
+    />
+
+    <!-- Sahifa uchun ijtimoiy media meta taglar -->
+    <meta property="twitter:title" content="Sahifa sarlavhasi" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:image"
+      content="https://example.com/sahifa-rasmi.webp"
+    />
+    <meta
+      property="twitter:description"
+      content="Sahifa haqida qisqacha tavsif"
+    />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Sahifa nomi" />
+    <meta property="og:title" content="Sahifa sarlavhasi" />
+    <meta property="og:url" content="https://example.com/sahifa-url" />
+    <meta property="og:image" content="https://example.com/sahifa-rasmi.webp" />
+    <meta property="og:description" content="Sahifa haqida qisqacha tavsif" />
+
+    <!-- Sahifa uchun ijtimoiy media va SEO izohlar (masalan, fb:pages, robots meta va boshqalar) -->
+    <meta property="fb:pages" content="Sahifa uchun Facebook sahifasi ID" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Favicon, apple touch icon va manifest -->
+    <link rel="icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <!-- Sahifa uchun tema rangini belgilash -->
+    <meta name="theme-color" content="#f5f6f8" />
+
+    <!-- Sahifa tilini belgilash -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS faylini ulash -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Web fontlarni ulash (agar kerak bo'lsa) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Ijtimoiy media va SEO uchun boshqa meta ma'lumotlar -->
+    <meta name="author" content="Sahifa muallifi" />
+    <meta name="description" content="Sahifa tavsifi" />
+
+    <!-- Schema.org microdata (strukturali ma'lumotlar) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Sahifa sarlavhasi",
+        "url": "https://example.com/sahifa-url",
+        "description": "Sahifa tavsifi",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Tashkilot nomi",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://example.com/logo.png"
+          }
+        }
+      }
+    </script>
+  </head>
