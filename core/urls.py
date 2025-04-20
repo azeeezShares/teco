@@ -4,9 +4,10 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.i18n import set_language
 from django.conf import settings
 from django.conf.urls.static import static
-
+from core import sitemap
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('sitemap.xml', sitemap.SiteMap.as_view(), name='sitemap'),
 ]
 
 urlpatterns += i18n_patterns(

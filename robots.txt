@@ -1,0 +1,18 @@
+# Allow Googlebot to access all parts of the site
+User-agent: Googlebot
+Disallow:
+
+# Allow Yandex to access all parts of the site
+User-agent: Yandex
+Disallow:
+
+# Allow Yandex to access the RSS feed specifically
+User-agent: Yandex
+Allow: /rss-feed.xml
+
+# For all other bots, allow full access
+User-agent: *
+Disallow:
+
+# Specify the location of the sitemap
+Sitemap: https://tecoshop.es/sitemap.xml
