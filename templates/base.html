@@ -28,7 +28,7 @@
                             <!-- Website logo -->
                             <img src="{% static 'img/logo.png' %}" alt="Logo" class="h-10 w-10 rounded-full">
                             <!-- Screen-reader only text for accessibility -->
-                            <p class="sr-only">Website Title</p>
+                            <p class="sr-only">Taller de Reparació de Patinets Elèctrics i Bicicletes Elèctriques</p>
                         </a>
                     </div>
 
@@ -139,12 +139,22 @@
                 <!-- Right Section -->
                 <div data-aos="fade-up">
                     <h3 class="text-xl font-semibold">{% trans "Contact Us" %}</h3>
-                    <p class="mt-4 text-sm">1234 Street Name, City Name, United States</p>
-                    <p class="mt-2 text-sm">
-                        <a href="tel:+1234567890" class="hover:text-blue-400">+1 234 567 890</a>
+                    <p class="mt-4 text-sm">
+                        {% for branch in branches %}
+                            {{branch.address}}
+                            <br>
+                        {% endfor %}
                     </p>
                     <p class="mt-2 text-sm">
-                        <a href="mailto:example@mail.com" class="hover:text-blue-400">{% trans "Mail us" %} </a>
+                        {% for branch in branches %}
+                            <a href="tel:{{branch.phone_number}}" class="hover:text-blue-400 text-blue-600">
+                                {{branch.phone_number}}
+                            </a>
+                            <br>
+                        {% endfor %}
+                    </p>
+                    <p class="mt-2 text-sm">
+                        <a href="mailto:info.tecoshop@gmail.com" class="hover:text-blue-400 text-blue-600">{% trans "Mail us" %}</a> -  info.tecoshop@gmail.com
                     </p>
                 </div>
             </div>
@@ -156,12 +166,6 @@
 
     <!-- cookies section -->
 
-
-    {% comment %} <div class="text-center">
-        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="cookie-consent-drawer" data-drawer-show="cookie-consent-drawer" data-drawer-placement="bottom" aria-controls="cookie-consent-drawer">
-        Accept the use of cookies
-        </button>
-    </div> {% endcomment %}
     
     <!-- drawer component -->
     <div id="cookie-consent-drawer" class="fixed bottom-0 left-0 right-0 z-40 w-full p-4 overflow-y-auto transition-transform bg-[var(--color-secondary)]/80 backdrop-blur-xs transform-none lg:p-9 {% if request.COOKIES.consent == 'accepted' or request.COOKIES.consent == 'rejected' %} hidden {% endif %} " tabindex="-1" aria-labelledby="drawer-bottom-label">
