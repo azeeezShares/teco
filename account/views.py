@@ -2,7 +2,7 @@ from django.views.generic import TemplateView, View
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from booking.models import Branch, Client, Service, Booking, Admin
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -36,6 +36,15 @@ class AdminLogin(TemplateView):
             # use message framework to display error
             messages.error(request, _('Invalid credentials.'), extra_tags='alert alert-danger')
             return redirect('admin_login')
+
+class AdminLogout(View):
+    def get(self, request:HttpRequest, *args, **kwargs):
+        # check if the admin is already logged in
+        if request.user.is_authenticated:
+            # logout the user
+            logout(request)
+            return redirect('admin_login')
+        return redirect('admin_login')
         
 class AdminView(View):
     template_name = 'admin-temp/view.html'

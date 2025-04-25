@@ -8,7 +8,9 @@
       name="description"
       content="Taller de Reparació de Patinets Elèctrics i Bicicletes Elèctriques"
     />
-    {% block title %}{% endblock title %}
+    {% block title %}
+    <title>Página de administración</title>
+    {% endblock title %}
     <link
       rel="shortcut icon"
       href="{%static 'img/favicon.ico' %}"
@@ -28,7 +30,7 @@
               <img src="{% static 'img/logo.png' %}" alt="Logo" class="w-10 h-10" />
               
              </a>
-             <h1 class="text-gray-500 text-lg font-semibold leading-6">Admin</h1>
+             <h1 class="text-gray-500 text-lg font-semibold leading-6">Página de administración</h1>
              <a href="javascript:;" class="w-6 h-6 relative bg-white">
                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <g id="Menu">
@@ -40,7 +42,7 @@
          </div>
          <div class="w-full">
              <div class="w-full h-8 px-3 items-center flex">
-                 <h6 class="text-gray-500 text-xs font-semibold leading-4">MENU</h6>
+                 <h6 class="text-gray-500 text-xs font-semibold leading-4">MENÚ</h6>
              </div>
              <ul class="flex-col gap-1 flex">
                  <li>
@@ -55,7 +57,7 @@
                                           <path d="M8.5 11.5H7C5.11438 11.5 4.17157 11.5 3.58579 12.0858C3 12.6716 3 13.6144 3 15.5V17C3 18.8856 3 19.8284 3.58579 20.4142C4.17157 21 5.11438 21 7 21H8.5C10.3856 21 11.3284 21 11.9142 20.4142C12.5 19.8284 12.5 18.8856 12.5 17V15.5C12.5 13.6144 12.5 12.6716 11.9142 12.0858C11.3284 11.5 10.3856 11.5 8.5 11.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
                                       </svg>
                                  </div>
-                                 <h2 class="text-gray-500 text-sm font-medium leading-snug">Home</h2>
+                                 <h2 class="text-gray-500 text-sm font-medium leading-snug">Panel</h2>
                              </div>
                          </div>
                      </a>
@@ -91,7 +93,7 @@
                                                 <path d="M22 17L2 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                             </svg>
                                         </div>
-                                        <h2 class="text-gray-500 text-sm font-medium leading-snug">Tags</h2>
+                                        <h2 class="text-gray-500 text-sm font-medium leading-snug">Etiquetas</h2>
                                     </div>
                                 </div>
                             </div>
@@ -101,10 +103,10 @@
          </div>
          <div class="w-full flex-col flex">
              <div class="h-8 px-3 items-center inline-flex">
-                 <h6 class="text-gray-500 text-xs font-semibold leading-4">SETTINGS</h6>
+                 <h6 class="text-gray-500 text-xs font-semibold leading-4">Ajustes</h6>
              </div>
              <ul class="flex-col gap-1 flex">
-                 <li>
+                 {% comment %} <li>
                      <a href="javascript:;">
                          <div class="p-3 rounded-lg items-center inline-flex">
                              <div class="h-5 items-center gap-3 flex">
@@ -115,32 +117,62 @@
                                          </g>
                                      </svg>
                                  </div>
-                                 <h2 class="text-gray-500 text-sm font-medium leading-snug">Profile</h2>
+                                 <h2 class="text-gray-500 text-sm font-medium leading-snug">Perfil</h2>
                              </div>
                          </div>
                      </a>
-                 </li>
+                 </li> {% endcomment %}
                  <li>
-                     <a href="javascript:;">
-                         <div class="p-3 rounded-lg items-center inline-flex">
-                             <div class="h-5 items-center gap-3 flex">
-                                 <div class="relative">
-                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                         <g id="Logout">
-                                             <path id="icon" d="M9.16667 17.5L5.83333 17.5V17.5C3.98765 17.5 2.5 16.0123 2.5 14.1667V14.1667L2.5 5.83333V5.83333C2.5 3.98765 3.98765 2.5 5.83333 2.5V2.5L9.16667 2.5M8.22814 10L17.117 10M14.3393 6.66667L17.0833 9.41074C17.3611 9.68852 17.5 9.82741 17.5 10C17.5 10.1726 17.3611 10.3115 17.0833 10.5893L14.3393 13.3333" stroke="#6B7280" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                                         </g>
-                                     </svg>
-                                 </div>
-                                 <h2 class="text-gray-500 text-sm font-medium leading-snug">Logout</h2>
-                             </div>
-                         </div>
-                     </a>
+                        <button type="button" class="modal-button" data-pd-overlay="#logout-modal" data-modal-target="logout-modal" data-modal-toggle="logout-modal">
+                            <div class="p-3 rounded-lg items-center inline-flex">
+                                <div class="h-5 items-center gap-3 flex">
+                                    <div class="relative">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                            <g id="Logout">
+                                                <path id="icon" d="M9.16667 17.5L5.83333 17.5V17.5C3.98765 17.5 2.5 16.0123 2.5 14.1667V14.1667L2.5 5.83333V5.83333C2.5 3.98765 3.98765 2.5 5.83333 2.5V2.5L9.16667 2.5M8.22814 10L17.117 10M14.3393 6.66667L17.0833 9.41074C17.3611 9.68852 17.5 9.82741 17.5 10C17.5 10.1726 17.3611 10.3115 17.0833 10.5893L14.3393 13.3333" stroke="#6B7280" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <h2 class="text-gray-500 text-sm font-medium leading-snug">Finalizar la sesión</h2>
+                                </div>
+                            </div>
+                        </button>
                  </li>
              </ul>
          </div>
       </div>
           <div class="col-span-2 p-4 w-full h-full md:block">
-              <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700" style="min-height: 90vh;">
+              <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg shadow-lg" style="min-height: 90vh;">
+                <div class="w-full relative">
+                    <div id="logout-modal" class="pd-overlay hidden w-full h-full fixed top-0 left-0 z-[60] overflow-x-hidden overflow-y-auto">
+                        <div class="transform -translate-y-3 opacity-0  ease-out  sm:max-w-lg sm:w-full m-5 sm:mx-auto modal-open:translate-y-0 modal-open:opacity-100 transition-all modal-open:duration-500">
+                            <div class="flex flex-col bg-white rounded-2xl py-4 px-5">
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-200">
+                                    <h4 class="text-sm text-gray-900 font-medium">
+                                        Cerrar sesión
+                                    </h4>
+                                    <button class="block cursor-pointer close-modal-button" data-pd-overlay="#logout-modal" data-modal-target="logout-modal">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7.75732 7.75739L16.2426 16.2427M16.2426 7.75739L7.75732 16.2427" stroke="black" stroke-width="1.6" stroke-linecap="round"></path>
+                                        </svg>
+                                    </button>
+                                    </div>
+                                    <div class="overflow-y-auto py-4 min-h-[100px]">
+                                        <p class=" text-gray-600 text-sm">
+                                            ¿Estás seguro de que quieres cerrar sesión? <br />
+                                        </p>
+                                    </div>
+                                    <div class="flex items-center justify-end pt-4 border-t border-gray-200 space-x-4">
+                                        <button type="button" class="py-2.5 px-5 text-xs bg-indigo-50 text-indigo-500 rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-indigo-100 close-modal-button" data-pd-overlay="#logout-modal" data-modal-target="logout-modal">Cancelar</button>
+                                        <a href="{% url 'admin_logout' %}" class="py-2.5 px-5 text-xs  bg-indigo-500 text-white rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-indigo-700 close-modal-button" data-pd-overlay="#logout-modal" data-modal-target="logout-modal">
+                                            Sí, claro.
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                       {% block content %}{% endblock content %}
               </div>
           </div>

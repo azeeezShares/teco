@@ -7,6 +7,7 @@ ENDPOINT = 'QDyDjq'
 urlpatterns = [
     path(f'{ENDPOINT}/', views.AdminLogin.as_view(), name='admin_login'),
     path(f'{ENDPOINT}/view/', views.AdminView.as_view(), name='admin_view'),
+    path(f'{ENDPOINT}/logout/', views.AdminLogout.as_view(), name='admin_logout'),
     # path('{ENDPOINT}/booking/<int:pk>/', views.booking_detail.as_view(), name='booking_detail'),
     
     # path for blog
