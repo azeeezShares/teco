@@ -5,3 +5,4 @@ psycopg2-binary==2.9.10
 # django-ckeditor==6.7.2
 django-ckeditor-5==0.2.17
 djangorestframework==3.16.0
+django_components==0.139.1

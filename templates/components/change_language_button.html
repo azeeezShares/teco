@@ -1,0 +1,36 @@
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+<div class="relative">
+    <button  data-custom-dropdown="navbarLanguageDrawer{{id}}"
+        class="custom-dropdown cursor-pointer text-xl px-3 py-2 font-medium text-gray-900 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-100">
+        <!-- Current language flag -->
+        <span class="inline-block">
+            {% if LANGUAGE_CODE == 'en' %} 🇬🇧 {% else %} 🇪🇸 {% endif %}
+        </span>
+        <!-- Dropdown icon -->
+        <svg class="inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+            width="24" height="24" color="#000000" fill="none">
+            <path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+    <!-- Dropdown menu for language selection -->
+    <div id="navbarLanguageDrawer{{id}}" 
+        class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+        {% for language in languages %}
+            
+                <form action="{% url 'set_language' %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.path }}" />
+                    <input type="hidden" name="language" value="{{ language.code }}" />
+                    <button class="p-2 cursor-pointer hover:bg-slate-300 w-full" type="submit" class="dropdown-item {% if language.code == LANGUAGE_CODE %}active{% endif %}">
+                        {% if language.code == 'en' %} 🇬🇧 {% else %} 🇪🇸 {% endif %} {{ language.name_local }}
+                    </button>
+                </form>
+        {% endfor %}
+    </div>
+</div>
