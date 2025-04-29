@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-gdu5q0d_@mkey91zh)bexoua4+tg=6p$%kn^d@a*@=nd5^44ko'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -39,16 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    # installed
+    # apps
     "booking.apps.BookingConfig",
     "blog.apps.BlogConfig",
     "account.apps.AccountConfig",
     
-    # "froala_editor",
+    # installed
     "django_ckeditor_5",
-    'rest_framework',
+    "rest_framework",
     
-    "django_components",
     
 ]
 
@@ -144,15 +143,12 @@ LOCALE_PATHS = [
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Destination for collected files
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Destination for collected files
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ] # added this line
 
-
-MEDIA_URL = '/uploads/'
-MEDIA_ROOT = BASE_DIR / 'uploads'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
