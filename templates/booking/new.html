@@ -2,6 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
+
 {% block title %}<title> {% trans "Fix Your Ride – Book Now" %} | {% trans "Contact information" %} </title>{% endblock title %}
 {% block inner_content %}
 <form method='post' action="{% url 'new' %}" class="w-full flex-col justify-start items-start gap-8 flex">
