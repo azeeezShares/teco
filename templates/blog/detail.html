@@ -7,14 +7,14 @@
 {% block meta_tags %}
 <!-- Open Graph Meta Tags -->
 <meta property="og:title" content="{{ post.title }}">
-<meta property="og:description" content="{{ post.summary|truncatewords:20 }}">
+<meta property="og:description" content="{{ post.summary }}">
 <meta property="og:image" content="{{ post.image.url }}">
 <meta property="og:type" content="article">
 
 <!-- Twitter Card Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ post.title }}">
-<meta name="twitter:description" content="{{ post.summary|truncatewords:20 }}">
+<meta name="twitter:description" content="{{ post.summary }}">
 <meta name="twitter:image" content="{{ post.image.url }}">
 {% endblock meta_tags %}
 
@@ -26,7 +26,9 @@
     <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-500 mb-8">
         <!--show tags here-->
         {% for tag in post.tag.all %}
-            <a href="{% url "tag_list" tag.name %}" class="tag">#{{ tag.name }}</a>
+            {% if tag.name != 'homepage' %}
+                <a href="{% url "tag_list" tag.name %}" class="tag">#{{ tag.name }}</a>
+            {% endif %}
         {% endfor %}
     </h6>
 

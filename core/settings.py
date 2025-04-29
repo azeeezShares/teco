@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     # "froala_editor",
     "django_ckeditor_5",
     
+    "django_components",
+    
 ]
 
 MIDDLEWARE = [
@@ -72,6 +74,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                # 'django_components.context_processors.component_context', # added
+                
             ],
         },
     },

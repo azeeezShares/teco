@@ -1,5 +1,7 @@
 {% load static %}
 {% load i18n %}
+{% load teco_components %}
+
 {% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +9,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Taller de Reparació de Patinets Elèctrics i Bicicletes Elèctriques">
-    
     {% block title %}{% endblock title %}
     <link rel="shortcut icon" href="{%static 'img/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'config.css' %}">
@@ -18,81 +19,49 @@
 </head>
 <body>
     <section class="mb-32 ">
+
         <!-- Header Section -->
         <header
             class="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border border-gray-100 bg-white/80 py-3 shadow backdrop-blur-sm md:top-6 md:rounded-3xl lg:max-w-screen-lg">
             <div class="px-4">
                 <div class="flex items-center justify-between">
                     <!-- Logo and Website Title -->
-                    <div class="flex shrink-0">
-                        <a aria-current="page" class="flex items-center" href="/{{LANGUAGE_CODE}}/">
+                    <div class="flex shrink-0 gap-4">
+                        <a aria-current="page" class="flex items-center gap-4" href="/{{LANGUAGE_CODE}}/">
                             <!-- Website logo -->
                             <img src="{% static 'img/logo.png' %}" alt="Logo" class="h-10 w-10 rounded-full">
                             <!-- Screen-reader only text for accessibility -->
                             <p class="sr-only">Taller de Reparació de Patinets Elèctrics i Bicicletes Elèctriques</p>
+                            <h1 class="text-xl font-bold">TECOSHOP</h1>
+
                         </a>
                     </div>
 
-                    <!-- Navigation Links (Visible only on Medium and larger screens) -->
-                    <div class="hidden md:flex md:items-center md:justify-center md:gap-5">
-                        <a class="inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
-                            href="/#services">
-                            {% trans "Services" %}
-                            
-                        </a>
-                        <a class="inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
-                            href="/#locations">
-                            {% trans "Locations" %}
-                        </a>
-                        <a class="inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
-                            href="/#reviews">
-                            {% trans "Reviews" %}
-                        </a>
-                        <a class="inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
-                            href="{% url 'admin_login' %}">
-                            {% trans "Admin" %}
-                        </a>
-                        <a class="inline-block rounded-lg px-2 py-1 text-sm font-medium text-gray-900 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900"
-                            href="{% url 'blog_homeview' %}">
-                            {% trans "Blog" %}
-                        </a>
+                    {% navbar  %}
+                    
+
+                     <!-- Drawer for small screens -->
+                    <div class="relative" class="mobile-menu">
+
+                        <button data-custom-dropdown="navbarDrawer"
+                            class="inline-block md:hidden custom-dropdown cursor-pointer text-xl px-3 py-2 font-medium text-gray-900 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-100">
+                            <!-- Current language flag -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
+                                    <path d="M13.6903 19.4567C13.5 18.9973 13.5 18.4149 13.5 17.25C13.5 16.0851 13.5 15.5027 13.6903 15.0433C13.944 14.4307 14.4307 13.944 15.0433 13.6903C15.5027 13.5 16.0851 13.5 17.25 13.5C18.4149 13.5 18.9973 13.5 19.4567 13.6903C20.0693 13.944 20.556 14.4307 20.8097 15.0433C21 15.5027 21 16.0851 21 17.25C21 18.4149 21 18.9973 20.8097 19.4567C20.556 20.0693 20.0693 20.556 19.4567 20.8097C18.9973 21 18.4149 21 17.25 21C16.0851 21 15.5027 21 15.0433 20.8097C14.4307 20.556 13.944 20.0693 13.6903 19.4567Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round" />
+                                    <path d="M13.6903 8.95671C13.5 8.49728 13.5 7.91485 13.5 6.75C13.5 5.58515 13.5 5.00272 13.6903 4.54329C13.944 3.93072 14.4307 3.44404 15.0433 3.1903C15.5027 3 16.0851 3 17.25 3C18.4149 3 18.9973 3 19.4567 3.1903C20.0693 3.44404 20.556 3.93072 20.8097 4.54329C21 5.00272 21 5.58515 21 6.75C21 7.91485 21 8.49728 20.8097 8.95671C20.556 9.56928 20.0693 10.056 19.4567 10.3097C18.9973 10.5 18.4149 10.5 17.25 10.5C16.0851 10.5 15.5027 10.5 15.0433 10.3097C14.4307 10.056 13.944 9.56928 13.6903 8.95671Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round" />
+                                    <path d="M3.1903 19.4567C3 18.9973 3 18.4149 3 17.25C3 16.0851 3 15.5027 3.1903 15.0433C3.44404 14.4307 3.93072 13.944 4.54329 13.6903C5.00272 13.5 5.58515 13.5 6.75 13.5C7.91485 13.5 8.49728 13.5 8.95671 13.6903C9.56928 13.944 10.056 14.4307 10.3097 15.0433C10.5 15.5027 10.5 16.0851 10.5 17.25C10.5 18.4149 10.5 18.9973 10.3097 19.4567C10.056 20.0693 9.56928 20.556 8.95671 20.8097C8.49728 21 7.91485 21 6.75 21C5.58515 21 5.00272 21 4.54329 20.8097C3.93072 20.556 3.44404 20.0693 3.1903 19.4567Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round" />
+                                    <path d="M3.1903 8.95671C3 8.49728 3 7.91485 3 6.75C3 5.58515 3 5.00272 3.1903 4.54329C3.44404 3.93072 3.93072 3.44404 4.54329 3.1903C5.00272 3 5.58515 3 6.75 3C7.91485 3 8.49728 3 8.95671 3.1903C9.56928 3.44404 10.056 3.93072 10.3097 4.54329C10.5 5.00272 10.5 5.58515 10.5 6.75C10.5 7.91485 10.5 8.49728 10.3097 8.95671C10.056 9.56928 9.56928 10.056 8.95671 10.3097C8.49728 10.5 7.91485 10.5 6.75 10.5C5.58515 10.5 5.00272 10.5 4.54329 10.3097C3.93072 10.056 3.44404 9.56928 3.1903 8.95671Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round" />
+                                </svg>
+                        </button>
+                                                
                         
                     </div>
 
-                    <!-- Right Section (Includes Language Selector) -->
-                    <div class="flex items-center justify-end gap-3">
-                        <!-- Dropdown button for changing languages using Tailwind -->
-                        <div class="relative">
-                            <button id="dropdownButton"
-                                class="cursor-pointer text-xl px-3 py-2 font-medium text-gray-900 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-100">
-                                <!-- Current language flag -->
-                                <span class="inline-block">
-                                    {% if LANGUAGE_CODE == 'en' %} 🇬🇧 {% else %} 🇪🇸 {% endif %}
-                                </span>
-                                <!-- Dropdown icon -->
-                                <svg class="inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                    width="24" height="24" color="#000000" fill="none">
-                                    <path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9"
-                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </button>
-                            <!-- Dropdown menu for language selection -->
-                            <form id="dropdownMenu" action="{% url 'set_language' %}" method="post"
-                                class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
-                                {% csrf_token %}
+                    
 
-                                <!-- english -->
-                                <a href="/en/"
-                                    class="block cursor-pointer px-4 py-2 text-xl text-gray-700 hover:bg-gray-100">🇬🇧
-                                    English
-                                </a>
-                                <!-- espanol -->
-                                <a href="/es/"
-                                    class="block cursor-pointer px-4 py-2 text-xl text-gray-700 hover:bg-gray-100">🇪🇸
-                                    Español</a>
-                            </form>
-                        </div>
+                    <!-- Right Section (Includes Language Selector) -->
+                    <div class="hidden md:flex items-center justify-end gap-3">
+                        {% change_language_button 1 %}
                     </div>
                 </div>
             </div>
@@ -100,18 +69,54 @@
 
         <!-- Script to toggle the dropdown menu visibility -->
         <script>
-            document.getElementById('dropdownButton').addEventListener('click', function () {
-                document.getElementById('dropdownMenu').classList.toggle('hidden');
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('.custom-dropdown').forEach(function (button) {
+                    button.addEventListener('click', function () {
+                        console.log("workin..");
+                        const targetId = button.getAttribute('data-custom-dropdown');
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.classList.toggle('hidden');
+                        }
+                    });
+                });
             });
         </script>
 
     </section>
+
+    <div id="navbarDrawer"
+        class="hidden w-80 h-full  fixed top-0 right-0 z-50 bg-slate-100">
+        <button
+         class="custom-dropdown text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5  left-2.5 flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" 
+         data-custom-dropdown="navbarDrawer">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+            </svg>
+            <span class="sr-only">Close menu</span>
+        </button>
+
+        <div class="flex flex-col items-start justify-start gap-3 mt-10 pl-2.5">
+
+                <h3 class="text-xl font-semibold">{% trans "Quick Links" %}</h3>
+                <ul class="mt-2 space-y-2">
+                    <li><a href="/{{LANGUAGE_CODE}}/#services" class="text-sm hover:text-blue-400">{% trans "Services" %}</a></li>
+                    <li><a href="/{{LANGUAGE_CODE}}/#locations" class="text-sm hover:text-blue-400">{% trans "Locations" %}</a></li>
+                    <li><a href="/{{LANGUAGE_CODE}}/#reviews" class="text-sm hover:text-blue-400">{% trans "Reviews" %}</a></li>
+                    <li><a href="{% url 'blog_homeview' %}" class="text-sm hover:text-blue-400">{% trans "Blog" %}</a></li>
+                </ul>
+                {% change_language_button 2 %}
+
+
+        </div> 
+    </div>
+
     
     {% block content %}
 
     {% endblock content %}
 
-
+    
     <!-- footer section -->
     <footer class="mt-24  relative backdrop-blur-lg bg-white/10">
         <div class="absolute inset-0">
@@ -121,7 +126,7 @@
         <div class="relative max-w-6xl mx-auto px-6 py-12">
             <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
                 <!-- Left Section -->
-                <div data-aos="fade-up">
+                <div data-aos="fade-right">
                     <h3 class="text-xl font-semibold">TECOSHOP</h3>
                     <p class="mt-4 text-sm">Designed and built with all the love in the world by</br><a href="https://silvara.uz/?source=tecoshop.es" target="_blank" class="text-sky-500">🇺🇿 silvara.uz</a> with the help of our contributors.</p>
                     <div class="mt-4">
@@ -135,10 +140,11 @@
                         <li><a href="#services" class="text-sm hover:text-blue-400">{% trans "Services" %}</a></li>
                         <li><a href="#locations" class="text-sm hover:text-blue-400">{% trans "Locations" %}</a></li>
                         <li><a href="#reviews" class="text-sm hover:text-blue-400">{% trans "Reviews" %}</a></li>
+                        <li><a href="{% url 'blog_homeview' %}" class="text-sm hover:text-blue-400">{% trans "Blog" %}</a></li>
                     </ul>
                 </div>
                 <!-- Right Section -->
-                <div data-aos="fade-up">
+                <div data-aos="fade-left" >
                     <h3 class="text-xl font-semibold">{% trans "Contact Us" %}</h3>
                     <p class="mt-4 text-sm">
                         {% for branch in branches %}
@@ -213,7 +219,7 @@
 
         </script>
         <p class="max-w-lg mb-6 text-sm text-gray-400">
-     {{request.COOKIES.consent}}
+            {{request.COOKIES.consent}}
 
             {% trans "We use cookies to enhance your browsing experience. By continuing to use our website, you consent to the use of cookies. You may choose to accept or reject them." %}
             <br />
