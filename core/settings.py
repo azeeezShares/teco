@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-gdu5q0d_@mkey91zh)bexoua4+tg=6p$%kn^d@a*@=nd5^44ko'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     
     # "froala_editor",
     "django_ckeditor_5",
+    'rest_framework',
     
     "django_components",
     
@@ -141,17 +143,21 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Destination for collected files
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ] # added this line
-STATIC_ROOT = 'staticfiles' # added this line
+
+
+MEDIA_URL = '/uploads/'
+MEDIA_ROOT = BASE_DIR / 'uploads'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'account.CustomUser'
 LOGIN_URL = "admin_login"

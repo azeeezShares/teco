@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
-{% block title %}<title> {% trans "TECOSHOP - electric scooter workshop" %} </title>{% endblock title %}
+<!-- {% block title %}<title> </title>{% endblock title %} -->
 
 
 {% block meta_tags %}
-<!-- Open Graph Meta Tags -->
+
+
+
+
+<title> {{ post.title }} | Tecoshop.es </title>
+<meta charset="utf-8" />
+<meta name="description"content="{{ post.summary}}"/>
+<meta name="keywords" content="kalit so'zlar, yangiliklar, xabarlar" />
 <meta property="og:title" content="{{ post.title }}">
 <meta property="og:description" content="{{ post.summary }}">
 <meta property="og:image" content="{{ post.image.url }}">
@@ -16,6 +23,31 @@
 <meta name="twitter:title" content="{{ post.title }}">
 <meta name="twitter:description" content="{{ post.summary }}">
 <meta name="twitter:image" content="{{ post.image.url }}">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{ post.title|escapejs }}",
+      "description": "{{ post.summary|truncatewords:20|escapejs }}",
+      "image": "{{ post.image.url }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ post.author.get_full_name }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tecoshop.es",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ site_logo_url }}"
+        }
+      },
+      "datePublished": "{{ post.created_at|date:'Y-m-d' }}",
+      "dateModified": "{{ post.updated_at|date:'Y-m-d' }}"
+    }
+</script>
 {% endblock meta_tags %}
 
 {% block content %}
