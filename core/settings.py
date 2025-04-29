@@ -33,10 +33,10 @@ SECRET_KEY = 'django-insecure-gdu5q0d_@mkey91zh)bexoua4+tg=6p$%kn^d@a*@=nd5^44ko
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["www.tecoshop.es", "tecoshop.es"]
 
 
 
@@ -52,15 +52,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
    
-    # apps
+    # installed
     "booking.apps.BookingConfig",
     "blog.apps.BlogConfig",
     "account.apps.AccountConfig",
    
-    # installed
+    # "froala_editor",
     "django_ckeditor_5",
-    "rest_framework",
-   
+    'rest_framework',
    
 ]
 
@@ -91,9 +90,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-               
-                # 'django_components.context_processors.component_context', # added
-               
             ],
         },
     },
@@ -111,8 +107,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'tecoshopdata',
+        'USER': 'tecoshop',
+        'PASSWORD': '1122',
+        'HOST': 'localhost',  # Or your PostgreSQL server IP
+        'PORT': '5432',       # Default PostgreSQL port
     }
 }
 
@@ -177,7 +177,7 @@ LOCALE_PATHS = [
 STATIC_URL = 'static/'
 
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Destination for collected files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Destination for collected files
 
 
 STATICFILES_DIRS = [
@@ -185,6 +185,10 @@ STATICFILES_DIRS = [
 ] # added this line
 
 
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type
@@ -300,4 +304,4 @@ CKEDITOR_5_CONFIGS = {
         }
     }
 }
-
+	
