@@ -1,84 +1,82 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
-<!-- {% block title %}<title> </title>{% endblock title %} -->
 
 
 {% block meta_tags %}
+  <title> {{ post.title }} | Tecoshop.es </title>
+  <meta charset="utf-8" />
+  <meta name="description"content="{{ post.summary}}"/>
+  <meta name="keywords" content="kalit so'zlar, yangiliklar, xabarlar" />
+  <meta property="og:title" content="{{ post.title }}">
+  <meta property="og:description" content="{{ post.summary }}">
+  <meta property="og:image" content="{{ post.image.url }}">
+  <meta property="og:type" content="article">
 
-
-
-
-<title> {{ post.title }} | Tecoshop.es </title>
-<meta charset="utf-8" />
-<meta name="description"content="{{ post.summary}}"/>
-<meta name="keywords" content="kalit so'zlar, yangiliklar, xabarlar" />
-<meta property="og:title" content="{{ post.title }}">
-<meta property="og:description" content="{{ post.summary }}">
-<meta property="og:image" content="{{ post.image.url }}">
-<meta property="og:type" content="article">
-
-<!-- Twitter Card Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ post.title }}">
-<meta name="twitter:description" content="{{ post.summary }}">
-<meta name="twitter:image" content="{{ post.image.url }}">
-<meta name="robots" content="index, follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "{{ post.title|escapejs }}",
-      "description": "{{ post.summary|truncatewords:20|escapejs }}",
-      "image": "{{ post.image.url }}",
-      "author": {
-        "@type": "Person",
-        "name": "{{ post.author.get_full_name }}"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Tecoshop.es",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "{{ site_logo_url }}"
-        }
-      },
-      "datePublished": "{{ post.created_at|date:'Y-m-d' }}",
-      "dateModified": "{{ post.updated_at|date:'Y-m-d' }}"
-    }
-</script>
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ post.title }}">
+  <meta name="twitter:description" content="{{ post.summary }}">
+  <meta name="twitter:image" content="{{ post.image.url }}">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{ post.title|escapejs }}",
+        "description": "{{ post.summary|truncatewords:20|escapejs }}",
+        "image": "{{ post.image.url }}",
+        "author": {
+          "@type": "Person",
+          "name": "{{ post.author.get_full_name }}"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Tecoshop.es",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ site_logo_url }}"
+          }
+        },
+        "datePublished": "{{ post.created_at|date:'Y-m-d' }}",
+        "dateModified": "{{ post.updated_at|date:'Y-m-d' }}"
+      }
+  </script>
 {% endblock meta_tags %}
 
 {% block content %}
 
 
-<div class="mx-auto max-w-screen-md">
-    <!-- disable auto row -->
-    <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-500 mb-8">
-        <!--show tags here-->
-        {% for tag in post.tag.all %}
-            {% if tag.name != 'homepage' %}
-                <a href="{% url "tag_list" tag.name %}" class="tag">#{{ tag.name }}</a>
-            {% endif %}
-        {% endfor %}
-    </h6>
+  <div class="px-4 md:p-10 rounded-sm md:bg-white  mx-auto max-w-screen-md" id="blog_detail">
+      <!-- disable auto row -->
+      <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-500 mb-6">
+          <!--show tags here-->
+          {% for tag in post.tag.all %}
+              {% if tag.name != 'homepage' %}
+                  <a href="{% url "tag_list" tag.name %}" class="tag">#{{ tag.name }}</a>
+              {% endif %}
+          {% endfor %}
+      </h6>
 
-    <div class="flex items-start justify-center flex-col">
-        <!-- article details -->
-        <div class="flex items-center text-sm text-blue-gray-900 text-gray-400 font-normal">
-            <p class="mr-2">{{post.author}}</p> | <p class="mx-2">{{post.updated_on}}</p>
-        </div>
-        <h2 class="block antialiased tracking-normal font-sans text-4xl font-semibold leading-[1.3] text-blue-gray-900  mb-6">
-            {{ post.title }}
-        </h2>
+      <div class="flex items-start justify-center flex-col">
+          <h2 class="block antialiased tracking-normal font-sans text-4xl font-semibold leading-[1.3] text-blue-gray-900  mb-6 pl-2  border-l-4 border-l-[var(--color-primary)]">
+              {{ post.title }}
+          </h2>
+                    <!-- article details -->
+                    <div class="flex items-center text-sm text-blue-gray-900 text-gray-400 font-normal mb-6">
+                      <p class="">{{ post.author.first_name }}</p>
+                      <span>/</span> 
+                      <p class="">{{ post.updated_on|date:"F j, Y" }}</p>
+                  </div>
 
-        <img alt="post" loading="lazy" width="768" height="500" decoding="async" data-nimg="1" class="mb-4 h-[28rem] w-full rounded-xl object-cover" src="{{post.image.url}}" style="color: transparent;">
+          <img alt="post" loading="lazy" width="768" height="500" decoding="async" data-nimg="1" class="mb-4 h-[28rem] w-full rounded-xl object-cover" src="{{post.image.url}}" style="color: transparent;">
 
+          <div class="post-content">
+            {{ post.content|safe }}
+          </div>
+      </div>
+  </div>
 
-        {{ post.content|safe }}
-    </div>
-</div>
-    
 
 {% endblock content %}

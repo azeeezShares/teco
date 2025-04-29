@@ -5,11 +5,9 @@
 {% block title %}<title> {% trans "TECOSHOP - book a session" %} </title>{% endblock title %}
 {% block content %}
 
-<main>
-    <div class="mx-3 md:mx-24">
+<main id="hero">
+    <div class="">
         <section class="relative">
-
-
             <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
                 <div class="w-full flex-col justify-start items-start gap-12 inline-flex">
                     <h2 class="w-full text-center text-gray-900 text-4xl font-bold font-manrope leading-normal"> 
@@ -18,7 +16,9 @@
                         {% else %} {% trans "Completed" %}
                         {% endif %}
                     </h2>
-                    <div class="w-full flex-col justify-center items-center gap-8 flex">
+
+                    <!--Progress bar-->
+                    <div class="hidden md:flex w-full flex-col justify-center items-center gap-8 ">
                         <ol
                             class="w-full flex items-center justify-center gap-8 text-xs text-gray-900 font-medium sm:text-base">
                             <li
@@ -60,6 +60,7 @@
                             </li>
                         </ol>
                     </div>
+
                     <div
                         class="w-full lg:p-11 md:p-8 p-7 bg-white rounded-3xl shadow-[0px_15px_60px_-4px_rgba(16,_24,_40,_0.08)] flex-col justify-start items-start flex">
                         <div class="w-full flex-col justify-start items-start gap-8 flex">
@@ -73,5 +74,7 @@
         </section>
     </div>
 </main>
+
+
 
 {% endblock %}
