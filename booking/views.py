@@ -4,9 +4,11 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
 from django.contrib import messages
 from django.utils.translation import gettext as _
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Branch, Client, Service, Booking
 from blog.models import Post, Tag
+from .forms import BookingForm
 
 
 # function to check sesssion data before rendering
@@ -140,7 +142,56 @@ class booking_select(View):
     
 class booking_success(TemplateView):
     template_name = 'booking/success.html'
-    
+
+
+class AdminBookingEdit(LoginRequiredMixin, View):
+    template_name = 'booking/admin_edit.html'
+
+    def get(self, request, booking_id, *args, **kwargs):
+        # Fetch the booking object
+        try:
+            booking = Booking.objects.get(pk=booking_id)
+        except Booking.DoesNotExist:
+            messages.error(request, _('Booking not found.'), extra_tags='alert alert-danger')
+            return redirect('admin_view')  # Redirect to a list of bookings or another appropriate page
+
+        # Initialize the form with the booking instance
+        form = BookingForm(instance=booking)
+
+        # Pass the form and other data to the template
+        context = {
+            'form': form,
+            'booking': booking,
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request, booking_id, *args, **kwargs):
+        # Fetch the booking object
+        try:
+            booking = Booking.objects.get(pk=booking_id)
+        except Booking.DoesNotExist:
+            messages.error(request, _('Booking not found.'), extra_tags='alert alert-danger')
+            return redirect('admin_view')
+
+        # Bind the form with POST data and the booking instance
+        form = BookingForm(request.POST, instance=booking)
+
+        if form.is_valid():
+            # Save the updated booking
+            form.save()
+            messages.success(request, _('Booking updated successfully.'), extra_tags='alert alert-success')
+            return redirect('admin_view')  # Redirect to a list of bookings or another appropriate page
+        else:
+            print(form.errors)
+            # If the form is invalid, display errors
+            messages.error(request, _('Please correct the errors below.'), extra_tags='alert alert-danger')
+
+        # Pass the form back to the template
+        context = {
+            'form': form,
+            'booking': booking,
+        }
+        return render(request, self.template_name, context)
 
 # View to handle cookie consent
 class CookieConsentView(View):

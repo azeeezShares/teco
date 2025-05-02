@@ -1,12 +1,17 @@
 from django.urls import path
 from . import views
 import blog.views as blog_views
+import booking.views as booking_views
 
 ENDPOINT = 'QDyDjq'
 
 urlpatterns = [
     path(f'{ENDPOINT}/', views.AdminLogin.as_view(), name='admin_login'),
+    
     path(f'{ENDPOINT}/view/', views.AdminView.as_view(), name='admin_view'),
+    path(f'{ENDPOINT}/booking/edit/<int:booking_id>/', booking_views.AdminBookingEdit.as_view(), name='admin_booking_edit'),
+    
+    
     path(f'{ENDPOINT}/logout/', views.AdminLogout.as_view(), name='admin_logout'),
     # path('{ENDPOINT}/booking/<int:pk>/', views.booking_detail.as_view(), name='booking_detail'),
     

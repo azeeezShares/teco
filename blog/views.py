@@ -32,7 +32,6 @@ class TagList(generic.ListView):
         context['tag'] = self.kwargs['tag']
         return context
     
-
 # pages for admin
 class AdminPostList(LoginRequiredMixin, generic.ListView):
     queryset = Post.objects.all().order_by('-created_on')
