@@ -14,12 +14,15 @@
     </svg>
     <!-- show success message -->
     <h1 class="text-2xl font-bold text-center text-gray-800 mt-4">
-        Your booking has been successfully completed. <br>
-        We will contact you to confirm your booking.
+        {% trans "Your booking has been successfully completed." %} <br>
+        {% trans "We will contact you to confirm your booking." %}
+        
     </h1>
     <!-- remind date and time -->
     <p class="text-center text-gray-600 mt-4">
-        Your booking is on <span class="font-semibold">{{details.booking.booking_datetime}}</span> .
+        Your booking is on 
+        {% trans "Date to book." %}
+        <span class="font-semibold">{{details.booking.booking_datetime}}</span> .
     </p>
 
    
