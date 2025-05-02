@@ -49,7 +49,7 @@ class Branch(models.Model):
         for day, periods in self.opening_hours.items():
             try:
                 if periods == 'cerrado':
-                    formatted_hours.append(f'<div role="button" class="text-slate-800 flex w-full items-center rounded-md p-3 transition-all">{day.capitalize()}: Cerrado</div>')
+                    formatted_hours.append(f'<div role="button" class="text-slate-800 flex w-full items-center rounded-md  transition-all">{day.capitalize()}: Cerrado</div>')
                 else:
                     now_open = False
                     # Assuming periods is a list of dictionaries with 'open' and 'close' keys
@@ -61,9 +61,9 @@ class Branch(models.Model):
                             now_open = True
                         periods_list.append(f"{period['open']} - {period['close']}")
                     bg_class = "bg-slate-100" if now_open else ""
-                    formatted_hours.append(f'<div role="button" class="text-slate-800 flex w-full items-center rounded-md p-3 transition-all {bg_class}">{day.capitalize()}: {", ".join(periods_list)}</div>')
+                    formatted_hours.append(f'<div role="button" class="text-slate-800 flex w-full items-center rounded-md  transition-all {bg_class}">{day.capitalize()}: {", ".join(periods_list)}</div>')
             except Exception as e:
-                formatted_hours.append(f'<div role="button" class="text-slate-800 flex w-full items-center rounded-md p-3 transition-all">{day.capitalize()}: Error parsing hours</div>')
+                formatted_hours.append(f'<div role="button" class="text-slate-800 flex w-full items-center rounded-md  transition-all">{day.capitalize()}: Error parsing hours</div>')
         return "\n".join(formatted_hours)
         # return "\n"
 

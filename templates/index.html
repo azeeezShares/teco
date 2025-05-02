@@ -294,16 +294,29 @@
                         <img src="{{branch.image.url}}" alt="Reus photo"
                             class="rounded-xl w-[364px] h-[317px]">
                     </div>
-                    <div class="flex flex-col items-center justify-center py-6 gap-4 text-center">
-                        <h4 class="font-manrope font-bold text-xl text-gray-900 text-center flex gap-1">
+                    <div class="flex flex-col items-center justify-center text-center">
+                        <h4 class="mt-3 font-manrope font-bold text-xl text-gray-900 text-center flex gap-1">
                             {{branch.name}}
                             {% if branch.is_now_open %}
-                                <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">Open</span>
+                                <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">{% trans "Open" %}</span>
                             {% else %}
-                                <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-red-600/10 ring-inset">Closed</span>
+                                <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-red-600/10 ring-inset">{% trans "Closed" %}</span>
                             {% endif %}
                         </h4>
-                        <p class="text-base font-medium text-gray-500 mb-4 text-center">
+                        <p class="mt-3 text-sm text-slate-600 flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
+                                <path d="M13.6177 21.367C13.1841 21.773 12.6044 22 12.0011 22C11.3978 22 10.8182 21.773 10.3845 21.367C6.41302 17.626 1.09076 13.4469 3.68627 7.37966C5.08963 4.09916 8.45834 2 12.0011 2C15.5439 2 18.9126 4.09916 20.316 7.37966C22.9082 13.4393 17.599 17.6389 13.6177 21.367Z" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M15.5 11C15.5 12.933 13.933 14.5 12 14.5C10.067 14.5 8.5 12.933 8.5 11C8.5 9.067 10.067 7.5 12 7.5C13.933 7.5 15.5 9.067 15.5 11Z" stroke="currentColor" stroke-width="1.5" />
+                            </svg>
+                            {{branch.address}}
+                        </p>
+                        <p class="mt-3 text-sm text-slate-600 flex ">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none">
+                                <path d="M9.1585 5.71223L8.75584 4.80625C8.49256 4.21388 8.36092 3.91768 8.16405 3.69101C7.91732 3.40694 7.59571 3.19794 7.23592 3.08785C6.94883 3 6.6247 3 5.97645 3C5.02815 3 4.554 3 4.15597 3.18229C3.68711 3.39702 3.26368 3.86328 3.09497 4.3506C2.95175 4.76429 2.99278 5.18943 3.07482 6.0397C3.94815 15.0902 8.91006 20.0521 17.9605 20.9254C18.8108 21.0075 19.236 21.0485 19.6496 20.9053C20.137 20.7366 20.6032 20.3131 20.818 19.8443C21.0002 19.4462 21.0002 18.9721 21.0002 18.0238C21.0002 17.3755 21.0002 17.0514 20.9124 16.7643C20.8023 16.4045 20.5933 16.0829 20.3092 15.8362C20.0826 15.6393 19.7864 15.5077 19.194 15.2444L18.288 14.8417C17.6465 14.5566 17.3257 14.4141 16.9998 14.3831C16.6878 14.3534 16.3733 14.3972 16.0813 14.5109C15.7762 14.6297 15.5066 14.8544 14.9672 15.3038C14.4304 15.7512 14.162 15.9749 13.834 16.0947C13.5432 16.2009 13.1588 16.2403 12.8526 16.1951C12.5071 16.1442 12.2426 16.0029 11.7135 15.7201C10.0675 14.8405 9.15977 13.9328 8.28011 12.2867C7.99738 11.7577 7.85602 11.4931 7.80511 11.1477C7.75998 10.8414 7.79932 10.457 7.90554 10.1663C8.02536 9.83828 8.24905 9.56986 8.69643 9.033C9.14586 8.49368 9.37058 8.22402 9.48939 7.91891C9.60309 7.62694 9.64686 7.3124 9.61719 7.00048C9.58618 6.67452 9.44362 6.35376 9.1585 5.71223Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+                            <a href="tel:{{branch.phone_number}}" class="text-blue-600">{{branch.phone_number}}</a>
+                        </p>
+                        <p class="mt-3 text-base font-medium text-gray-500 text-center">
 
                             <div class="relative flex flex-col">
                                 <button id="openingHoursDropdown{{branch.id}}" class="font-medium text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
@@ -314,14 +327,14 @@
                                 </button>
                                 
                                 <!-- Dropdown menu -->
-                                <nav id="dropdown" class="hidden flex min-w-[240px] flex-col gap-1 p-1.5" >
-                                {{branch.get_formatted_opening_hours|safe}}
+                                <nav id="dropdown{{branch.id}}" class="hidden absolute top-10 flex min-w-[240px] flex-col gap-1 p-1.5 rounded-md bg-white shadow-xl z-50" >
+                                    {{branch.get_formatted_opening_hours|safe}}
                                 </nav>
 
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function () {
                                         const dropdownButton = document.getElementById("openingHoursDropdown{{branch.id}}");
-                                        const dropdownMenu = document.getElementById("dropdown");
+                                        const dropdownMenu = document.getElementById("dropdown{{branch.id}}");
 
                                         dropdownButton.addEventListener("click", function () {
                                             dropdownMenu.classList.toggle("hidden");
@@ -338,7 +351,7 @@
                             </div>
 
                         </p>
-                        <div class="flex items-center justify-center w-full gap-4">
+                        <div class="mt-3 flex items-center justify-center w-full gap-4">
                             <a target="_blank"
                                 href="{% url "new" %}"
                                 class="block md:inline-block transition mt-2 py-2 px-8 text-lg font-semibold text-center border border-1 border-black bg-[var(--color-secondary)] text-black hover:bg-white rounded-lg ">
