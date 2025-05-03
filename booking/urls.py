@@ -11,4 +11,6 @@ urlpatterns = [
     # path for cookies
     path('cookie-consent/', views.CookieConsentView.as_view(), name='cookie_consent'),
     
+    path('politica-de-cookies/', views.PoliticaDeCookies.as_view(), name='politica_de_cookies')
+    
 ]

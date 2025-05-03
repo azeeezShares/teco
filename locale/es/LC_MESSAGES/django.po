@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-02 15:50+0500\n"
+"POT-Creation-Date: 2025-05-03 12:05+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,12 +32,10 @@ msgid "Superuser must have is_superuser=True."
 msgstr ""
 
 #: .\account\models.py:12
-#, fuzzy
-#| msgid "Email address"
 msgid "email address"
 msgstr "Dirección de correo electrónico"
 
-#: .\account\views.py:28 .\booking\views.py:64 .\booking\views.py:107
+#: .\account\views.py:28 .\booking\views.py:66 .\booking\views.py:109
 msgid "Please fill in all required fields."
 msgstr ""
 
@@ -45,15 +43,15 @@ msgstr ""
 msgid "Invalid credentials."
 msgstr ""
 
-#: .\booking\views.py:155 .\booking\views.py:173
+#: .\booking\views.py:157 .\booking\views.py:175
 msgid "Booking not found."
 msgstr ""
 
-#: .\booking\views.py:182
+#: .\booking\views.py:184
 msgid "Booking updated successfully."
 msgstr ""
 
-#: .\booking\views.py:187
+#: .\booking\views.py:189
 msgid "Please correct the errors below."
 msgstr ""
 
@@ -425,14 +423,10 @@ msgid "Small integer"
 msgstr ""
 
 #: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2183
-#, fuzzy
-#| msgid "Email address"
 msgid "IPv4 address"
 msgstr "Dirección de correo electrónico"
 
 #: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2214
-#, fuzzy
-#| msgid "Email address"
 msgid "IP address"
 msgstr "Dirección de correo electrónico"
 
@@ -1349,52 +1343,56 @@ msgstr ""
 msgid "404 - not found!"
 msgstr ""
 
-#: .\templates\base.html:101 .\templates\base.html:139
+#: .\templates\base.html:101 .\templates\base.html:144
 msgid "Quick Links"
 msgstr "Enlaces Rápidos"
 
-#: .\templates\base.html:103 .\templates\base.html:141
+#: .\templates\base.html:103 .\templates\base.html:146
 #: .\templates\booking\select.html:160 .\templates\components\navbar.html:7
 msgid "Services"
 msgstr "Servicios"
 
-#: .\templates\base.html:104 .\templates\base.html:142
+#: .\templates\base.html:104 .\templates\base.html:147
 #: .\templates\components\navbar.html:12
 msgid "Locations"
 msgstr "Ubicaciones"
 
-#: .\templates\base.html:105 .\templates\base.html:143
+#: .\templates\base.html:105 .\templates\base.html:148
 #: .\templates\components\navbar.html:16
 msgid "Reviews"
 msgstr "Reseñas"
 
-#: .\templates\base.html:106 .\templates\base.html:144
+#: .\templates\base.html:106 .\templates\base.html:149
 #: .\templates\components\navbar.html:20
 msgid "Blog"
 msgstr "Blog"
 
-#: .\templates\base.html:107 .\templates\base.html:145
+#: .\templates\base.html:107 .\templates\base.html:150
 #: .\templates\components\navbar.html:24
 msgid "Book Appointment"
 msgstr "Reservar Cita"
 
-#: .\templates\base.html:134
+#: .\templates\base.html:139
 msgid "Contact with silvara.uz"
 msgstr "Contacto con silvara.uz"
 
-#: .\templates\base.html:150
+#: .\templates\base.html:155
 msgid "Contact Us"
 msgstr "Contáctanos"
 
-#: .\templates\base.html:166
+#: .\templates\base.html:180
 msgid "Mail us"
 msgstr "Envíanos un correo"
 
 #: .\templates\base.html:185
+msgid "All rights reserved."
+msgstr ""
+
+#: .\templates\base.html:199
 msgid "Accept the use of cookies"
 msgstr "Aceptar el uso de cookies"
 
-#: .\templates\base.html:229
+#: .\templates\base.html:243
 msgid ""
 "We use cookies to enhance your browsing experience. By continuing to use our "
 "website, you consent to the use of cookies. You may choose to accept or "
@@ -1404,19 +1402,19 @@ msgstr ""
 "usando nuestro sitio web, aceptas el uso de cookies. Puedes elegir "
 "aceptarlas o rechazarlas."
 
-#: .\templates\base.html:232
+#: .\templates\base.html:246
 msgid "For more information, please read our"
 msgstr "Para más información, por favor lee nuestra"
 
-#: .\templates\base.html:234
+#: .\templates\base.html:248
 msgid "Cookie policy"
 msgstr "Política de cookies"
 
-#: .\templates\base.html:245
+#: .\templates\base.html:259
 msgid "Accept all Cookies"
 msgstr "Aceptar todas las cookies"
 
-#: .\templates\base.html:249
+#: .\templates\base.html:263
 msgid "Reject all Cookies"
 msgstr "Rechazar todas las cookies"
 
@@ -1631,8 +1629,6 @@ msgid "Stay updated with our latest news and tips"
 msgstr "Mantente actualizado con nuestras últimas noticias y consejos"
 
 #: .\templates\index.html:140
-#, fuzzy
-#| msgid "Services"
 msgid "Our Services"
 msgstr "Nuestros Servicios"
 
@@ -1641,51 +1637,53 @@ msgid "Reliable Service, Quality Repairs"
 msgstr "Servicio Confiable, Reparaciones de Calidad"
 
 #: .\templates\index.html:162
-msgid "Easy Payment"
-msgstr "Pago Fácil"
+msgid "Professional Diagnosis"
+msgstr "Diagnóstico Profesional"
 
 #: .\templates\index.html:166
 msgid ""
-"We Provide Various Methods For You To Carry Out All Transactions Related To "
-"Your Finances"
+"Our highly trained technicians will examine your scooter or electric bike to "
+"identify any issues and provide you with a fair and transparent quote."
 msgstr ""
-"Ofrecemos varios métodos para que realices todas las transacciones "
-"relacionadas con tus finanzas"
+"Nuestros técnicos altamente capacitados examinarán tu patinete o bicicleta "
+"eléctrica para identificar cualquier problema y proporcionarte un "
+"presupuesto justo y transparente."
 
 #: .\templates\index.html:183
-msgid "Safe Transaction"
-msgstr "Transacción Segura"
+msgid "Quick Repairs"
+msgstr "Reparaciones Rápidas"
 
 #: .\templates\index.html:187
 msgid ""
-"We have the most up-to-date security to support the security of all our "
-"customers in carrying out all transactions."
+"We work efficiently to resolve any issue, from electrical problems to worn "
+"tires, so you can get back to enjoying your electric scooter or bike as "
+"quickly as possible."
 msgstr ""
-"Contamos con la seguridad más actualizada para garantizar la protección de "
-"todos nuestros clientes en sus transacciones."
+"Trabajamos eficientemente para resolver cualquier problema, desde fallos "
+"eléctricos hasta neumáticos desgastados, para que puedas volver a disfrutar "
+"de tu patinete o bicicleta eléctrica lo más rápido posible."
 
 #: .\templates\index.html:204
-msgid "Fast Customer Service "
-msgstr "Atención al Cliente Rápida"
+msgid "Preventive Maintenance"
+msgstr "Mantenimiento Preventivo"
 
 #: .\templates\index.html:208
 msgid ""
-"Provide Customer Service For Those Of You Who Have Problems 24 Hours A Week"
+"We offer regular maintenance programs to keep your scooter or electric bike "
+"in optimal condition."
 msgstr ""
-"Ofrecemos atención al cliente para quienes tengan problemas, las 24 horas de "
-"la semana."
+"Ofrecemos programas de mantenimiento regular para mantener tu patinete o bicicleta eléctrica en óptimas condiciones."
 
 #: .\templates\index.html:225
-msgid "Quick Transaction"
-msgstr "Transacción Rápida"
+msgid "Personalization"
+msgstr "Personalización"
 
 #: .\templates\index.html:229
 msgid ""
-"We provide faster transaction speeds than competitors, so money arrives and "
-"is received faster."
+"If you want to customize your scooter with lights, accessories, or technical "
+"upgrades, we're ready to make it happen."
 msgstr ""
-"Ofrecemos velocidades de transacción más rápidas que los competidores, para "
-"que el dinero llegue y se reciba más rápido."
+"Si deseas personalizar tu patinete con luces, accesorios o mejoras técnicas, estamos listos para hacerlo realidad."
 
 #: .\templates\index.html:244
 msgid "Why to choose"
@@ -1739,8 +1737,6 @@ msgid "Find Our Location."
 msgstr "Encuentra Nuestra Ubicación."
 
 #: .\templates\index.html:285
-#, fuzzy
-#| msgid "and get your mobility back!"
 msgid "Find the nearest workshop and get your mobility back."
 msgstr "Encuentra el taller más cercano y recupera tu movilidad."
 
@@ -1791,3 +1787,57 @@ msgstr "Pedidos en Cola"
 #: .\templates\index.html:743
 msgid "Rate us now"
 msgstr "Califícanos ahora"
+
+#~ msgid ""
+#~ "Ofrecemos programas de mantenimiento regular para mantener tu patinete o "
+#~ "bicicleta eléctrica en óptimas condiciones."
+#~ msgstr ""
+#~ "We offer regular maintenance programs to keep your scooter or electric "
+#~ "bike in optimal condition."
+
+#~ msgid ""
+#~ "Si deseas personalizar tu patinete con luces, accesorios o mejoras "
+#~ "técnicas, estamos listos para hacerlo realidad."
+#~ msgstr ""
+#~ "If you want to customize your scooter with lights, accessories, or "
+#~ "technical improvements, we are ready to make it happen."
+
+#~ msgid "Easy Payment"
+#~ msgstr "Pago Fácil"
+
+#~ msgid ""
+#~ "We Provide Various Methods For You To Carry Out All Transactions Related "
+#~ "To Your Finances"
+#~ msgstr ""
+#~ "Ofrecemos varios métodos para que realices todas las transacciones "
+#~ "relacionadas con tus finanzas"
+
+#~ msgid "Safe Transaction"
+#~ msgstr "Transacción Segura"
+
+#~ msgid ""
+#~ "We have the most up-to-date security to support the security of all our "
+#~ "customers in carrying out all transactions."
+#~ msgstr ""
+#~ "Contamos con la seguridad más actualizada para garantizar la protección "
+#~ "de todos nuestros clientes en sus transacciones."
+
+#~ msgid "Fast Customer Service "
+#~ msgstr "Atención al Cliente Rápida"
+
+#~ msgid ""
+#~ "Provide Customer Service For Those Of You Who Have Problems 24 Hours A "
+#~ "Week"
+#~ msgstr ""
+#~ "Ofrecemos atención al cliente para quienes tengan problemas, las 24 horas "
+#~ "de la semana."
+
+#~ msgid "Quick Transaction"
+#~ msgstr "Transacción Rápida"
+
+#~ msgid ""
+#~ "We provide faster transaction speeds than competitors, so money arrives "
+#~ "and is received faster."
+#~ msgstr ""
+#~ "Ofrecemos velocidades de transacción más rápidas que los competidores, "
+#~ "para que el dinero llegue y se reciba más rápido."
