@@ -229,3 +229,6 @@ class CookieConsentView(View):
         else:
             # Cookie consent not set yet
             return HttpResponse("Cookie consent not set")
+        
+class PoliticaDeCookies(TemplateView):
+    template_name = "cookie-policy.html"
