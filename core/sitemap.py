@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from rest_framework.views import APIView
 from django.utils import timezone
 from blog.models import Post
+from booking.models import Branch
 
 from django.http import HttpResponse
 from django.utils import timezone
@@ -32,6 +33,15 @@ class SiteMap(APIView):
         ] + [
             f"{base_url}/en/{page}" for page in static_pages
         ]
+
+        # Dinamik filial URL'lari
+        branch_urls = [
+            f"{base_url}/es/branch/{branch.city.lower()}/" for branch in Branch.objects.all()
+        ] + [
+            f"{base_url}/en/branch/{branch.city.lower()}/" for branch in Branch.objects.all()
+        ]
+
+        static_urls += branch_urls
 
         # Barcha URL'larni birlashtirish
         all_urls = [f"{base_url}/en/", f"{base_url}/es/"] + blog_urls + product_urls + static_urls

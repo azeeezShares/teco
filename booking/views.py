@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Branch, Client, Service, Booking
 from blog.models import Post, Tag
 from .forms import BookingForm
+from django.http import Http404
 
 
 # function to check sesssion data before rendering
@@ -32,6 +33,22 @@ class HomeView(TemplateView):
         context['latest_posts'] = Post.objects.filter(status=1).order_by('-created_on')[:3]
         # branches
         context['branches'] = Branch.objects.all()
+        return context
+
+class BranchView(TemplateView):
+    template_name = 'branch.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        branch_name = self.kwargs.get('branch_name')
+        print(branch_name)
+        try:
+            branch = Branch.objects.get(city__iexact=branch_name)
+            context['branch'] = branch
+            context['branches'] = Branch.objects.all()
+            context['services'] = branch.service_set.all()  # Assuming a related name for services
+        except Branch.DoesNotExist:
+            raise Http404(_('Branch not found.'))
         return context
 
 # New booking view

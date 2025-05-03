@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}<title>Taller de Patinetes Eléctricos en {{branch.city|title}}</title>{% endblock title %}
+
+{% block meta_tags %}
+    <meta name="description" content="Taller de patinetes eléctricos en {{branch.city}}. Reparaciones rápidas, mantenimiento preventivo y personalización. Expertos en Dualtron, Xiaomi, Smartgyro y más.">
+    <meta name="keywords" content="taller patinetes eléctricos {{branch.city}}, reparación patinetes eléctricos, mantenimiento patinetes eléctricos, personalización patinetes eléctricos, Dualtron, Xiaomi, Smartgyro">
+    <meta name="author" content="Teco Shop">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Taller de Patinetes Eléctricos en {{branch.city}} – Servicio Técnico Profesional | Teco Shop">
+    <meta property="og:description" content="¿Necesita reparar su patinete eléctrico en {{branch.city}}? En Teco Shop ofrecemos diagnóstico profesional, mantenimiento preventivo, personalización y reparaciones rápidas. Atención experta en Dualtron, Xiaomi, Smartgyro y más.">
+    <meta property="og:url" content="http://www.tecoshop.es">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ branch.image.url }}">
+{% endblock meta_tags %}
+
+
+{% block content %}
+
+
+    <div class="max-w-screen-md mx-auto p-6 mb-6 bg-gray-50 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4">Taller de Patinetes Eléctricos en {{branch.city}} – Servicio Técnico Profesional | Teco Shop</h1>
+
+        <img src="{{ branch.image.url }}" alt="Imagen de la sucursal en {{ branch.city }}" class="w-full h-auto rounded-lg shadow-md mb-6">
+
+        <h2 class="text-xl font-bold text-gray-800 mt-6">Taller Especializado en Patinetes Eléctricos en {{branch.city}}</h2>
+        <p class="text-gray-700">
+            En los últimos años, los patinetes eléctricos se han convertido en una solución de movilidad esencial en ciudades como {{branch.city}}. Su uso cotidiano exige un mantenimiento adecuado y, en caso de averías, un servicio técnico confiable. En Teco Shop {{branch.city}}, nos especializamos en la reparación y mantenimiento de patinetes eléctricos con un enfoque profesional, rápido y transparente.
+        </p>
+        <h2 class="text-xl font-bold text-gray-800 mt-6">Servicios Profesionales para su Patinete o Bicicleta Eléctrica</h2>
+        <p class="text-gray-700">
+            En nuestra sede ubicada en {{branch.address}} encontrará un equipo de técnicos capacitados y comprometidos con la excelencia en el servicio. Ofrecemos:
+        </p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-4">
+            <li>
+                <p class="font-semibold text-gray-800">Diagnóstico Profesional</p>
+                <p>Nuestros técnicos realizan un examen detallado de su patinete o bicicleta eléctrica para identificar cualquier problema técnico. Proporcionamos siempre un presupuesto justo, claro y sin compromisos.</p>
+            </li>
+            <li>
+                <p class="font-semibold text-gray-800">Reparaciones Rápidas</p>
+                <p>Desde fallos eléctricos hasta desgaste de neumáticos, contamos con herramientas y experiencia para resolver la mayoría de los problemas en el menor tiempo posible, asegurando que su vehículo vuelva a estar operativo cuanto antes.</p>
+            </li>
+            <li>
+                <p class="font-semibold text-gray-800">Mantenimiento Preventivo</p>
+                <p>Ofrecemos planes de mantenimiento regulares para asegurar que su patinete funcione de manera segura, eficiente y con mayor durabilidad.</p>
+            </li>
+            <li>
+                <p class="font-semibold text-gray-800">Personalización</p>
+                <p>Realizamos mejoras estéticas y técnicas, como instalación de luces, accesorios y modificaciones específicas según sus preferencias.</p>
+            </li>
+        </ol>
+        <h2 class="text-xl font-bold text-gray-800 mt-6">Atención Especializada en las Mejores Marcas</h2>
+        <p class="text-gray-700">Contamos con experiencia certificada en el mantenimiento y reparación de las marcas más utilizadas en España:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Dualtron</li>
+            <li>Xiaomi</li>
+            <li>Smartgyro</li>
+        </ul>
+        <p class="text-gray-700">Asimismo, brindamos servicio técnico especializado a clientes de localidades cercanas como Salou, Cambrils y Vila-Seca.</p>
+        <h2 class="text-xl font-bold text-gray-800 mt-6">¿Por Qué Elegir Teco Shop {{branch.city}}?</h2>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Técnicos altamente cualificados</li>
+            <li>Repuestos originales y garantizados</li>
+            <li>Presupuestos transparentes</li>
+            <li>Servicio rápido, eficaz y profesional</li>
+            <li>Atención al cliente personalizada</li>
+            <li>Ubicación céntrica y accesible</li>
+        </ul>
+        <p class="text-gray-700">
+            Nuestro compromiso es ofrecerle soluciones duraderas y un servicio de máxima calidad en todo momento.
+        </p>
+        <h2 class="text-xl font-bold text-gray-800 mt-6">Visite Nuestro Taller en {{branch.city}}</h2>
+        <p class="text-gray-700">
+            📍 <span class="font-semibold">Dirección:</span> {{branch.address}}<br>
+            📞 <span class="font-semibold">Teléfono:</span> {{branch.phone_number}}<br>
+            🌐 <span class="font-semibold">Sitio web:</span> <a href="http://www.tecoshop.es" class="text-blue-500 hover:underline">www.tecoshop.es</a>
+        </p>
+        <p class="text-gray-700">
+            Le invitamos a contactarnos o visitarnos para una revisión gratuita de su patinete eléctrico. Estaremos encantados de atenderle con la profesionalidad que nos caracteriza.
+        </p>
+        <p class="text-lg font-semibold text-gray-800">Teco Shop – Su taller de confianza para patinetes eléctricos en {{branch.city}}.</p>
+    </div>
+
+    <div class="max-w-screen-md mx-auto p-6 bg-gray-50 rounded-lg shadow-md">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">{% trans "Our Other Locations" %}</h2>
+        <div class="grid gid-cols-1 md:grid-cols-2 gap-4">
+            {% for b in branches %}
+                <!-- card  -->
+                 {% comment %} transform transition duration-500 hover:scale-105 {% endcomment %}
+                <div class="relative  overflow-hidden">
+                    <div class="p-2 flex justify-center">
+                        <img class="rounded-md object-cover w-full "
+                             src="{{ b.image.url }}"
+                             alt="Imagen de {{ b.name }}"
+                             loading="lazy">
+                    </div>
+                    <div class="px-4 py-4">
+                        <h5 class="text-xl font-semibold text-gray-900 mb-2">{{ b.name }}</h5>
+                        <p class="text-sm text-slate-600 flex gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" color="#000000" fill="none">
+                                <path d="M13.6177 21.367C13.1841 21.773 12.6044 22 12.0011 22C11.3978 22 10.8182 21.773 10.3845 21.367C6.41302 17.626 1.09076 13.4469 3.68627 7.37966C5.08963 4.09916 8.45834 2 12.0011 2C15.5439 2 18.9126 4.09916 20.316 7.37966C22.9082 13.4393 17.599 17.6389 13.6177 21.367Z" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M15.5 11C15.5 12.933 13.933 14.5 12 14.5C10.067 14.5 8.5 12.933 8.5 11C8.5 9.067 10.067 7.5 12 7.5C13.933 7.5 15.5 9.067 15.5 11Z" stroke="currentColor" stroke-width="1.5" />
+                            </svg>
+                            {{ b.address }}
+                        </p>
+                        <a href="{% url 'branch_view' b.id %}" class="text-blue-500 hover:underline text-sm">
+                            {% trans "See more" %}
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+          </div>
+    </div>
+    
+{% endblock content %}
