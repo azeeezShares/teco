@@ -16,9 +16,13 @@
 }
 
 body {
-  background: #fcfbfb;
+  background: #e4e2e25e;
 }
 
 html {
+  overflow-x: hidden;
+}
+
+body, html {
   overflow-x: hidden;
 }
