@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-03 12:05+0500\n"
+"POT-Creation-Date: 2025-05-03 13:31+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1341,58 +1341,58 @@ msgstr ""
 
 #: .\templates\404.html:5
 msgid "404 - not found!"
-msgstr ""
+msgstr "404 - no encontrado!"
 
-#: .\templates\base.html:101 .\templates\base.html:144
+#: .\templates\base.html:101 .\templates\base.html:145
 msgid "Quick Links"
 msgstr "Enlaces Rápidos"
 
-#: .\templates\base.html:103 .\templates\base.html:146
+#: .\templates\base.html:103 .\templates\base.html:147
 #: .\templates\booking\select.html:160 .\templates\components\navbar.html:7
 msgid "Services"
 msgstr "Servicios"
 
-#: .\templates\base.html:104 .\templates\base.html:147
+#: .\templates\base.html:104 .\templates\base.html:148
 #: .\templates\components\navbar.html:12
 msgid "Locations"
 msgstr "Ubicaciones"
 
-#: .\templates\base.html:105 .\templates\base.html:148
+#: .\templates\base.html:105 .\templates\base.html:149
 #: .\templates\components\navbar.html:16
 msgid "Reviews"
 msgstr "Reseñas"
 
-#: .\templates\base.html:106 .\templates\base.html:149
+#: .\templates\base.html:106 .\templates\base.html:150
 #: .\templates\components\navbar.html:20
 msgid "Blog"
 msgstr "Blog"
 
-#: .\templates\base.html:107 .\templates\base.html:150
+#: .\templates\base.html:107 .\templates\base.html:151
 #: .\templates\components\navbar.html:24
 msgid "Book Appointment"
 msgstr "Reservar Cita"
 
-#: .\templates\base.html:139
+#: .\templates\base.html:140
 msgid "Contact with silvara.uz"
 msgstr "Contacto con silvara.uz"
 
-#: .\templates\base.html:155
+#: .\templates\base.html:156
 msgid "Contact Us"
 msgstr "Contáctanos"
 
-#: .\templates\base.html:180
+#: .\templates\base.html:181
 msgid "Mail us"
 msgstr "Envíanos un correo"
 
-#: .\templates\base.html:185
+#: .\templates\base.html:188
 msgid "All rights reserved."
-msgstr ""
+msgstr "Todos los derechos reservados."
 
-#: .\templates\base.html:199
+#: .\templates\base.html:201
 msgid "Accept the use of cookies"
 msgstr "Aceptar el uso de cookies"
 
-#: .\templates\base.html:243
+#: .\templates\base.html:245
 msgid ""
 "We use cookies to enhance your browsing experience. By continuing to use our "
 "website, you consent to the use of cookies. You may choose to accept or "
@@ -1402,21 +1402,25 @@ msgstr ""
 "usando nuestro sitio web, aceptas el uso de cookies. Puedes elegir "
 "aceptarlas o rechazarlas."
 
-#: .\templates\base.html:246
+#: .\templates\base.html:248
 msgid "For more information, please read our"
 msgstr "Para más información, por favor lee nuestra"
 
-#: .\templates\base.html:248
+#: .\templates\base.html:250
 msgid "Cookie policy"
 msgstr "Política de cookies"
 
-#: .\templates\base.html:259
+#: .\templates\base.html:261
 msgid "Accept all Cookies"
 msgstr "Aceptar todas las cookies"
 
-#: .\templates\base.html:263
+#: .\templates\base.html:265
 msgid "Reject all Cookies"
 msgstr "Rechazar todas las cookies"
+
+#: .\templates\blog\detail.html:83
+msgid "Must read"
+msgstr "Lectura obligatoria"
 
 #: .\templates\blog\tag_list.html:4 .\templates\index.html:5
 msgid "TECOSHOP - electric scooter workshop"
@@ -1531,8 +1535,6 @@ msgid "Select a branch you would like to book"
 msgstr "Selecciona una sucursal que te gustaría reservar"
 
 #: .\templates\booking\select.html:144
-#, fuzzy
-#| msgid "Email address"
 msgid "Address"
 msgstr "Dirección"
 
@@ -1672,7 +1674,8 @@ msgid ""
 "We offer regular maintenance programs to keep your scooter or electric bike "
 "in optimal condition."
 msgstr ""
-"Ofrecemos programas de mantenimiento regular para mantener tu patinete o bicicleta eléctrica en óptimas condiciones."
+"Ofrecemos programas de mantenimiento regular para mantener tu patinete o "
+"bicicleta eléctrica en óptimas condiciones."
 
 #: .\templates\index.html:225
 msgid "Personalization"
@@ -1683,7 +1686,8 @@ msgid ""
 "If you want to customize your scooter with lights, accessories, or technical "
 "upgrades, we're ready to make it happen."
 msgstr ""
-"Si deseas personalizar tu patinete con luces, accesorios o mejoras técnicas, estamos listos para hacerlo realidad."
+"Si deseas personalizar tu patinete con luces, accesorios o mejoras técnicas, "
+"estamos listos para hacerlo realidad."
 
 #: .\templates\index.html:244
 msgid "Why to choose"
