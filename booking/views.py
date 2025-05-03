@@ -53,6 +53,8 @@ class new_booking(TemplateView):
         context["details"] = {
             "state": "new_booking",
         }
+        # branches
+        context['branches'] = Branch.objects.all()
         return context
 
     # save data in session
