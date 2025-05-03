@@ -8,6 +8,9 @@ urlpatterns = [
     path('booking/select/', views.booking_select.as_view(), name='select'),
     path('booking/success/', views.booking_success.as_view(), name='success'),
     
+    # path for branches
+    path('branch/<str:branch_name>/', views.BranchView.as_view(), name='branch_view'),
+    
     # path for cookies
     path('cookie-consent/', views.CookieConsentView.as_view(), name='cookie_consent'),
     
