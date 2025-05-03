@@ -48,7 +48,7 @@
 {% block content %}
 
 
-  <div class="px-4 md:p-10 rounded-sm md:bg-white  mx-auto max-w-screen-md" id="blog_detail">
+  <div class="px-4 md:p-10 rounded-sm md:bg-white  mx-auto max-w-screen-md md:shadow-md" id="blog_detail">
       <!-- disable auto row -->
       <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-500 mb-6">
           <!--show tags here-->
@@ -78,7 +78,7 @@
       </div>
   </div>
 
-  <div class="mt-10 px-4 md:p-10 rounded-sm md:bg-white  mx-auto max-w-screen-md">
+  <div class="mt-10 px-4 md:p-10 rounded-sm md:bg-white  mx-auto max-w-screen-md md:shadow-md">
     <div class="text-xl font-bold mb-10">
       {% trans "Must read" %}
     </div>
@@ -130,6 +130,37 @@
 
 
   </div>
+
+  <div class="mt-10 px-4 md:p-10 rounded-sm md:bg-white  mx-auto max-w-screen-md md:shadow-md">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">{% trans "Our Locations" %}</h2>
+    <div class="grid gid-cols-1 md:grid-cols-3 gap-4">
+        {% for b in branches %}
+            <!-- card  -->
+             {% comment %} transform transition duration-500 hover:scale-105 {% endcomment %}
+            <div class="relative  overflow-hidden">
+                <div class="p-2 flex justify-center">
+                    <img class="rounded-md object-cover w-full h-42"
+                         src="{{ b.image.url }}"
+                         alt="Imagen de {{ b.name }}"
+                         loading="lazy">
+                </div>
+                <div class="px-4 py-4">
+                    <h5 class="text-xl font-semibold text-gray-900 mb-2">{{ b.name }}</h5>
+                    <p class="text-xs text-slate-600 flex gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" color="#000000" fill="none">
+                            <path d="M13.6177 21.367C13.1841 21.773 12.6044 22 12.0011 22C11.3978 22 10.8182 21.773 10.3845 21.367C6.41302 17.626 1.09076 13.4469 3.68627 7.37966C5.08963 4.09916 8.45834 2 12.0011 2C15.5439 2 18.9126 4.09916 20.316 7.37966C22.9082 13.4393 17.599 17.6389 13.6177 21.367Z" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M15.5 11C15.5 12.933 13.933 14.5 12 14.5C10.067 14.5 8.5 12.933 8.5 11C8.5 9.067 10.067 7.5 12 7.5C13.933 7.5 15.5 9.067 15.5 11Z" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                        {{ b.address }}
+                    </p>
+                    <a href="{% url 'branch_view' b.id %}" class="text-blue-500 hover:underline text-sm">
+                        {% trans "See more" %}
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+      </div>
+</div>
 
 
 {% endblock content %}

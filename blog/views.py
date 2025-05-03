@@ -26,6 +26,7 @@ class PostDetail(generic.DeleteView):
         context['post'] = get_object_or_404(Post, slug=slug, status=1)
         context['homepage_posts'] = Post.objects.filter(tag__name='homepage', status=1).order_by('-created_on')
         context['latest_posts'] = Post.objects.filter(status=1).order_by('-created_on')[:3]
+        context['branches'] = Branch.objects.all()
         
         return render(request, self.template_name, context=context)
 
