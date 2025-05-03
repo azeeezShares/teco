@@ -60,7 +60,7 @@
       </h6>
 
       <div class="flex items-start justify-center flex-col">
-          <h2 class="block antialiased tracking-normal font-sans text-4xl font-semibold leading-[1.3] text-blue-gray-900  mb-6 pl-2  border-l-4 border-l-[var(--color-primary)]">
+          <h2 class="block antialiased tracking-normal font-sans text-2xl md:text-4xl font-semibold leading-[1.3] text-blue-gray-900  mb-6 pl-2  border-l-4 border-l-[var(--color-primary)]">
               {{ post.title }}
           </h2>
                     <!-- article details -->
@@ -76,6 +76,59 @@
             {{ post.content|safe }}
           </div>
       </div>
+  </div>
+
+  <div class="mt-10 px-4 md:p-10 rounded-sm md:bg-white  mx-auto max-w-screen-md">
+    <div class="text-xl font-bold mb-10">
+      {% trans "Must read" %}
+    </div>
+
+    <div class="grid gid-cols-1 md:grid-cols-2 gap-4">
+      {% for post in homepage_posts %}
+          <!-- card  -->
+           {% comment %} transform transition duration-500 hover:scale-105 {% endcomment %}
+          <div class="relative">
+  
+              <div class="p-2 flex justify-center">
+                  <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/">
+                      <img class="rounded-md object-cover"
+                      src="{{post.image.url}}"
+                      loading="lazy">
+                  </a>
+              </div>
+  
+              <div class="px-4 mb-[10px] mt-[20px]">
+                  <!-- tags here -->
+                  <div class="tags text-sm pb-3">
+                      {% for tag in post.tag.all %}
+                      {% if tag.name != 'homepage' %}
+                          <a class="text-blue-500 mb-8">
+                              #{{tag.name}}
+                          </a>
+                      {% endif %}
+                  {% endfor %}
+                  </div>
+                  <div>
+                      <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/" >
+                          <h5
+                              class="text-xl font-semibold tracking-tight hover:text-[var(--color-primary)] text-gray-900 mb-[10px]">
+                              {{post.title}}
+                          </h5>
+                      </a>
+  
+                      <div class="antialiased flex flex-col text-sm text-blue-gray-900 text-gray-400 font-normal">
+                          {% comment %} <p class="mr-2">{{post.author}}</p>   {% endcomment %}
+                          <p class="">{{ post.updated_on|date:"F j, Y" }}</p>
+                      </div>
+                  </div>
+  
+              </div>
+  
+          </div>
+      {% endfor %}
+    </div>
+
+
   </div>
 
 

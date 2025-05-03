@@ -17,13 +17,17 @@ class PostList(generic.ListView):
         context['branches'] = Branch.objects.all()
         return context
 
-class PostDetail(generic.DetailView):
+class PostDetail(generic.DeleteView):
     model = Post
     template_name = 'blog/detail.html'
 
-    def get(self, request, slug, *args, **kwargs):  # Add slug as a parameter
-        post = get_object_or_404(Post, slug=slug, status=1)  # Fetch by slug;status 0 means draft, 1 means published;
-        return render(request, self.template_name, {'post': post})
+    def get(self, request, slug, **kwargs):  # Add slug as a parameter
+        context = {}
+        context['post'] = get_object_or_404(Post, slug=slug, status=1)
+        context['homepage_posts'] = Post.objects.filter(tag__name='homepage', status=1).order_by('-created_on')
+        context['latest_posts'] = Post.objects.filter(status=1).order_by('-created_on')[:3]
+        
+        return render(request, self.template_name, context=context)
 
 class TagList(generic.ListView):
     model = Post
