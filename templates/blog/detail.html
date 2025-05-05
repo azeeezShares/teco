@@ -54,7 +54,7 @@
           <!--show tags here-->
           {% for tag in post.tag.all %}
               {% if tag.name != 'homepage' %}
-                  <a href="{% url "tag_list" tag.name %}" class="tag">#{{ tag.name }}</a>
+                  <a href="{% url "blog_homeview" %}?s_tag={{tag.name}}" class="tag">#{{ tag.name }}</a>
               {% endif %}
           {% endfor %}
       </h6>
@@ -153,7 +153,7 @@
                         </svg>
                         {{ b.address }}
                     </p>
-                    <a href="{% url 'branch_view' b.id %}" class="text-blue-500 hover:underline text-sm">
+                    <a href="{% url 'branch_view' b.city %}" class="text-blue-500 hover:underline text-sm">
                         {% trans "See more" %}
                     </a>
                 </div>

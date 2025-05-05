@@ -9,12 +9,23 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
 class PostList(generic.ListView):
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'blog/list.html'
-    
+
+    def get_queryset(self):
+        s_tag = self.request.GET.get('s_tag')  # Get the 's_tag' query parameter
+        if s_tag:
+            return Post.objects.filter(tag__name=s_tag, status=1).order_by('-created_on')
+        return Post.objects.filter(status=1).order_by('-created_on')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['branches'] = Branch.objects.all()
+        context['tags'] = Tag.objects.all()
+        s_tag = self.request.GET.get('s_tag')  # Get the 's_tag' query parameter
+        if s_tag:
+            tag = Tag.objects.filter(name=s_tag).first()  # Fetch the tag object if it exists
+            if tag:
+                context['s_tag'] = tag
         return context
 
 class PostDetail(generic.DeleteView):
@@ -29,20 +40,6 @@ class PostDetail(generic.DeleteView):
         context['branches'] = Branch.objects.all()
         
         return render(request, self.template_name, context=context)
-
-class TagList(generic.ListView):
-    model = Post
-    template_name = 'blog/tag_list.html'
-    context_object_name = 'posts'
-    
-    def get_queryset(self):
-        tag = self.kwargs['tag']
-        return Post.objects.filter(tag__name=tag, status=1).order_by('-created_on')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tag'] = self.kwargs['tag']
-        return context
     
 # pages for admin
 class AdminPostList(LoginRequiredMixin, generic.ListView):
