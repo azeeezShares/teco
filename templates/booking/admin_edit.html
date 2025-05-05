@@ -19,6 +19,7 @@
         <span class="text-red-800">{{booking.booking_datetime}}</span>
     </div>
 
+    <h2 class="text-2xl font-bold">Booking Details</h2>
     <form method="post" action="{% url 'admin_booking_edit' booking.id %}">
         {% csrf_token %}
         <div class="grid grid-cols-1 gap-4">
@@ -28,6 +29,19 @@
             <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Save Changes</button>
         </div>
     </form>
+
+    <div class="mt-6">
+        <h2 class="text-2xl font-bold">Client Details</h2>
+        <ul class="list-disc pl-5">
+            <li><strong>First Name:</strong> {{ booking.client.first_name }}</li>
+            <li><strong>Last Name:</strong> {{ booking.client.last_name }}</li>
+            <li><strong>Email:</strong> {{ booking.client.email }}</li>
+            <li><strong>Phone Number:</strong> {{ booking.client.phone_number }}</li>
+            <li><strong>Additional Details:</strong> {{ booking.client.additional_details }}</li>
+            <li><strong>Receive Special Offers:</strong> {{ booking.client.receive_special_offers|yesno:"Yes,No" }}</li>
+        </ul>
+    </div>
+
     
 
 </div>
