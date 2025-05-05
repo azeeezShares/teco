@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
-{% block title %}<title>Taller de Patinetes Eléctricos en {{branch.city|title}}</title>{% endblock title %}
+{% comment %} {% block title %}<title>Taller de Patinetes Eléctricos en {{branch.city|title}}</title>{% endblock title %} {% endcomment %}
+{% block title %}<title>{% trans "Electric Scooter Workshop in" %} {{branch.city|title}}</title>{% endblock title %}
 
 {% block meta_tags %}
     <meta name="description" content="Taller de patinetes eléctricos en {{branch.city}}. Reparaciones rápidas, mantenimiento preventivo y personalización. Expertos en Dualtron, Xiaomi, Smartgyro y más.">
@@ -87,7 +88,6 @@
         <div class="grid gid-cols-1 md:grid-cols-3 gap-4">
             {% for b in branches %}
                 <!-- card  -->
-                 {% comment %} transform transition duration-500 hover:scale-105 {% endcomment %}
                 <div class="relative  overflow-hidden">
                     <div class="p-2 flex justify-center">
                         <img class="rounded-md object-cover w-full h-42"
