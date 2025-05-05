@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-05 12:29+0500\n"
+"POT-Creation-Date: 2025-05-05 12:52+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1622,12 +1622,12 @@ msgstr "¡y recupera tu movilidad!"
 msgid "Book online. And save time."
 msgstr "Reserva en línea. Y ahorra tiempo."
 
-#: .\templates\index.html:32 .\templates\index.html:362
+#: .\templates\index.html:32 .\templates\index.html:432
 msgid "Book now"
 msgstr "Reservar ahora"
 
 #: .\templates\index.html:51 .\templates\index.html:119
-#: .\templates\index.html:854
+#: .\templates\index.html:924
 msgid "Read more"
 msgstr "Leer más"
 
@@ -1666,66 +1666,48 @@ msgstr "Nuestros Servicios"
 msgid "Reliable Service, Quality Repairs"
 msgstr "Servicio Confiable, Reparaciones de Calidad"
 
-#: .\templates\index.html:162
-msgid "Professional Diagnosis"
-msgstr "Diagnóstico Profesional"
+#: .\templates\index.html:163
+msgid "Electric scooter repair"
+msgstr "Reparación patinetes eléctricos"
 
-#: .\templates\index.html:166
+#: .\templates\index.html:167
 msgid ""
-"Our highly trained technicians will examine your scooter or electric bike to "
-"identify any issues and provide you with a fair and transparent quote."
+"We repair all types of electric scooters, all current brands. We repair "
+"wheels, electronics, and mechanics."
 msgstr ""
-"Nuestros técnicos altamente capacitados examinarán tu patinete o bicicleta "
-"eléctrica para identificar cualquier problema y proporcionarte un "
-"presupuesto justo y transparente."
+"Reparamos cualquier tipo de patinete eléctrico todas las marcas actuales, reparamos ruedas,electrónica y mecánica."
 
-#: .\templates\index.html:183
-msgid "Quick Repairs"
-msgstr "Reparaciones Rápidas"
+#: .\templates\index.html:184
+msgid "Electric bike repair"
+msgstr "Reparación de bicicletas eléctricas"
 
-#: .\templates\index.html:187
+#: .\templates\index.html:188
 msgid ""
-"We work efficiently to resolve any issue, from electrical problems to worn "
-"tires, so you can get back to enjoying your electric scooter or bike as "
-"quickly as possible."
+"We repair electric bikes in record time, fixing wheels, electronics, and "
+"mechanics."
 msgstr ""
-"Trabajamos eficientemente para resolver cualquier problema, desde fallos "
-"eléctricos hasta neumáticos desgastados, para que puedas volver a disfrutar "
-"de tu patinete o bicicleta eléctrica lo más rápido posible."
+"Reparamos bicicletas eléctricas en un tiempo record, reparamos ruedas, electrónica y mecánica."
 
-#: .\templates\index.html:204
-msgid "Preventive Maintenance"
-msgstr "Mantenimiento Preventivo"
+#: .\templates\index.html:203
+msgid "Battery Repair"
+msgstr "Reparación de baterías"
 
-#: .\templates\index.html:208
+#: .\templates\index.html:207
 msgid ""
-"We offer regular maintenance programs to keep your scooter or electric bike "
-"in optimal condition."
+"We repair any type of lithium battery without any voltage limit, free "
+"diagnosis."
 msgstr ""
-"Ofrecemos programas de mantenimiento regular para mantener tu patinete o "
-"bicicleta eléctrica en óptimas condiciones."
+"Reparamos cualquier tipo de batería de litio sin ningún límite de voltaje, diagnostico sin coste."
 
-#: .\templates\index.html:225
-msgid "Personalization"
-msgstr "Personalización"
-
-#: .\templates\index.html:229
-msgid ""
-"If you want to customize your scooter with lights, accessories, or technical "
-"upgrades, we're ready to make it happen."
-msgstr ""
-"Si deseas personalizar tu patinete con luces, accesorios o mejoras técnicas, "
-"estamos listos para hacerlo realidad."
-
-#: .\templates\index.html:244
+#: .\templates\index.html:222
 msgid "Why to choose"
 msgstr "Por qué elegirnos"
 
-#: .\templates\index.html:251
+#: .\templates\index.html:229
 msgid "We are experts in the area."
 msgstr "Somos expertos en el área."
 
-#: .\templates\index.html:252
+#: .\templates\index.html:230
 msgid ""
 "In our workshop, you will find the true experts in electric scooters. Our "
 "passion and knowledge make us the perfect choice to keep your scooter in "
@@ -1735,11 +1717,11 @@ msgstr ""
 "Nuestra pasión y conocimiento nos convierten en la elección perfecta para "
 "mantener tu patinete en excelente estado."
 
-#: .\templates\index.html:259
+#: .\templates\index.html:237
 msgid "Fast, Efficient and Quality Solutions"
 msgstr "Soluciones Rápidas, Eficientes y de Calidad"
 
-#: .\templates\index.html:262
+#: .\templates\index.html:240
 msgid ""
 "Do you need a quick and efficient repair for your electric scooter? In our "
 "workshop, we offer fast solutions to get you back on the road in no time. "
@@ -1749,11 +1731,11 @@ msgstr ""
 "nuestro taller, ofrecemos soluciones rápidas para que vuelvas a la carretera "
 "en poco tiempo. Confía en nosotros para volver a rodar."
 
-#: .\templates\index.html:268
+#: .\templates\index.html:246
 msgid "Professional Maintenance and Personalized Attention"
 msgstr "Mantenimiento Profesional y Atención Personalizada"
 
-#: .\templates\index.html:269
+#: .\templates\index.html:247
 msgid ""
 "At our electric scooter workshop, we provide top-notch maintenance. Our "
 "highly qualified technicians ensure that your scooter runs optimally, "
@@ -1764,63 +1746,122 @@ msgstr ""
 "patinete funcione de manera óptima, prolongando su vida útil y garantizando "
 "tu comodidad."
 
-#: .\templates\index.html:282
+#: .\templates\index.html:259
+msgid "Our offering"
+msgstr "Nuestra oferta"
+
+#: .\templates\index.html:262
+msgid "Discover Our Comprehensive Range of Services"
+msgstr "Descubre nuestra amplia gama de servicios"
+
+#: .\templates\index.html:280
+msgid "Professional Diagnosis"
+msgstr "Diagnóstico Profesional"
+
+#: .\templates\index.html:284
+msgid ""
+"Our highly trained technicians will examine your scooter or electric bike to "
+"identify any issues and provide you with a fair and transparent quote."
+msgstr ""
+"Nuestros técnicos altamente capacitados examinarán tu patinete o bicicleta "
+"eléctrica para identificar cualquier problema y proporcionarte un "
+"presupuesto justo y transparente."
+
+#: .\templates\index.html:297
+msgid "Quick Repairs"
+msgstr "Reparaciones Rápidas"
+
+#: .\templates\index.html:301
+msgid ""
+"We work efficiently to resolve any issue, from electrical problems to worn "
+"tires, so you can get back to enjoying your electric scooter or bike as "
+"quickly as possible."
+msgstr ""
+"Trabajamos eficientemente para resolver cualquier problema, desde fallos "
+"eléctricos hasta neumáticos desgastados, para que puedas volver a disfrutar "
+"de tu patinete o bicicleta eléctrica lo más rápido posible."
+
+#: .\templates\index.html:317
+msgid "Preventive Maintenance"
+msgstr "Mantenimiento Preventivo"
+
+#: .\templates\index.html:321
+msgid ""
+"We offer regular maintenance programs to keep your scooter or electric bike "
+"in optimal condition."
+msgstr ""
+"Ofrecemos programas de mantenimiento regular para mantener tu patinete o "
+"bicicleta eléctrica en óptimas condiciones."
+
+#: .\templates\index.html:335
+msgid "Personalization"
+msgstr "Personalización"
+
+#: .\templates\index.html:339
+msgid ""
+"If you want to customize your scooter with lights, accessories, or technical "
+"upgrades, we're ready to make it happen."
+msgstr ""
+"Si deseas personalizar tu patinete con luces, accesorios o mejoras técnicas, "
+"estamos listos para hacerlo realidad."
+
+#: .\templates\index.html:352
 msgid "Find Our Location."
 msgstr "Encuentra Nuestra Ubicación."
 
-#: .\templates\index.html:285
+#: .\templates\index.html:355
 msgid "Find the nearest workshop and get your mobility back."
 msgstr "Encuentra el taller más cercano y recupera tu movilidad."
 
-#: .\templates\index.html:301
+#: .\templates\index.html:371
 msgid "Open"
 msgstr "Abierto"
 
-#: .\templates\index.html:303
+#: .\templates\index.html:373
 msgid "Closed"
 msgstr "Cerrado"
 
-#: .\templates\index.html:323
+#: .\templates\index.html:393
 msgid "Show Opening Hours"
 msgstr "Mostrar Horarios de Apertura"
 
-#: .\templates\index.html:355
+#: .\templates\index.html:425
 msgid "Show more"
 msgstr "Mostrar más"
 
-#: .\templates\index.html:377
+#: .\templates\index.html:447
 msgid "What they say about us?"
 msgstr "¿Qué dicen sobre nosotros?"
 
-#: .\templates\index.html:378
+#: .\templates\index.html:448
 msgid "Positive opinions by our customers."
 msgstr "Opiniones positivas de nuestros clientes."
 
-#: .\templates\index.html:691
+#: .\templates\index.html:761
 msgid "We care better."
 msgstr "Nos preocupamos mejor."
 
-#: .\templates\index.html:694
+#: .\templates\index.html:764
 msgid "What does our experience tell?"
 msgstr "¿Qué nos dice nuestra experiencia?"
 
-#: .\templates\index.html:707
+#: .\templates\index.html:777
 msgid "Repaired scooters"
 msgstr "Patinetes reparados"
 
-#: .\templates\index.html:717
+#: .\templates\index.html:787
 msgid "Clientes"
 msgstr "Clientes"
 
-#: .\templates\index.html:727
+#: .\templates\index.html:797
 msgid "Years in the sector"
 msgstr "Años en el sector"
 
-#: .\templates\index.html:736
+#: .\templates\index.html:806
 msgid "Orders in Queue"
 msgstr "Pedidos en Cola"
 
-#: .\templates\index.html:746
+#: .\templates\index.html:816
 msgid "Rate us now"
 msgstr "Califícanos ahora"
 
