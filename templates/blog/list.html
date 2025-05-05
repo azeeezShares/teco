@@ -9,48 +9,70 @@
 
 <div class="container mx-auto">
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 md:p-2 xl:p-5 bg-white rounded-sm shadow-md">
-        {% for post in object_list %}
-        <!-- card  -->
-        <div class="rounded-lg ">
-            <div class="p-2 flex justify-center">
-                <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/">
-                    <img class="rounded-md object-cover w-full h-60"
-                    src="{{post.image.url}}"
-                    loading="lazy">
-                </a>
-            </div>
-
-            <div class="px-4 mb-[10px] mt-[20px]">
-                <!-- tags here -->
-                <div class="tags text-sm pb-3">
-                    {% for tag in post.tag.all %}
-                    {% if tag.name != 'homepage' %}
-                        <a class="text-blue-500 mb-8">
-                            #{{tag.name}}
-                        </a>
-                    {% endif %}
-                    {% endfor %}
-                </div>
-                <div>
-                    <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/" >
-                        <h5
-                            class="text-xl font-semibold tracking-tight hover:text-[var(--color-primary)] text-gray-900 mb-[10px]">
-                            {{post.title}}
-                        </h5>
-                    </a>
-
-                    <div class="antialiased flex flex-col text-sm text-blue-gray-900 text-gray-400 font-normal">
-                        {% comment %} <p class="mr-2">{{post.author}}</p>   {% endcomment %}
-                        <p class="">{{ post.updated_on|date:"F j, Y" }}</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>  
+    <div class="p-4 md:p-2 xl:p-5 mb-5 bg-white rounded-sm shadow-md flex items-center justify-center gap-4">
+        <a href="{{ request.path }}" class="cursor-pointer {% if not s_tag %}px-2 border-b-2 border-[var(--color-primary)] font-semibold{% endif %}">{% trans "All" %}</a>
+        {% for tag in tags %}
+            {% if tag.name != 'homepage' %}
+            <a href="?s_tag={{ tag.name }}" class="cursor-pointer px-2 hover:font-semibold {% if tag.name == s_tag.name %} px-2 border-b-2 border-[var(--color-primary)] font-semibold {% endif %} ">
+                {{ tag.name }}
+            </a>
+            {% endif %}
         {% endfor %}
     </div>
+
+    {% if object_list %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 md:p-2 xl:p-5 bg-white rounded-sm shadow-md">
+            {% for post in object_list %}
+            <!-- card  -->
+                <div class="rounded-lg ">
+                    <div class="p-2 flex justify-center">
+                        <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/">
+                            <img class="rounded-md object-cover w-full h-60"
+                            src="{{post.image.url}}"
+                            loading="lazy">
+                        </a>
+                    </div>
+
+                    <div class="px-4 mb-[10px] mt-[20px]">
+                        <!-- tags here -->
+                        <div class="tags text-sm pb-3">
+                            {% for tag in post.tag.all %}
+                            {% if tag.name != 'homepage' %}
+                                <a class="text-blue-500 mb-8">
+                                    #{{tag.name}}
+                                </a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <a href="/{{LANGUAGE_CODE}}/blog/{{post.slug}}/" >
+                                <h5
+                                    class="text-xl font-semibold tracking-tight hover:text-[var(--color-primary)] text-gray-900 mb-[10px]">
+                                    {{post.title}}
+                                </h5>
+                            </a>
+
+                            <div class="antialiased flex flex-col text-sm text-blue-gray-900 text-gray-400 font-normal">
+                                {% comment %} <p class="mr-2">{{post.author}}</p>   {% endcomment %}
+                                <p class="">{{ post.updated_on|date:"F j, Y" }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>  
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class=" px-4 sm:px-6 lg:px-8 h-[50vh] flex flex-col gap-4 items-center justify-center bg-white rounded-sm shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="64" height="64" color="#000000" fill="none">
+                <path d="M10.5502 3C6.69782 3.00694 4.6805 3.10152 3.39128 4.39073C2 5.78202 2 8.02125 2 12.4997C2 16.9782 2 19.2174 3.39128 20.6087C4.78257 22 7.0218 22 11.5003 22C15.9787 22 18.218 22 19.6093 20.6087C20.8985 19.3195 20.9931 17.3022 21 13.4498" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M11.0556 13C10.3322 3.86635 16.8023 1.27554 21.9805 2.16439C22.1896 5.19136 20.7085 6.32482 17.8879 6.84825C18.4326 7.41736 19.395 8.13354 19.2912 9.02879C19.2173 9.66586 18.7846 9.97843 17.9194 10.6036C16.0231 11.9736 13.8264 12.8375 11.0556 13Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M9 17C11 11.5 12.9604 9.63636 15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class='text-2xl'> {% trans "No posts yet" %}</span>
+        </div>
+    {% endif %}
 
 </div>
     

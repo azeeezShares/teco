@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-03 13:31+0500\n"
+"POT-Creation-Date: 2025-05-05 12:29+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 msgid "email address"
 msgstr "Dirección de correo electrónico"
 
-#: .\account\views.py:28 .\booking\views.py:66 .\booking\views.py:109
+#: .\account\views.py:28 .\booking\views.py:83 .\booking\views.py:126
 msgid "Please fill in all required fields."
 msgstr ""
 
@@ -43,15 +43,21 @@ msgstr ""
 msgid "Invalid credentials."
 msgstr ""
 
-#: .\booking\views.py:157 .\booking\views.py:175
+#: .\booking\views.py:51
+#, fuzzy
+#| msgid "404 - not found!"
+msgid "Branch not found."
+msgstr "404 - no encontrado!"
+
+#: .\booking\views.py:174 .\booking\views.py:192
 msgid "Booking not found."
 msgstr ""
 
-#: .\booking\views.py:184
+#: .\booking\views.py:201
 msgid "Booking updated successfully."
 msgstr ""
 
-#: .\booking\views.py:189
+#: .\booking\views.py:206
 msgid "Please correct the errors below."
 msgstr ""
 
@@ -1422,9 +1428,21 @@ msgstr "Rechazar todas las cookies"
 msgid "Must read"
 msgstr "Lectura obligatoria"
 
-#: .\templates\blog\tag_list.html:4 .\templates\index.html:5
-msgid "TECOSHOP - electric scooter workshop"
-msgstr "TECOSHOP - taller de patinetes eléctricos"
+#: .\templates\blog\detail.html:137
+msgid "Our Locations"
+msgstr "Ubicaciones"
+
+#: .\templates\blog\detail.html:160 .\templates\branch.html:109
+msgid "See more"
+msgstr "Leer más"
+
+#: .\templates\blog\list.html:13
+msgid "All"
+msgstr "Todos"
+
+#: .\templates\blog\list.html:74
+msgid "No posts yet"
+msgstr "Aún no hay publicaciones"
 
 #: .\templates\booking\admin.html:24 .\templates\booking\new.html:22
 msgid "Danger alert"
@@ -1570,13 +1588,23 @@ msgstr "Tu reserva se ha completado con éxito."
 msgid "We will contact you to confirm your booking."
 msgstr "Nos pondremos en contacto contigo para confirmar tu reserva."
 
-#: .\templates\booking\success.html:24
+#: .\templates\booking\success.html:23
 msgid "Date to book."
 msgstr "Fecha para reservar."
+
+#: .\templates\branch.html:86
+#, fuzzy
+#| msgid "Find Our Location."
+msgid "Our Other Locations"
+msgstr "Encuentra Nuestra Ubicación."
 
 #: .\templates\components\navbar.html:29
 msgid "Admin"
 msgstr "Administrador"
+
+#: .\templates\index.html:5
+msgid "TECOSHOP - electric scooter workshop"
+msgstr "TECOSHOP - taller de patinetes eléctricos"
 
 #: .\templates\index.html:20
 msgid "Find the nearest"
@@ -1594,12 +1622,12 @@ msgstr "¡y recupera tu movilidad!"
 msgid "Book online. And save time."
 msgstr "Reserva en línea. Y ahorra tiempo."
 
-#: .\templates\index.html:32 .\templates\index.html:359
+#: .\templates\index.html:32 .\templates\index.html:362
 msgid "Book now"
 msgstr "Reservar ahora"
 
 #: .\templates\index.html:51 .\templates\index.html:119
-#: .\templates\index.html:851
+#: .\templates\index.html:854
 msgid "Read more"
 msgstr "Leer más"
 
@@ -1756,39 +1784,43 @@ msgstr "Cerrado"
 msgid "Show Opening Hours"
 msgstr "Mostrar Horarios de Apertura"
 
-#: .\templates\index.html:374
+#: .\templates\index.html:355
+msgid "Show more"
+msgstr "Mostrar más"
+
+#: .\templates\index.html:377
 msgid "What they say about us?"
 msgstr "¿Qué dicen sobre nosotros?"
 
-#: .\templates\index.html:375
+#: .\templates\index.html:378
 msgid "Positive opinions by our customers."
 msgstr "Opiniones positivas de nuestros clientes."
 
-#: .\templates\index.html:688
+#: .\templates\index.html:691
 msgid "We care better."
 msgstr "Nos preocupamos mejor."
 
-#: .\templates\index.html:691
+#: .\templates\index.html:694
 msgid "What does our experience tell?"
 msgstr "¿Qué nos dice nuestra experiencia?"
 
-#: .\templates\index.html:704
+#: .\templates\index.html:707
 msgid "Repaired scooters"
 msgstr "Patinetes reparados"
 
-#: .\templates\index.html:714
+#: .\templates\index.html:717
 msgid "Clientes"
 msgstr "Clientes"
 
-#: .\templates\index.html:724
+#: .\templates\index.html:727
 msgid "Years in the sector"
 msgstr "Años en el sector"
 
-#: .\templates\index.html:733
+#: .\templates\index.html:736
 msgid "Orders in Queue"
 msgstr "Pedidos en Cola"
 
-#: .\templates\index.html:743
+#: .\templates\index.html:746
 msgid "Rate us now"
 msgstr "Califícanos ahora"
 

@@ -12,7 +12,7 @@ from rest_framework.views import APIView
 class SiteMap(APIView):
     def get(self, request):
         base_url = request.build_absolute_uri("/")[:-1] 
-        blog_slugs = Post.objects.values_list('slug', flat=True)
+        blog_slugs = Post.objects.filter(status=1).values_list('slug', flat=True)
 
         blog_urls = [
             f"{base_url}/es/blog/{slug}/" for slug in blog_slugs
