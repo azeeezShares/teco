@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-05 13:19+0500\n"
+"POT-Creation-Date: 2025-05-05 14:35+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1436,6 +1436,10 @@ msgstr "Ubicaciones"
 msgid "See more"
 msgstr "Leer más"
 
+#: .\templates\blog\list.html:5
+msgid "TECO SHOP Blog"
+msgstr ""
+
 #: .\templates\blog\list.html:13
 msgid "All"
 msgstr "Todos"
@@ -1443,6 +1447,10 @@ msgstr "Todos"
 #: .\templates\blog\list.html:74
 msgid "No posts yet"
 msgstr "Aún no hay publicaciones"
+
+#: .\templates\booking\admin.html:5
+msgid "Admin login"
+msgstr "Inicio de sesión de administrador"
 
 #: .\templates\booking\admin.html:24 .\templates\booking\new.html:22
 msgid "Danger alert"
@@ -1596,15 +1604,21 @@ msgstr "Nos pondremos en contacto contigo para confirmar tu reserva."
 msgid "Date to book."
 msgstr "Fecha para reservar."
 
-#: .\templates\branch.html:86
-#, fuzzy
-#| msgid "Find Our Location."
+#: .\templates\branch.html:6
+msgid "Electric Scooter Workshop in"
+msgstr "Taller de patinetes eléctricos"
+
+#: .\templates\branch.html:88
 msgid "Our Other Locations"
 msgstr "Encuentra Nuestra Ubicación."
 
 #: .\templates\components\navbar.html:29
 msgid "Admin"
 msgstr "Administrador"
+
+#: .\templates\cookie-policy.html:6
+msgid "Cookie Policy - Tecoshop.es"
+msgstr "Política de cookies - Tecoshop.es"
 
 #: .\templates\index.html:5
 msgid "TECOSHOP - electric scooter workshop"
