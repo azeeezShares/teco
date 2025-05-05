@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-05 12:52+0500\n"
+"POT-Creation-Date: 2025-05-05 13:19+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -482,7 +482,7 @@ msgid ""
 msgstr ""
 
 #: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2529
-#: .\templates\booking\select.html:220
+#: .\templates\booking\select.html:216
 msgid "Time"
 msgstr ""
 
@@ -1354,7 +1354,7 @@ msgid "Quick Links"
 msgstr "Enlaces Rápidos"
 
 #: .\templates\base.html:103 .\templates\base.html:147
-#: .\templates\booking\select.html:160 .\templates\components\navbar.html:7
+#: .\templates\booking\select.html:156 .\templates\components\navbar.html:7
 msgid "Services"
 msgstr "Servicios"
 
@@ -1461,7 +1461,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: .\templates\booking\admin.html:67 .\templates\booking\new.html:116
-#: .\templates\booking\select.html:246
+#: .\templates\booking\select.html:241
 msgid "Next"
 msgstr "Siguiente"
 
@@ -1528,55 +1528,59 @@ msgstr "Detalles adicionales"
 msgid "Write Additional Details Here"
 msgstr "Escribe detalles adicionales aquí"
 
-#: .\templates\booking\select.html:32
+#: .\templates\booking\select.html:31
 msgid "Select a service"
 msgstr "Selecciona un servicio"
 
-#: .\templates\booking\select.html:36
+#: .\templates\booking\select.html:35
 msgid "Select a service you would like to book"
 msgstr "Selecciona un servicio que te gustaría reservar"
 
-#: .\templates\booking\select.html:80
+#: .\templates\booking\select.html:78
 msgid "Price"
 msgstr "Precio"
 
-#: .\templates\booking\select.html:84
+#: .\templates\booking\select.html:82
 msgid "Free cancellation"
 msgstr "Cancelación gratuita"
 
-#: .\templates\booking\select.html:101
+#: .\templates\booking\select.html:85
+msgid "About"
+msgstr "Acerca de"
+
+#: .\templates\booking\select.html:98
 msgid "Select a branch"
 msgstr "Selecciona una sucursal"
 
-#: .\templates\booking\select.html:103
+#: .\templates\booking\select.html:100
 msgid "Select a branch you would like to book"
 msgstr "Selecciona una sucursal que te gustaría reservar"
 
-#: .\templates\booking\select.html:144
+#: .\templates\booking\select.html:140
 msgid "Address"
 msgstr "Dirección"
 
-#: .\templates\booking\select.html:148
+#: .\templates\booking\select.html:144
 msgid "Phone"
 msgstr "Teléfono"
 
-#: .\templates\booking\select.html:152
+#: .\templates\booking\select.html:148
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: .\templates\booking\select.html:202
+#: .\templates\booking\select.html:198
 msgid "Select date and time"
 msgstr "Selecciona fecha y hora"
 
-#: .\templates\booking\select.html:204
+#: .\templates\booking\select.html:200
 msgid "Select a date and time you would like to book"
 msgstr "Selecciona una fecha y hora que te gustaría reservar"
 
-#: .\templates\booking\select.html:208
+#: .\templates\booking\select.html:204
 msgid "Date"
 msgstr "Fecha"
 
-#: .\templates\booking\select.html:240
+#: .\templates\booking\select.html:235
 msgid "Back"
 msgstr "Atrás"
 
@@ -1675,7 +1679,8 @@ msgid ""
 "We repair all types of electric scooters, all current brands. We repair "
 "wheels, electronics, and mechanics."
 msgstr ""
-"Reparamos cualquier tipo de patinete eléctrico todas las marcas actuales, reparamos ruedas,electrónica y mecánica."
+"Reparamos cualquier tipo de patinete eléctrico todas las marcas actuales, "
+"reparamos ruedas,electrónica y mecánica."
 
 #: .\templates\index.html:184
 msgid "Electric bike repair"
@@ -1686,7 +1691,8 @@ msgid ""
 "We repair electric bikes in record time, fixing wheels, electronics, and "
 "mechanics."
 msgstr ""
-"Reparamos bicicletas eléctricas en un tiempo record, reparamos ruedas, electrónica y mecánica."
+"Reparamos bicicletas eléctricas en un tiempo record, reparamos ruedas, "
+"electrónica y mecánica."
 
 #: .\templates\index.html:203
 msgid "Battery Repair"
@@ -1697,7 +1703,8 @@ msgid ""
 "We repair any type of lithium battery without any voltage limit, free "
 "diagnosis."
 msgstr ""
-"Reparamos cualquier tipo de batería de litio sin ningún límite de voltaje, diagnostico sin coste."
+"Reparamos cualquier tipo de batería de litio sin ningún límite de voltaje, "
+"diagnostico sin coste."
 
 #: .\templates\index.html:222
 msgid "Why to choose"
@@ -1747,12 +1754,12 @@ msgstr ""
 "tu comodidad."
 
 #: .\templates\index.html:259
-msgid "Our offering"
-msgstr "Nuestra oferta"
+msgid "Teco offers you"
+msgstr "Teco te ofrece"
 
 #: .\templates\index.html:262
-msgid "Discover Our Comprehensive Range of Services"
-msgstr "Descubre nuestra amplia gama de servicios"
+msgid "Discover Our Professional Services and Exceptional Quality"
+msgstr "Descubre nuestros servicios profesionales y calidad excepcional"
 
 #: .\templates\index.html:280
 msgid "Professional Diagnosis"
@@ -1864,6 +1871,12 @@ msgstr "Pedidos en Cola"
 #: .\templates\index.html:816
 msgid "Rate us now"
 msgstr "Califícanos ahora"
+
+#~ msgid "Our offering"
+#~ msgstr "Nuestra oferta"
+
+#~ msgid "Discover Our Comprehensive Range of Services"
+#~ msgstr "Descubre nuestra amplia gama de servicios"
 
 #~ msgid ""
 #~ "Ofrecemos programas de mantenimiento regular para mantener tu patinete o "
