@@ -161,9 +161,9 @@ class booking_select(View):
         }
         
         branch_phone_numbers = {
-            'barcelona':"+998954271965",
-            'reus': "+998954271965",
-            'viladecans': "+998954271965",
+            'barcelona':"+34643341896",
+            'reus': "+34643341896",
+            'viladecans': "+34643341896",
         }
         
         try:
