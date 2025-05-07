@@ -17,8 +17,13 @@ def send_message(data):
         print("Status:", response.status_code)
         print("Content-type:", response.headers["content-type"])
         print("Body:", response.text)
+        with open("whatsapp_response.txt", "w") as file:
+            file.write(response.text)
+        print("Response saved to whatsapp_response.txt")
         return response
     else:
+        with open("whatsapp_error.txt", "w") as file:
+            file.write(response.text)
         print(response.status_code)
         print(response.text)
         return response
