@@ -11,6 +11,8 @@ from blog.models import Post, Tag
 from .forms import BookingForm
 from django.http import Http404
 
+from .whatsapp import send_message
+
 
 # function to check sesssion data before rendering
 def check_session_data(request):
@@ -157,6 +159,32 @@ class booking_select(View):
                 "booking": booking,
             }
         }
+        
+        branch_phone_numbers = {
+            'barcelona':"+998954271965",
+            'reus': "+998954271965",
+            'viladecans': "+998954271965",
+        }
+        
+        try:
+            send_message(
+                {
+                    "messaging_product": "whatsapp",
+                    "recipient_type": "individual",
+                    "to": branch_phone_numbers[branch.city.lower()],
+                    "type": "text",
+                    "text": {
+                        "preview_url": False,
+                        "body": f"Nombre: {booking.client.first_name}\nApellido: {booking.client.last_name}\nNombre del servicio: {booking.service.name}\nFecha y hora de la reserva: {booking.booking_datetime}\nCorreo electrónico: {booking.client.email}\nNúmero de teléfono: {booking.client.phone_number}\nDetalles adicionales: {booking.client.additional_details}"
+                    }
+                }
+            )
+        except KeyError:
+            return HttpResponse("Invalid branch name", status=400)
+        except Exception as e:
+            print(f"Error sending message: {e}")
+            messages.error(request, _('Error sending message to WhatsApp.'), extra_tags='alert alert-danger')
+            return redirect('new')
         return render(request, 'booking/success.html', context=context)
     
 class booking_success(TemplateView):
