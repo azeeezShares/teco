@@ -160,18 +160,15 @@ class booking_select(View):
             }
         }
         
-        branch_phone_numbers = {
-            'barcelona':"34643249584",
-            'reus': "34643249584",
-            'viladecans': "34643249584",
-        }
+        branch_phone_number = "34643249584"  # Default phone number
+        # branch_phone_number = "998954271965"  # Default phone number
         
         try:
             send_message(
                 {
                     "messaging_product": "whatsapp",
                     "recipient_type": "individual",
-                    "to": branch_phone_numbers[branch.city.lower()],
+                    "to": branch_phone_number,
                     "type": "text",
                     "text": {
                         "preview_url": False,
@@ -179,8 +176,6 @@ class booking_select(View):
                     }
                 }
             )
-        except KeyError:
-            return HttpResponse("Invalid branch name", status=400)
         except Exception as e:
             print(f"Error sending message: {e}")
             messages.error(request, _('Error sending message to WhatsApp.'), extra_tags='alert alert-danger')

@@ -1,6 +1,5 @@
 from django.urls import path
-
-from . import views
+from . import whatsapp, views
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
@@ -16,4 +15,8 @@ urlpatterns = [
     
     path('politica-de-cookies/', views.PoliticaDeCookies.as_view(), name='politica_de_cookies')
     
+]
+
+urlpatterns += [
+    path('webhook/', whatsapp.webhook, name='webhook'),
 ]
