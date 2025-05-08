@@ -161,9 +161,9 @@ class booking_select(View):
         }
         
         branch_phone_numbers = {
-            'barcelona':"+34643341896",
-            'reus': "+34643341896",
-            'viladecans': "+34643341896",
+            'barcelona':"34643249584",
+            'reus': "34643249584",
+            'viladecans': "34643249584",
         }
         
         try:
@@ -175,7 +175,7 @@ class booking_select(View):
                     "type": "text",
                     "text": {
                         "preview_url": False,
-                        "body": f"Nombre: {booking.client.first_name}\nApellido: {booking.client.last_name}\nNombre del servicio: {booking.service.name}\nFecha y hora de la reserva: {booking.booking_datetime}\nCorreo electrónico: {booking.client.email}\nNúmero de teléfono: {booking.client.phone_number}\nDetalles adicionales: {booking.client.additional_details}"
+                        "body": f"Nombre: {booking.client.first_name}\nApellido: {booking.client.last_name}\nNombre del servicio: {booking.service.name}\nFecha y hora de la reserva: {booking.booking_datetime}\nCorreo electrónico: {booking.client.email}\nNúmero de teléfono: {booking.client.phone_number}\nDetalles adicionales: {booking.client.additional_details}\nCiudad: {booking.branch.city}"
                     }
                 }
             )
