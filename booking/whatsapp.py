@@ -1,7 +1,11 @@
 import requests
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+
+
 ACCESS_TOKEN ="EAATOF1eYUM8BO9EQGpJVKt00c6MMmFZBPN7puy3fD0DKLZAeAzvOnEPBcksGF6fwmvgEPgH5NdGw7Tahhp6zE1Lr3ZBo9PK9Rtdvo9NTXUjwoFnbbu80YRO8c14YBmCS4hAka0O9emI5USrwfx6jzO7lHNWqbrvfZC1O1QS710iqepOnliNoPHWG"
 VERSION = "v22.0"
-PHONE_NUMBER = "34643249584"
 PHONE_NUMBER_ID = "682771568245963"
 
 def send_message(data):
@@ -17,13 +21,42 @@ def send_message(data):
         print("Status:", response.status_code)
         print("Content-type:", response.headers["content-type"])
         print("Body:", response.text)
-        with open("whatsapp_response.txt", "w") as file:
+        with open("whatsapp_response.txt", "a") as file:
             file.write(response.text)
         print("Response saved to whatsapp_response.txt")
         return response
     else:
-        with open("whatsapp_error.txt", "w") as file:
+        with open("whatsapp_error.txt", "a") as file:
             file.write(response.text)
         print(response.status_code)
         print(response.text)
         return response
+    
+
+
+@csrf_exempt  # Disable CSRF for this view as the requests are coming from an external source
+def webhook(request):
+    if request.method == 'POST':
+        try:
+            # Parse incoming JSON data
+            data = json.loads(request.body)
+
+            # Check if the 'statuses' key exists in the payload
+            if 'statuses' in data:
+                for status in data['statuses']:
+                    # Extract information about the message status
+                    message_id = status['id']
+                    recipient_id = status['recipient_id']
+                    status_type = status['status']
+
+                    # Log or process the message status
+                    # You could save it to the database, send an email, etc.
+                    print(f"Message {message_id} to {recipient_id} is {status_type}")
+                    with open("whatsapp_status_updates.txt", "a") as file:
+                        file.write(f"Message {message_id} to {recipient_id} is {status_type}\n")
+
+            return JsonResponse({"status": "success"}, status=200)
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+    else:
+        return JsonResponse({"error": "Only POST method allowed"}, status=405)
