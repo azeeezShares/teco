@@ -43,19 +43,22 @@ def webhook(request):
             # Parse incoming JSON data
             data = json.loads(request.body)
 
-            # Check if the 'statuses' key exists in the payload
-            if 'statuses' in data:
-                for status in data['statuses']:
-                    # Extract information about the message status
-                    message_id = status['id']
-                    recipient_id = status['recipient_id']
-                    status_type = status['status']
+            # # Check if the 'statuses' key exists in the payload
+            # if 'statuses' in data:
+            #     for status in data['statuses']:
+            #         # Extract information about the message status
+            #         message_id = status['id']
+            #         recipient_id = status['recipient_id']
+            #         status_type = status['status']
 
-                    # Log or process the message status
-                    # You could save it to the database, send an email, etc.
-                    print(f"Message {message_id} to {recipient_id} is {status_type}")
-                    with open("whatsapp_status_updates.txt", "a") as file:
-                        file.write(f"Message {message_id} to {recipient_id} is {status_type}\n")
+            #         # Log or process the message status
+            #         # You could save it to the database, send an email, etc.
+            #         print(f"Message {message_id} to {recipient_id} is {status_type}")
+            #         with open("whatsapp_status_updates.txt", "a") as file:
+            #             file.write(f"Message {message_id} to {recipient_id} is {status_type}\n")
+
+            with open("whatsapp_status_updates.txt", "a") as file:
+                file.write(request.body.decode('utf-8') + "\n")
 
             return JsonResponse({"status": "success"}, status=200)
         except json.JSONDecodeError:
